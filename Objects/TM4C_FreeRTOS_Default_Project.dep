@@ -1,67 +1,67 @@
 Dependencies for Project 'TM4C_FreeRTOS', Target 'Default_Project': (DO NOT MODIFY !)
-F (.\Startup\startup_rvmdk.S)(0x57FCF908)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 513" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
-F (.\Source\main.c)(0x5873A4DA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (.\Source\include\include.h)(0x58739F45)
+F (.\Startup\startup_rvmdk.S)(0x5874C00D)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 513" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
+F (.\Source\main.c)(0x5874C71C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (.\Source\include\include.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rom.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\fpu.h)(0x56A88CAC)
-I (.\Source\include\tm4c123gh6pm.h)(0x58739F45)
-I (.\Source\include\PLL.h)(0x57F39F64)
-I (.\Source\include\UART.h)(0x57F25A7D)
-I (.\Source\include\GPIO.h)(0x57F399AC)
-I (.\Source\include\led_task.h)(0x58739F45)
-I (.\Source\include\switch_task.h)(0x58739F45)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\Source\include\tm4c123gh6pm.h)(0x5874C00D)
+I (.\Source\include\PLL.h)(0x5874C00D)
+I (.\Source\include\UART.h)(0x5874C00D)
+I (.\Source\include\GPIO.h)(0x5874C00D)
+I (.\Source\include\led_task.h)(0x5874C00D)
+I (.\Source\include\switch_task.h)(0x5874C00D)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-I (.\FreeRTOS\include\queue.h)(0x58739F45)
-I (.\FreeRTOS\include\semphr.h)(0x58739F45)
-F (.\Source\PLL.c)(0x57F39F35)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\pll.o --omf_browse .\objects\pll.crf --depend .\objects\pll.d)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+I (.\FreeRTOS\include\queue.h)(0x5874C00D)
+I (.\FreeRTOS\include\semphr.h)(0x5874C00D)
+F (.\Source\PLL.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\pll.o --omf_browse .\objects\pll.crf --depend .\objects\pll.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\PLL.h)(0x57F39F64)
-I (.\Source\include\tm4c123gh6pm.h)(0x58739F45)
-F (.\Source\GPIO.c)(0x57F39E3C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
-I (.\Source\include\tm4c123gh6pm.h)(0x58739F45)
-I (.\Source\include\GPIO.h)(0x57F399AC)
+I (.\Source\include\PLL.h)(0x5874C00D)
+I (.\Source\include\tm4c123gh6pm.h)(0x5874C00D)
+F (.\Source\GPIO.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (.\Source\include\tm4c123gh6pm.h)(0x5874C00D)
+I (.\Source\include\GPIO.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
-F (.\Source\UART.c)(0x57F39C44)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
-I (.\Source\include\UART.h)(0x57F25A7D)
+F (.\Source\UART.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+I (.\Source\include\UART.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\tm4c123gh6pm.h)(0x58739F45)
-F (.\Source\led_task.c)(0x5873A164)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\led_task.o --omf_browse .\objects\led_task.crf --depend .\objects\led_task.d)
+I (.\Source\include\tm4c123gh6pm.h)(0x5874C00D)
+F (.\Source\led_task.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\led_task.o --omf_browse .\objects\led_task.crf --depend .\objects\led_task.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_memmap.h)(0x56A88CB6)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_types.h)(0x56A88CB6)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\gpio.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rom.h)(0x56A88CAC)
-I (.\Source\include\rgb.h)(0x58739F45)
-I (.\Source\include\buttons.h)(0x58739F45)
-I (.\Source\include\UART.h)(0x57F25A7D)
-I (.\Source\include\led_task.h)(0x58739F45)
-I (.\Source\include\priorities.h)(0x58739F45)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\Source\include\rgb.h)(0x5874C00D)
+I (.\Source\include\buttons.h)(0x5874C00D)
+I (.\Source\include\UART.h)(0x5874C00D)
+I (.\Source\include\led_task.h)(0x5874C00D)
+I (.\Source\include\priorities.h)(0x5874C00D)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-I (.\FreeRTOS\include\queue.h)(0x58739F45)
-I (.\FreeRTOS\include\semphr.h)(0x58739F45)
-F (.\Source\switch_task.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\switch_task.o --omf_browse .\objects\switch_task.crf --depend .\objects\switch_task.d)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+I (.\FreeRTOS\include\queue.h)(0x5874C00D)
+I (.\FreeRTOS\include\semphr.h)(0x5874C00D)
+F (.\Source\switch_task.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\switch_task.o --omf_browse .\objects\switch_task.crf --depend .\objects\switch_task.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_memmap.h)(0x56A88CB6)
@@ -70,24 +70,24 @@ I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_gpio.h)(0x56A88CB6)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\sysctl.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\gpio.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rom.h)(0x56A88CAC)
-I (.\Source\include\buttons.h)(0x58739F45)
-I (.\Source\include\UART.h)(0x57F25A7D)
-I (.\Source\include\switch_task.h)(0x58739F45)
-I (.\Source\include\led_task.h)(0x58739F45)
-I (.\Source\include\priorities.h)(0x58739F45)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\Source\include\buttons.h)(0x5874C00D)
+I (.\Source\include\UART.h)(0x5874C00D)
+I (.\Source\include\switch_task.h)(0x5874C00D)
+I (.\Source\include\led_task.h)(0x5874C00D)
+I (.\Source\include\priorities.h)(0x5874C00D)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-I (.\FreeRTOS\include\queue.h)(0x58739F45)
-I (.\FreeRTOS\include\semphr.h)(0x58739F45)
-F (.\Source\drivers\buttons.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\buttons.o --omf_browse .\objects\buttons.crf --depend .\objects\buttons.d)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+I (.\FreeRTOS\include\queue.h)(0x5874C00D)
+I (.\FreeRTOS\include\semphr.h)(0x5874C00D)
+F (.\Source\drivers\buttons.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\buttons.o --omf_browse .\objects\buttons.crf --depend .\objects\buttons.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_types.h)(0x56A88CB6)
@@ -98,8 +98,8 @@ I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rom.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rom_map.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\pin_map.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\gpio.h)(0x56A88CAC)
-I (.\Source\include\buttons.h)(0x58739F45)
-F (.\Source\drivers\rgb.c)(0x5873A164)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\rgb.o --omf_browse .\objects\rgb.crf --depend .\objects\rgb.d)
+I (.\Source\include\buttons.h)(0x5874C00D)
+F (.\Source\drivers\rgb.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\rgb.o --omf_browse .\objects\rgb.crf --depend .\objects\rgb.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x54760110)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\inc\hw_types.h)(0x56A88CB6)
@@ -113,73 +113,73 @@ I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\pin_map.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\timer.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\gpio.h)(0x56A88CAC)
 I (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\interrupt.h)(0x56A88CAC)
-I (.\Source\include\rgb.h)(0x58739F45)
+I (.\Source\include\rgb.h)(0x5874C00D)
 F (D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rvmdk\driverlib.lib)(0x56A88CAC)()
-F (.\FreeRTOS\list.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
+F (.\FreeRTOS\list.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\list.o --omf_browse .\objects\list.crf --depend .\objects\list.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-F (.\FreeRTOS\queue.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
-I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
-I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
-I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
-I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-I (.\FreeRTOS\include\queue.h)(0x58739F45)
-F (.\FreeRTOS\tasks.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+F (.\FreeRTOS\queue.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\queue.o --omf_browse .\objects\queue.crf --depend .\objects\queue.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-I (.\FreeRTOS\include\timers.h)(0x58739F45)
-I (.\FreeRTOS\include\StackMacros.h)(0x58739F45)
-F (.\FreeRTOS\MemMang\heap_2.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\heap_2.o --omf_browse .\objects\heap_2.crf --depend .\objects\heap_2.d)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+I (.\FreeRTOS\include\queue.h)(0x5874C00D)
+F (.\FreeRTOS\tasks.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\tasks.o --omf_browse .\objects\tasks.crf --depend .\objects\tasks.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x54760110)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
-F (.\FreeRTOS\ARM_CM4F\port.c)(0x58739F45)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\1_TM4C_FreeRTOS\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
-I (.\FreeRTOS\include\FreeRTOS.h)(0x58739F45)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+I (.\FreeRTOS\include\timers.h)(0x5874C00D)
+I (.\FreeRTOS\include\StackMacros.h)(0x5874C00D)
+F (.\FreeRTOS\MemMang\heap_2.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\heap_2.o --omf_browse .\objects\heap_2.crf --depend .\objects\heap_2.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x54760110)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
-I (.\Source\include\FreeRTOSConfig.h)(0x5873A4DA)
-I (.\FreeRTOS\include\projdefs.h)(0x58739F45)
-I (.\FreeRTOS\include\portable.h)(0x58739F45)
-I (.\FreeRTOS\include\deprecated_definitions.h)(0x58739F45)
-I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x58739F45)
-I (.\FreeRTOS\include\mpu_wrappers.h)(0x58739F45)
-I (.\FreeRTOS\include\task.h)(0x58739F45)
-I (.\FreeRTOS\include\list.h)(0x58739F45)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)
+F (.\FreeRTOS\ARM_CM4F\port.c)(0x5874C00D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -ID:\TI\TivaWare_C_Series-2.1.2.111 -I.\Source\include -I.\FreeRTOS\include -I.\FreeRTOS\ARM_CM4F-I F:\Microcontroller_Projects\TM4C_SensorHub\RTE-I D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123-I D:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="513" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\port.o --omf_browse .\objects\port.crf --depend .\objects\port.d)
+I (.\FreeRTOS\include\FreeRTOS.h)(0x5874C00D)
+I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x54760110)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54760110)
+I (.\Source\include\FreeRTOSConfig.h)(0x5874C71C)
+I (.\FreeRTOS\include\projdefs.h)(0x5874C00D)
+I (.\FreeRTOS\include\portable.h)(0x5874C00D)
+I (.\FreeRTOS\include\deprecated_definitions.h)(0x5874C00D)
+I (.\FreeRTOS\ARM_CM4F\portmacro.h)(0x5874C00D)
+I (.\FreeRTOS\include\mpu_wrappers.h)(0x5874C00D)
+I (.\FreeRTOS\include\task.h)(0x5874C00D)
+I (.\FreeRTOS\include\list.h)(0x5874C00D)

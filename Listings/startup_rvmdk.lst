@@ -1085,10 +1085,10 @@ ARM Macro Assembler    Page 17
   674 0000001C                 END
 Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\obj
 ects\startup_rvmdk.d -o.\objects\startup_rvmdk.o -IF:\Microcontroller_Projects\
-1_TM4C_FreeRTOS\RTE -ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM
-4C123 -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefin
-e="__UVISION_VERSION SETA 513" --predefine="TM4C123GH6PM SETA 1" --list=.\listi
-ngs\startup_rvmdk.lst Startup\startup_rvmdk.S
+TM4C_SensorHub\RTE -ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4
+C123 -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefine
+="__UVISION_VERSION SETA 513" --predefine="TM4C123GH6PM SETA 1" --list=.\listin
+gs\startup_rvmdk.lst Startup\startup_rvmdk.S
 
 
 

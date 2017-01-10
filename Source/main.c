@@ -9,8 +9,6 @@
 
 #include "include.h"
 
-#define Highspeed_Clock		// System clock: 40MHz, baudrate: 115200bps
-
 //**** Function Prototype ****//
 #ifdef __cplusplus
 extern "C" {
@@ -115,10 +113,10 @@ int main()
 //*************************************************//
 void System_Init(void)
 {
-#ifdef Highspeed_Clock
+#ifdef System_Clock_40MHz
 	PLL_Init();			// System Clock: 40MHz
 	UART_Init();		// UART: 115200 bps
-#else	
+#elif System_Clock_8MHz
 	PLL_Init_8MHz(); 	// System Clock: 8MHz
 	UART_Init_9600bps();// UART: 9600 bps
 #endif	

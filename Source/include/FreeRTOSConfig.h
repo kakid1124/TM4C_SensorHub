@@ -85,7 +85,13 @@
 #define configUSE_PREEMPTION		1
 #define configUSE_IDLE_HOOK			0
 #define configUSE_TICK_HOOK			0
-#define configCPU_CLOCK_HZ			( ( unsigned long ) 8000000 )
+
+#ifdef System_Clock_40MHz
+	#define configCPU_CLOCK_HZ			( ( unsigned long ) 40000000 )
+#elif System_Clock_8MHz
+	#define configCPU_CLOCK_HZ			( ( unsigned long ) 8000000 )
+#endif	
+	
 #define configTICK_RATE_HZ			( ( TickType_t ) 1000 )
 #define configMINIMAL_STACK_SIZE	( ( unsigned short ) 200 )
 #define configTOTAL_HEAP_SIZE		( ( size_t ) ( 30000 ) )

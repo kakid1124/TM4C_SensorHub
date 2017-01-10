@@ -363,7 +363,7 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>rvmdk PART_TM4C123GH6PM TARGET_IS_BLIZZARD_RB1</Define>
+              <Define>rvmdk PART_TM4C123GH6PM TARGET_IS_BLIZZARD_RB1 System_Clock_40MHz</Define>
               <Undefine></Undefine>
               <IncludePath>D:\TI\TivaWare_C_Series-2.1.2.111;.\Source\include;.\FreeRTOS\include;.\FreeRTOS\ARM_CM4F</IncludePath>
             </VariousControls>
