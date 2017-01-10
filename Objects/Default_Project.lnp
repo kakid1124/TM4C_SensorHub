@@ -1,0 +1,20 @@
+--cpu Cortex-M4.fp
+".\objects\startup_rvmdk.o"
+".\objects\main.o"
+".\objects\pll.o"
+".\objects\gpio.o"
+".\objects\uart.o"
+".\objects\led_task.o"
+".\objects\switch_task.o"
+".\objects\buttons.o"
+".\objects\rgb.o"
+"D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rvmdk\driverlib.lib"
+".\objects\list.o"
+".\objects\queue.o"
+".\objects\tasks.o"
+".\objects\heap_2.o"
+".\objects\port.o"
+--library_type=microlib --strict --scatter ".\Objects\Default_Project.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Default_Project.map" -o .\Objects\Default_Project.axf

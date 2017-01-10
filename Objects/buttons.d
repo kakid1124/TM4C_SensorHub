@@ -1,0 +1,12 @@
+.\objects\buttons.o: Source\drivers\buttons.c
+.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\buttons.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\inc/hw_types.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\inc/hw_memmap.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\inc/hw_gpio.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/sysctl.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/rom.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/rom_map.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/pin_map.h
+.\objects\buttons.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/gpio.h
+.\objects\buttons.o: .\Source\include\buttons.h
