@@ -1,11 +1,11 @@
-#ifndef __LED_TASK_H__
-#define __LED_TASK_H__
+#ifndef __SENSOR_TASK_H__
+#define __SENSOR_TASK_H__
 
 //*****************************************************************************
 //
-// Prototypes for the LED task.
+// Prototypes for the Sensor task.
 //
 //*****************************************************************************
-extern uint32_t LEDTaskInit(void);
+extern uint32_t MPU9150TaskInit(void);
 
-#endif // __LED_TASK_H__
+#endif // __SENSOR_TASK_H__

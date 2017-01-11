@@ -26,12 +26,12 @@ void System_Init(void);
 }
 #endif
 
-//*****************************************************************************
-//
 // The mutex that protects concurrent access of UART from multiple tasks.
-//
-//*****************************************************************************
 xSemaphoreHandle g_pUARTSemaphore;
+xSemaphoreHandle I2C3_Semaphore;
+xSemaphoreHandle RawDataMPU_Semaphore;
+
+
 
 //*****************************************************************************
 //
@@ -127,5 +127,13 @@ void System_Init(void)
 	FPUEnable();
 	FPULazyStackingEnable();
 	
+	
+	//**** MPU9150 (I2C3): PD0 --> SCL, PD1 --> SDA, PB2 --> INT ****//					
+	I2C3_Init();
+	MotionInt_Init();
+	//MPU9150.begin();
+	
+	
 }
+
 

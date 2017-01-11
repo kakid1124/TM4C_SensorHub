@@ -20,9 +20,10 @@ void I2C1_Init(void){
   GPIO_PORTA_AMSEL_R &= ~0xC0;          // 7) disable analog functionality on PA6,7
 	
   I2C1_MCR_R = I2C_MCR_MFE;      				// 9) master function enable
-  I2C1_MTPR_R = 9;              				// 8) configure for 400 kbps clock
-  // 20*(TPR+1)*12.5ns = 10us, with TPR=39 --> 100kbps
-	//  with TPR=9 --> 400kbps
+  I2C1_MTPR_R = 4;              				// 8) configure for 400 kbps clock
+  // 40MHz --> 1 clock = 25ns
+  // 400 kbps --> t = 1/400000 = 2500ns
+  // 20*(TPR+1)*25ns = 2500ns, with TPR=4
 }
 
 //========================================//
@@ -165,8 +166,10 @@ void I2C3_Init(void){
   GPIO_PORTD_PCTL_R = (GPIO_PORTD_PCTL_R&0xFFFFFF00)+0x00000033;
   GPIO_PORTD_AMSEL_R &= ~0x03;          // 7) disable analog functionality on PD1,0
   I2C3_MCR_R = I2C_MCR_MFE;      // 9) master function enable
-  I2C3_MTPR_R = 9;              // 8) configure for 400 kbps clock
-  // 20*(TPR+1)*12.5ns = 2500ns, with TPR=9
+  I2C3_MTPR_R = 4;              // 8) configure for 400 kbps clock
+  // 40MHz --> 1 clock = 25ns
+  // 400 kbps --> t = 1/400000 = 2500ns
+  // 20*(TPR+1)*25ns = 2500ns, with TPR=4
 }
 
 void I2C3_Init_8MHz(void){
