@@ -1,4 +1,19 @@
 
 // SensorHub:
-//extern MPU9150 MPU9150;
+typedef struct {
+	int16_t accelCount[3];	// Stores the 16-bit signed accelerometer sensor output
+	int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
+	int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
+	int16_t tempCount;   // Stores the real internal chip temperature in degrees Celsius
+} MPU9150_RawData_t;
 
+
+
+
+// Extern Variables:
+extern MPU9150_RawData_t MPU9150_RawData;
+
+// Mutex and Semaphore
+extern xSemaphoreHandle g_pUARTSemaphore;
+extern xSemaphoreHandle I2C3_Semaphore;
+extern xSemaphoreHandle RawDataMPU_Semaphore;

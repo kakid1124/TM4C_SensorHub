@@ -26,10 +26,7 @@ void System_Init(void);
 }
 #endif
 
-// The mutex that protects concurrent access of UART from multiple tasks.
-xSemaphoreHandle g_pUARTSemaphore;
-xSemaphoreHandle I2C3_Semaphore;
-xSemaphoreHandle RawDataMPU_Semaphore;
+
 
 
 
@@ -64,10 +61,11 @@ int main()
 	
 	UART_OutString("\n\nWelcome to the FreeRTOS Demo...\n");
 	
-    //
-    // Create a mutex to guard the UART.
-    //
+    // Create mutex and semaphore
     g_pUARTSemaphore = xSemaphoreCreateMutex();
+	I2C3_Semaphore = xSemaphoreCreateMutex();
+	
+	vSemaphoreCreateBinary(RawDataMPU_Semaphore);
 
     //
     // Create the LED task.

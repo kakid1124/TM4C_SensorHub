@@ -27,16 +27,39 @@ uint32_t MPU9150TaskInit(void)
 //*****************************************************************************
 static void MPU9150_Task(void *pvParameters)
 {
+	static int8_t magcount = -1;
+	MPU9150_RawData_t RawData;
 	
+	
+	while(1)
+	{
+		xSemaphoreTake(RawDataMPU_Semaphore, portMAX_DELAY);
+		
+		magcount = (magcount + 1) % 42; // 500Hz/50 = 10Hz
+		
+		
+	}
 }
 
 
 //======= Xu ly ngat MPU9150 lay du lieu ~500Hz =======//
 void GPIOPortB_Handler(void){
+	static portBASE_TYPE xHigherPriorityTaskWoken;
+	
+	xHigherPriorityTaskWoken = pdFALSE;
+	
 	if(GPIO_PORTB_RIS_R & 0x04){
 		GPIO_PORTB_ICR_R = 0x04;	// acknowledge flag2
-		MPU9150_DataReady = true;
+		
+		xSemaphoreGiveFromISR(RawDataMPU_Semaphore, &xHigherPriorityTaskWoken);
+		
+		//MPU9150_DataReady = true;
 		//MPU9150_DataGet();				// calibrating...
+	}
+	
+	if( xHigherPriorityTaskWoken == pdTRUE )
+	{
+		portSWITCH_CONTEXT();
 	}
 }
 

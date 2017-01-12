@@ -143,88 +143,33 @@
 #define PI	3.14159265358979323846f
 #endif
 
-class MPU9150
-{
-	public:
-		uint8_t Ascale;
-		uint8_t Gscale;
-		uint8_t MagRate;
-		float aRes, gRes, mRes;      // scale resolutions per LSB for the sensors
 
-		int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
-		int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
-		int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
+/* int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
+int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
+int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
 	
-		float magCalibration[3], magbias[3];  // Factory mag calibration and mag bias
-		float gyroBias[3], accelBias[3]; 			// Bias corrections for gyro and accelerometer
+float magCalibration[3], magbias[3];	// Factory mag calibration and mag bias
+float gyroBias[3], accelBias[3];		// Bias corrections for gyro and accelerometer
 
-		int16_t tempCount;   // Stores the real internal chip temperature in degrees Celsius
-		float temperature;
-		float SelfTest[6];
+int16_t tempCount;   // Stores the real internal chip temperature in degrees Celsius
+float temperature;
 	
-// parameters for 6 DoF sensor fusion calculations
-		float GyroMeasError;
-		float beta;
-		float GyroMeasDrift;
-		float zeta;
-		#define Kp 2.0f * 5.0f // these are the free parameters in the Mahony filter and fusion scheme, Kp for proportional feedback, Ki for integral
-		#define Ki 0.0f
+float selftest[6];	 */	
 		
-		float pitch, yaw, roll;
-		float deltat;
-		int lastUpdate, firstUpdate, Now;
-		float q[4];
-		float eInt[3];
+void MPU9150_setup(void);
+void MPU9150_reset(void);
+void MPU9150_init(void);
+void AK8975A_init(float * destination);
+void MPU9150_calibrate(float * dest1, float * dest2);
+void MPU9150_selftest(float * destination);
 
-		float ax, ay, az, gx, gy, gz, mx, my, mz; // variables to hold latest sensor data values 
+void MPU9150_readAccelData(int16_t * destination);
+void MPU9150_readGyroData(int16_t * destination);
 		
-		MPU9150();
-		
-		void begin(void);
-		void init(void);
-		void initAK8975A(float * destination);
-		void calibrate(float * dest1, float * dest2);
-		void selftest(float * destination);
+void MPU9150_prepareMagData(void);
+int8_t MPU9150_magDataReady(void);
+void MPU9150_readMagData(int16_t * destination);
 	
-		void readAccelData(int16_t * destination);
-		void readGyroData(int16_t * destination);
-		
-		bool newMagData;
-		void prepareMagData(void);
-		bool magDataReady(void);
-		void readMagData(int16_t * destination);
-		
-		int16_t readTempData(void);
-	
-		void resetMPU9150(void);
-		
-		void getGres(void);
-		void getAres(void);
-	
-		void writeByte(uint8_t address, uint8_t _register, uint8_t data);
-		uint8_t readByte(uint8_t address, uint8_t _register);
-		void readBytes(uint8_t address, uint8_t _register, uint8_t length, uint8_t * destination);
-		
-		void MadgwickQuaternionUpdate(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz);
-		void MahonyQuaternionUpdate(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz);
-		
-	
-	private:
-	
-		// Set initial input parameters
-		enum Ascale {
-				AFS_2G = 0,
-				AFS_4G,
-				AFS_8G,
-				AFS_16G
-		};
-		enum Gscale {
-				GFS_250DPS = 0,
-				GFS_500DPS,
-				GFS_1000DPS,
-				GFS_2000DPS
-		};
-		
-};
+int16_t MPU9150_readTempData(void);
 
 #endif
