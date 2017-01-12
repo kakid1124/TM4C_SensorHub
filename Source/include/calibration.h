@@ -46,7 +46,9 @@ extern float gyro_TCBias_Slope[3], gyro_TCBias_Intercept[3];
   }; 
 
 	
-extern "C"{
+#ifdef __cplusplus
+extern "C" {
+#endif
 	
 	void Mag_Transformation(float * uncalibrated_values);
 	void Mag_vector_length_stabilasation(void);
@@ -56,8 +58,11 @@ extern "C"{
 	void MPU9150_Magnetometer_Calibration(float * Mag_AVR);
 	void computeMPU9150_RTData(float * Accel_Data, float * Gyro_Data, float * Mag_Data, float * MPU_Temp);
 	void computeMPU9150_RuntimeData(float * Accel_Data, float * Gyro_Data, float * MPU_Temp);
-}
 
+#ifdef __cplusplus
+}
+#endif
+	
 /* Sensor Calibrating: 27/10/2015  lan 1
 Battery Percent: 31%
 accel x-axis self test: 0.653% of factory value

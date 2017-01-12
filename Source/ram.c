@@ -20,3 +20,4 @@ float selftest[6];
 xSemaphoreHandle g_pUARTSemaphore = NULL;
 xSemaphoreHandle I2C3_Semaphore = NULL;
 xSemaphoreHandle RawDataMPU_Semaphore = NULL;
+

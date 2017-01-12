@@ -122,8 +122,8 @@ void System_Init(void)
 //	PortF_Init();	
 //	EnableInterrupts();
 	
-	FPUEnable();
-	FPULazyStackingEnable();
+	ROM_FPUEnable();
+	ROM_FPULazyStackingEnable();
 	
 	
 	//**** MPU9150 (I2C3): PD0 --> SCL, PD1 --> SDA, PB2 --> INT ****//					

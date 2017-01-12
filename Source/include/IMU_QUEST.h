@@ -24,10 +24,17 @@
 
 //-----------------------//
 // Function declarations
-extern "C"{
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
 	void QUEST(float* pfAccel, float* pfGyro, float* pfMagneto, float* pfEulers, float* qk, float* deltaT);
 	void Quaternion_To_Euler(float* q, float* pfEulers);
 	void Euler_to_Quaternion(float* pfQOut, float phi, float theta, float psi);
 	float invSqrt(float x);
+	
+#ifdef __cplusplus
 }
+#endif
+
 #endif /* IMU_QUEST_H_ */

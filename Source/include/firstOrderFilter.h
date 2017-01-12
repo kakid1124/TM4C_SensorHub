@@ -26,7 +26,6 @@ typedef struct firstOrderFilterData {
 } firstOrderFilterData_t;
 
 extern firstOrderFilterData_t firstOrderFilters[Number_Of_FirstOrderFilter];
-extern "C" {
-	void init_FirstOrderFilters(void);
-	float firstOrderFilter(float input, struct firstOrderFilterData *parameters);
-}
+void init_FirstOrderFilters(void);
+float firstOrderFilter(float input, struct firstOrderFilterData *parameters);
+

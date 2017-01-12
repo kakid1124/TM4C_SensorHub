@@ -1,3 +1,11 @@
+#ifndef EXT_VARIABLES_H_
+#define EXT_VARIABLES_H_
+
+#include <stdint.h>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
 
 // SensorHub:
 typedef struct {
@@ -17,3 +25,5 @@ extern MPU9150_RawData_t MPU9150_RawData;
 extern xSemaphoreHandle g_pUARTSemaphore;
 extern xSemaphoreHandle I2C3_Semaphore;
 extern xSemaphoreHandle RawDataMPU_Semaphore;
+
+#endif

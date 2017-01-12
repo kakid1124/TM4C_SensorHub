@@ -347,7 +347,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>3</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -359,7 +359,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
@@ -457,6 +457,46 @@
               <FileName>rgb.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\drivers\rgb.c</FilePath>
+            </File>
+            <File>
+              <FileName>calibration.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\calibration.c</FilePath>
+            </File>
+            <File>
+              <FileName>firstOrderFilter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\firstOrderFilter.c</FilePath>
+            </File>
+            <File>
+              <FileName>I2C.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>IMU_QUEST.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\IMU_QUEST.c</FilePath>
+            </File>
+            <File>
+              <FileName>MPU9150.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\MPU9150.c</FilePath>
+            </File>
+            <File>
+              <FileName>ram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\ram.c</FilePath>
+            </File>
+            <File>
+              <FileName>Sensor_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Sensor_Task.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\Timer0A.c</FilePath>
             </File>
           </Files>
         </Group>

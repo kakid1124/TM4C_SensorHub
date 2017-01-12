@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 F:\Microcontroller_Projects\TM4C_SensorHub\TM4C_FreeRTOS.uvprojx
-Project File Date:  01/10/2017
+Project File Date:  01/12/2017
 
 <h2>Output:</h2>
 Rebuild target 'Default_Project'
@@ -35,20 +35,55 @@ compiling led_task.c...
 compiling switch_task.c...
 compiling buttons.c...
 compiling rgb.c...
+compiling calibration.c...
+compiling firstOrderFilter.c...
+compiling I2C.c...
+compiling IMU_QUEST.c...
+compiling MPU9150.c...
+Source\MPU9150.c(86): error:  #20: identifier "magCalibration" is undefined
+        magCalibration[0] = 0;
+Source\MPU9150.c(90): error:  #20: identifier "magbias" is undefined
+        magbias[0] = -5.0f;             // User environmental x-axis correction in milliGauss
+Source\MPU9150.c(94): error:  #20: identifier "gyroBias" is undefined
+        gyroBias[0] = 0;
+Source\MPU9150.c(98): error:  #20: identifier "accelBias" is undefined
+        accelBias[0] = 0;
+Source\MPU9150.c: 0 warnings, 4 errors
+compiling ram.c...
+compiling Sensor_Task.c...
+Source\Sensor_Task.c(20): warning:  #940-D: missing return statement at end of non-void function "MPU9150TaskInit"
+  }
+Source\Sensor_Task.c(31): warning:  #177-D: variable "RawData" was declared but never referenced
+        MPU9150_RawData_t RawData;
+Source\Sensor_Task.c(62): warning:  #223-D: function "portSWITCH_CONTEXT" declared implicitly
+                portSWITCH_CONTEXT();
+Source\Sensor_Task.c(67): error:  #20: identifier "magcount" is undefined
+                magcount = (magcount + 1)%42; // 500Hz/50 = 10Hz
+Source\Sensor_Task.c(70): error:  #20: identifier "MPU9150" is undefined
+                MPU9150.readAccelData(MPU9150.accelCount);  
+Source\Sensor_Task.c(71): error:  #20: identifier "Accel_Data" is undefined
+                Accel_Data[0] = firstOrderFilter((float)MPU9150.accelCount[0], &firstOrderFilters[Accel_X]);
+Source\Sensor_Task.c(77): error:  #20: identifier "Gyro_Data" is undefined
+                Gyro_Data[0] = firstOrderFilter((float)MPU9150.gyroCount[0], &firstOrderFilters[Gyro_X]);
+Source\Sensor_Task.c(100): error:  #20: identifier "MagData_Data" is undefined
+                                MagData_Data[0] = firstOrderFilter((float)MPU9150.magCount[1] * MPU9150.magCalibration[1], &firstOrderFilters[Magneto_X]);
+Source\Sensor_Task.c(28): warning:  #177-D: function "MPU9150_Task" was declared but never referenced
+  static void MPU9150_Task(void *pvParameters)
+Source\Sensor_Task.c: 4 warnings, 5 errors
+compiling Timer0A.c...
 compiling list.c...
 compiling queue.c...
 compiling tasks.c...
 compiling heap_2.c...
 compiling port.c...
-linking...
-Program Size: Code=7824 RO-data=32 RW-data=108 ZI-data=30956  
-".\Objects\Default_Project.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\Default_Project.axf" - 9 Error(s), 4 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   F:\Microcontroller_Projects\TM4C_SensorHub\RTE
   D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123
 
 <h2>Collection of Component Files used:</h2>
+Target not created.
 </pre>
 </body>
 </html>
