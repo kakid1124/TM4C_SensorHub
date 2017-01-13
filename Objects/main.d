@@ -9,6 +9,7 @@
 .\objects\main.o: .\Source\include\UART.h
 .\objects\main.o: .\Source\include\GPIO.h
 .\objects\main.o: .\Source\include\I2C.h
+.\objects\main.o: .\Source\include\Timer0A.h
 .\objects\main.o: .\Source\include\ext_variables.h
 .\objects\main.o: .\FreeRTOS\include\FreeRTOS.h
 .\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
@@ -28,3 +29,4 @@
 .\objects\main.o: .\Source\include\firstOrderFilter.h
 .\objects\main.o: .\Source\include\led_task.h
 .\objects\main.o: .\Source\include\switch_task.h
+.\objects\main.o: .\Source\include\Sensor_Task.h

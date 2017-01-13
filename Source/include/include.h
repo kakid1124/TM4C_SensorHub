@@ -11,6 +11,7 @@
 #include "UART.h"
 #include "GPIO.h"
 #include "I2C.h"
+#include "Timer0A.h"
 
 
 #include "ext_variables.h"
@@ -20,11 +21,13 @@
 #include "firstOrderFilter.h"
 
 
-#include "led_task.h"
-#include "switch_task.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
+#include "led_task.h"
+#include "switch_task.h"
+#include "Sensor_Task.h"
+
 
 #endif

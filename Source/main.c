@@ -21,6 +21,7 @@ void EndCritical(long sr);    // restore I bit to previous value
 void WaitForInterrupt(void);  // low power mode
 
 void System_Init(void);
+static void Main_Task(void *pvParameters);
 	
 #ifdef __cplusplus
 }

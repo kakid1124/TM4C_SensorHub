@@ -2,6 +2,9 @@
 #include <stdint.h>
 #include <math.h>
 
+#ifndef __CALIBRATION_H__
+#define __CALIBRATION_H__
+
 extern bool MPU9150_calibrating;
 extern float accelSum[3];
 extern float gyroSum[3];
@@ -298,3 +301,6 @@ Z- point 0: 168.024 : 12.051 : -37.623
  Gathering Data...
 Z- point 180: -68.602 : -90.984 : -40.917
 */
+
+#endif // __CALIBRATION_H__
+
