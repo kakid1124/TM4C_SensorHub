@@ -144,18 +144,6 @@
 #endif
 
 
-/* int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
-int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
-int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
-	
-float magCalibration[3], magbias[3];	// Factory mag calibration and mag bias
-float gyroBias[3], accelBias[3];		// Bias corrections for gyro and accelerometer
-
-int16_t tempCount;   // Stores the real internal chip temperature in degrees Celsius
-float temperature;
-	
-float selftest[6];	 */	
-		
 void MPU9150_setup(void);
 void MPU9150_reset(void);
 void MPU9150_init(void);
@@ -167,7 +155,7 @@ void MPU9150_readAccelData(int16_t * destination);
 void MPU9150_readGyroData(int16_t * destination);
 		
 void MPU9150_prepareMagData(void);
-int8_t MPU9150_magDataReady(void);
+uint8_t MPU9150_magDataReady(void);
 void MPU9150_readMagData(int16_t * destination);
 	
 int16_t MPU9150_readTempData(void);

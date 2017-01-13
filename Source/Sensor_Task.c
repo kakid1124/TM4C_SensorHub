@@ -27,17 +27,49 @@ uint32_t MPU9150TaskInit(void)
 //*****************************************************************************
 static void MPU9150_Task(void *pvParameters)
 {
-	static int8_t magcount = -1;
+	static int8_t count = -1;
 	MPU9150_RawData_t RawData;
-	
 	
 	while(1)
 	{
-		xSemaphoreTake(RawDataMPU_Semaphore, portMAX_DELAY);
-		
-		magcount = (magcount + 1) % 42; // 500Hz/50 = 10Hz
-		
-		
+		if( xSemaphoreTake(RawDataMPU_Semaphore, portMAX_DELAY) == pdPASS)
+		{
+			count = (count + 1) % 42; // 500Hz/50 = 10Hz
+			RawData.MPU_DataReady = Old_Data;
+			RawData.Mag_DataReady = Old_Data;
+			
+			xSemaphoreTake(I2C3_Mutex, portMAX_DELAY);
+			// Read Accelerometer x/y/z adc values
+				MPU9150_readAccelData(RawData.accelCount);
+			// Read Gyroscope x/y/z adc values
+				MPU9150_readGyroData(RawData.gyroCount);
+			// Read temperature adc values, Calculate Temperature in degrees Centigrade
+				RawData.tempCount = MPU9150_readTempData();
+				RawData.MPU_DataReady = New_Data;
+				
+			// Read Magnetometer Data (~10Hz)
+				switch(count)
+				{
+					case 2:
+						MPU9150_prepareMagData();
+					break;
+					case 20: // delay it nhat 10ms sau prepareMagData
+						RawData.Mag_DataReady = MPU9150_magDataReady();
+					break;
+					case 25:
+						if(RawData.Mag_DataReady == New_Data){
+						// Read magnetometer x/y/z adc values
+							MPU9150_readMagData(RawData.magCount);
+						}
+					break;
+				}
+			xSemaphoreGive(I2C3_Mutex);
+			
+			// Send new data to global variable
+			xSemaphoreTake(GlobalVariable_Mutex, portMAX_DELAY);
+				MPU9150_RawData = RawData;
+			xSemaphoreGive(GlobalVariable_Mutex);
+		}
 	}
 }
 
@@ -63,45 +95,3 @@ void GPIOPortB_Handler(void){
 	}
 }
 
-void MPU9150_DataGet(void){
-		magcount = (magcount + 1)%42; // 500Hz/50 = 10Hz
-		
-		// Read Accelerometer x/y/z adc values
-		MPU9150.readAccelData(MPU9150.accelCount);  
-		Accel_Data[0] = firstOrderFilter((float)MPU9150.accelCount[0], &firstOrderFilters[Accel_X]);
-		Accel_Data[1] = firstOrderFilter((float)MPU9150.accelCount[1], &firstOrderFilters[Accel_Y]);
-		Accel_Data[2] = firstOrderFilter((float)MPU9150.accelCount[2], &firstOrderFilters[Accel_Z]);
-		
-		// Read Gyroscope x/y/z adc values
-    MPU9150.readGyroData(MPU9150.gyroCount);
-		Gyro_Data[0] = firstOrderFilter((float)MPU9150.gyroCount[0], &firstOrderFilters[Gyro_X]);
-		Gyro_Data[1] = firstOrderFilter((float)MPU9150.gyroCount[1], &firstOrderFilters[Gyro_Y]);
-		Gyro_Data[2] = firstOrderFilter((float)MPU9150.gyroCount[2], &firstOrderFilters[Gyro_Z]);
-		
-		// Read temperature adc values, Calculate Temperature in degrees Centigrade
-		MPU9150.tempCount = MPU9150.readTempData();
-		MPU9150.temperature = ((float) MPU9150.tempCount) / 340.0f + 36.53f;
-		
-		// Read Magnetometer Data (~10Hz)
-		if(magcount == 2){
-			MPU9150.prepareMagData();
-		}
-		else if(magcount == 20){	// delay it nhat 10ms sau prepareMagData
-			MPU9150.newMagData = MPU9150.magDataReady();
-		}
-		else if(magcount == 25){
-			if(MPU9150.newMagData == true){
-				// Read magnetometer x/y/z adc values
-				MPU9150.readMagData(MPU9150.magCount);
-			}
-		}
-		else if(magcount == 30){
-			if(MPU9150.newMagData == true){  // doi truc: X'=Y; Y'=X; Z'=-Z
-				MagData_Data[0] = firstOrderFilter((float)MPU9150.magCount[1] * MPU9150.magCalibration[1], &firstOrderFilters[Magneto_X]);
-				MagData_Data[1] = firstOrderFilter((float)MPU9150.magCount[0] * MPU9150.magCalibration[0], &firstOrderFilters[Magneto_Y]);
-				MagData_Data[2] = firstOrderFilter((float)MPU9150.magCount[2] *(-1.0f)*MPU9150.magCalibration[2], &firstOrderFilters[Magneto_Z]);
-				
-				MPU9150.newMagData = false;
-			}
-		}
-}

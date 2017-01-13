@@ -1,8 +1,5 @@
-#include <math.h>
-#include "MPU9150.h"
-#include "I2C.h"
-#include "Timer0A.h"
 
+#include "include.h"
 
 // Set initial input parameters
 enum Ascale {AFS_2G = 0, AFS_4G, AFS_8G, AFS_16G};
@@ -81,23 +78,23 @@ void MPU9150_setup(void){
 	getGres();// Get gyroscope sensitivity
 	
 	MagRate = 10;// set magnetometer read rate in Hz; 10 to 100 (max) Hz are reasonable values
-	mRes = 1.0f * (float)MagRate * 1229.0f / 4096.0f;// Conversion from 1229 microTesla full scale (4096) to 12.29 Gauss full scale
+	MPU9150_Bias.mRes = 1.0f * (float)MagRate * 1229.0f / 4096.0f;// Conversion from 1229 microTesla full scale (4096) to 12.29 Gauss full scale
 	
-	magCalibration[0] = 0;
-	magCalibration[1] = 0;
-	magCalibration[2] = 0;
+	MPU9150_Bias.magCalib[0] = 0;
+	MPU9150_Bias.magCalib[1] = 0;
+	MPU9150_Bias.magCalib[2] = 0;
 	
-	magbias[0] = -5.0f;		// User environmental x-axis correction in milliGauss
-	magbias[1] = -95.0f;	// User environmental y-axis correction in milliGauss
-	magbias[2] = -260.0f;	// User environmental z-axis correction in milliGauss
+	MPU9150_Bias.Mag[0] = -5.0f;		// User environmental x-axis correction in milliGauss
+	MPU9150_Bias.Mag[1] = -95.0f;	// User environmental y-axis correction in milliGauss
+	MPU9150_Bias.Mag[2] = -260.0f;	// User environmental z-axis correction in milliGauss
 	
-	gyroBias[0] = 0;
-	gyroBias[1] = 0;
-	gyroBias[2] = 0;
+	MPU9150_Bias.Gyro[0] = 0;
+	MPU9150_Bias.Gyro[1] = 0;
+	MPU9150_Bias.Gyro[2] = 0;
 	
-	accelBias[0] = 0;
-	accelBias[1] = 0;
-	accelBias[2] = 0;
+	MPU9150_Bias.Accel[0] = 0;
+	MPU9150_Bias.Accel[1] = 0;
+	MPU9150_Bias.Accel[2] = 0;
 }	
 
 void MPU9150_reset(void) {	// reset device
@@ -387,7 +384,7 @@ void MPU9150_prepareMagData(void)
 	writeByte(AK8975A_ADDRESS, AK8975A_CNTL, 0x01);
 }
 
-int8_t MPU9150_magDataReady(void){
+uint8_t MPU9150_magDataReady(void){
 	// Only accept a new magnetometer data read if the data ready bit is set and 
 	// if there are no sensor overflow or data read errors
 
