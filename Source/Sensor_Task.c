@@ -8,15 +8,28 @@
 
 #include "include.h"
 
+
+
+
+
 //*****************************************************************************
 //
 // Initializes the MPU9150 task.
 //
 //*****************************************************************************
-
 uint32_t MPU9150TaskInit(void)
 {
 	
+	
+    // Create the MPU9150 task.
+    if(xTaskCreate(MPU9150_Task, (const portCHAR *)"MPU9150", MPU9150TASKSTACKSIZE, NULL,
+                   tskIDLE_PRIORITY + PRIORITY_MPU9150_TASK, NULL) != pdTRUE)
+    {
+        return(0);
+    }
+
+    // Success.
+    return(1);
 }
 
 //*****************************************************************************

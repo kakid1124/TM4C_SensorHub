@@ -15,7 +15,23 @@ enum System_Status {Initialization,
 					AutoFlight_Mode,
 					Hardware_Error
 					};
+
 					
+					
+// Stack size in words
+#define MPU9150TASKSTACKSIZE	128
+#define LEDTASKSTACKSIZE        128
+#define SWITCHTASKSTACKSIZE     128
+
+
+#define LED_ITEM_SIZE           sizeof(LED_Data_t)
+#define LED_QUEUE_SIZE          3
+
+
+// The priorities of the various tasks.
+#define PRIORITY_MPU9150_TASK	1
+#define PRIORITY_SWITCH_TASK    2
+#define PRIORITY_LED_TASK       1
 
 // SensorHub:
 #define New_Data 1
@@ -45,6 +61,15 @@ typedef struct {
 } MPU9150_FilteredData_t;
 
 
+// LED Toggle
+typedef struct {
+	uint8_t LED_Code;	// color
+	uint8_t duty;		// high percent (0~100%)
+	float freq;			// Frequency (Hz)
+} LED_Data_t;
+
+
+
 // Extern Variables:
 extern uint8_t System_Status;
 
@@ -57,5 +82,8 @@ extern xSemaphoreHandle g_pUARTSemaphore;
 extern xSemaphoreHandle I2C3_Mutex;
 extern xSemaphoreHandle GlobalVariable_Mutex;
 extern xSemaphoreHandle RawDataMPU_Semaphore;
+
+// Queues
+extern xQueueHandle RGBLED_Queue; // The queue that holds messages sent to the LED task.
 
 #endif

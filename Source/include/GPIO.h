@@ -1,10 +1,9 @@
+#ifndef GPIO_H_
+#define GPIO_H_
 
 #include <stdint.h>
 #include <stdbool.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 #define GPIO_LOCK_KEY           0x4C4F434B  // Unlocks the GPIO_CR register
 #define PF0       (*((volatile uint32_t *)0x40025004))
@@ -27,7 +26,7 @@ extern "C" {
 #define WHITE			0x0E	// white    RGB    0x0E
 #define PINK			0x06	// pink     R-B    0x06
 #define ALL				0x00	// dark     ---    0
-
+#define DARK		0x00
 
 void PortF_Init(void);
 void MotionInt_Init(void);
@@ -42,6 +41,4 @@ void Led_Toggle(uint8_t color);
 bool SW1_Pushed(void);
 bool SW1_Release(void);
 
-#ifdef __cplusplus
-}
 #endif

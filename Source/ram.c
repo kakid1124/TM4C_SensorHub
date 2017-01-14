@@ -25,3 +25,5 @@ xSemaphoreHandle I2C3_Mutex = NULL;
 xSemaphoreHandle GlobalVariable_Mutex = NULL;
 xSemaphoreHandle RawDataMPU_Semaphore = NULL;
 
+// Queues
+xQueueHandle RGBLED_Queue; // The queue that holds messages sent to the LED task.

@@ -69,18 +69,10 @@ int main()
 	
 	vSemaphoreCreateBinary(RawDataMPU_Semaphore);
 
+	// Create a queue for sending messages to the LED task.
+    RGBLED_Queue = xQueueCreate(LED_QUEUE_SIZE, LED_ITEM_SIZE);
+
 	
-    //
-    // Create the LED task.
-    //
-    if(LEDTaskInit() != 0)
-    {
-
-        while(1)
-        {
-        }
-    }
-
     //
     // Create the switch task.
     //
@@ -92,9 +84,20 @@ int main()
         }
     }
 
-    //
+	
+	// Create the LED task & Switch task.
+    if(LED_SwitchTaskInit() == pdFAIL)
+    {
+        while(1){}
+    }
+
+	// Create the MPU9150 task.
+    if(MPU9150TaskInit() == pdFAIL)
+    {
+        while(1){}
+    }
+	
     // Start the scheduler.  This should not return.
-    //
     vTaskStartScheduler();
 
     //
@@ -124,7 +127,6 @@ void System_Init(void)
 	Timer0A_Delay_Init_8MHz();
 #endif	
 
-//	PortF_Init();	
 //	EnableInterrupts();
 	
 	ROM_FPUEnable();
