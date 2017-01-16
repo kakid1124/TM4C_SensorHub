@@ -28,5 +28,4 @@
 .\objects\mpu9150.o: .\Source\include\calibration.h
 .\objects\mpu9150.o: .\Source\include\firstOrderFilter.h
 .\objects\mpu9150.o: .\Source\include\led_task.h
-.\objects\mpu9150.o: .\Source\include\switch_task.h
 .\objects\mpu9150.o: .\Source\include\Sensor_Task.h

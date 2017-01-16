@@ -6,435 +6,89 @@ Section Cross References
 
     startup_rvmdk.o(RESET) refers to startup_rvmdk.o(STACK) for StackMem
     startup_rvmdk.o(RESET) refers to port.o(.emb_text) for vPortSVCHandler
-    startup_rvmdk.o(RESET) refers to port.o(i.xPortSysTickHandler) for xPortSysTickHandler
-    startup_rvmdk.o(RESET) refers to sensor_task.o(i.GPIOPortB_Handler) for GPIOPortB_Handler
+    startup_rvmdk.o(RESET) refers to port.o(.text) for xPortSysTickHandler
+    startup_rvmdk.o(RESET) refers to sensor_task.o(.text) for GPIOPortB_Handler
     startup_rvmdk.o(RESET) refers to entry.o(.ARM.Collect$$$$00000000) for __main
-    main.o(i.System_Init) refers to pll.o(i.PLL_Init) for PLL_Init
-    main.o(i.System_Init) refers to uart.o(i.UART_Init) for UART_Init
-    main.o(i.System_Init) refers to timer0a.o(i.Timer0A_Delay_Init) for Timer0A_Delay_Init
-    main.o(i.System_Init) refers to i2c.o(i.I2C3_Init) for I2C3_Init
-    main.o(i.System_Init) refers to gpio.o(i.MotionInt_Init) for MotionInt_Init
-    main.o(i.System_Init) refers to mpu9150.o(i.MPU9150_setup) for MPU9150_setup
-    main.o(i.main) refers to main.o(i.System_Init) for System_Init
-    main.o(i.main) refers to uart.o(i.UART_OutString) for UART_OutString
-    main.o(i.main) refers to queue.o(i.xQueueCreateMutex) for xQueueCreateMutex
-    main.o(i.main) refers to queue.o(i.xQueueGenericCreate) for xQueueGenericCreate
-    main.o(i.main) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
-    main.o(i.main) refers to led_task.o(i.LEDTaskInit) for LEDTaskInit
-    main.o(i.main) refers to switch_task.o(i.SwitchTaskInit) for SwitchTaskInit
-    main.o(i.main) refers to tasks.o(i.vTaskStartScheduler) for vTaskStartScheduler
-    main.o(i.main) refers to ram.o(.data) for g_pUARTSemaphore
-    main.o(i.main) refers to ram.o(.data) for I2C3_Mutex
-    main.o(i.main) refers to ram.o(.data) for GlobalVariable_Mutex
-    main.o(i.main) refers to ram.o(.data) for RawDataMPU_Semaphore
-    gpio.o(i.Scan_switch) refers to gpio.o(i.PortF_Input) for PortF_Input
-    uart.o(i.UART_InString) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_InString) refers to uart.o(i.UART_InChar) for UART_InChar
-    uart.o(i.UART_InUDec) refers to uart.o(i.UART_InChar) for UART_InChar
-    uart.o(i.UART_InUDec) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_InUHex) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_InUHex) refers to uart.o(i.UART_InChar) for UART_InChar
-    uart.o(i.UART_OutFloat) refers to uart.o(i.UART_Out_Dec) for UART_Out_Dec
-    uart.o(i.UART_OutFloat) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_OutFloat) refers to uart.o(i.UART_OutUDec) for UART_OutUDec
-    uart.o(i.UART_OutFloat2) refers to uart.o(i.UART_Out_Dec) for UART_Out_Dec
-    uart.o(i.UART_OutFloat2) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_OutFloat2) refers to uart.o(i.UART_OutUDec) for UART_OutUDec
-    uart.o(i.UART_OutString) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_OutUDec) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_OutUHex) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_Out_Dec) refers to uart.o(i.UART_OutChar) for UART_OutChar
-    uart.o(i.UART_Out_Dec) refers to uart.o(i.UART_OutUDec) for UART_OutUDec
-    led_task.o(i.LEDTask) refers to tasks.o(i.xTaskGetTickCount) for xTaskGetTickCount
-    led_task.o(i.LEDTask) refers to queue.o(i.xQueueGenericReceive) for xQueueGenericReceive
-    led_task.o(i.LEDTask) refers to rgb.o(i.RGBColorSet) for RGBColorSet
-    led_task.o(i.LEDTask) refers to uart.o(i.UART_OutString) for UART_OutString
-    led_task.o(i.LEDTask) refers to uart.o(i.UART_OutUDec) for UART_OutUDec
-    led_task.o(i.LEDTask) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
-    led_task.o(i.LEDTask) refers to rgb.o(i.RGBEnable) for RGBEnable
-    led_task.o(i.LEDTask) refers to tasks.o(i.vTaskDelayUntil) for vTaskDelayUntil
-    led_task.o(i.LEDTask) refers to rgb.o(i.RGBDisable) for RGBDisable
-    led_task.o(i.LEDTask) refers to led_task.o(.data) for .data
-    led_task.o(i.LEDTask) refers to led_task.o(.bss) for .bss
-    led_task.o(i.LEDTask) refers to ram.o(.data) for g_pUARTSemaphore
-    led_task.o(i.LEDTaskInit) refers to rgb.o(i.RGBInit) for RGBInit
-    led_task.o(i.LEDTaskInit) refers to rgb.o(i.RGBIntensitySet) for RGBIntensitySet
-    led_task.o(i.LEDTaskInit) refers to rgb.o(i.RGBColorSet) for RGBColorSet
-    led_task.o(i.LEDTaskInit) refers to uart.o(i.UART_OutString) for UART_OutString
-    led_task.o(i.LEDTaskInit) refers to uart.o(i.UART_OutUDec) for UART_OutUDec
-    led_task.o(i.LEDTaskInit) refers to queue.o(i.xQueueGenericCreate) for xQueueGenericCreate
-    led_task.o(i.LEDTaskInit) refers to tasks.o(i.xTaskCreate) for xTaskCreate
-    led_task.o(i.LEDTaskInit) refers to led_task.o(.data) for .data
-    led_task.o(i.LEDTaskInit) refers to led_task.o(.bss) for .bss
-    led_task.o(i.LEDTaskInit) refers to led_task.o(i.LEDTask) for LEDTask
-    switch_task.o(i.SwitchTask) refers to tasks.o(i.xTaskGetTickCount) for xTaskGetTickCount
-    switch_task.o(i.SwitchTask) refers to buttons.o(i.ButtonsPoll) for ButtonsPoll
-    switch_task.o(i.SwitchTask) refers to queue.o(i.xQueueGenericReceive) for xQueueGenericReceive
-    switch_task.o(i.SwitchTask) refers to uart.o(i.UART_OutString) for UART_OutString
-    switch_task.o(i.SwitchTask) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
-    switch_task.o(i.SwitchTask) refers to tasks.o(i.vTaskDelayUntil) for vTaskDelayUntil
-    switch_task.o(i.SwitchTask) refers to ram.o(.data) for g_pUARTSemaphore
-    switch_task.o(i.SwitchTask) refers to led_task.o(.data) for g_pLEDQueue
-    switch_task.o(i.SwitchTaskInit) refers to buttons.o(i.ButtonsInit) for ButtonsInit
-    switch_task.o(i.SwitchTaskInit) refers to tasks.o(i.xTaskCreate) for xTaskCreate
-    switch_task.o(i.SwitchTaskInit) refers to switch_task.o(i.SwitchTask) for SwitchTask
-    buttons.o(i.ButtonsInit) refers to buttons.o(.data) for .data
-    buttons.o(i.ButtonsPoll) refers to buttons.o(.data) for .data
-    rgb.o(i.RGBBlinkIntHandler) refers to rgb.o(i.RGBEnable) for RGBEnable
-    rgb.o(i.RGBBlinkIntHandler) refers to rgb.o(i.RGBDisable) for RGBDisable
-    rgb.o(i.RGBBlinkIntHandler) refers to rgb.o(.data) for .data
-    rgb.o(i.RGBBlinkRateSet) refers to rgb.o(i.RGBEnable) for RGBEnable
-    rgb.o(i.RGBBlinkRateSet) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
-    rgb.o(i.RGBBlinkRateSet) refers to ffixul.o(.text) for __aeabi_f2ulz
-    rgb.o(i.RGBColorGet) refers to rgb.o(.bss) for .bss
-    rgb.o(i.RGBColorSet) refers to rgb.o(.bss) for .bss
-    rgb.o(i.RGBColorSet) refers to rgb.o(.data) for .data
-    rgb.o(i.RGBInit) refers to rgb.o(i.RGBEnable) for RGBEnable
-    rgb.o(i.RGBIntensitySet) refers to rgb.o(i.RGBColorSet) for RGBColorSet
-    rgb.o(i.RGBIntensitySet) refers to rgb.o(.data) for .data
-    rgb.o(i.RGBIntensitySet) refers to rgb.o(.bss) for .bss
-    rgb.o(i.RGBSet) refers to rgb.o(i.RGBColorSet) for RGBColorSet
-    rgb.o(i.RGBSet) refers to rgb.o(i.RGBIntensitySet) for RGBIntensitySet
-    calibration.o(i.MPU9150_Compute_TCBias) refers to calibration.o(.data) for .data
-    calibration.o(i.MPU9150_Compute_TCBias) refers to calibration.o(.bss) for .bss
-    calibration.o(i.MPU9150_Magnetometer_Calibration) refers to uart.o(i.UART_OutString) for UART_OutString
-    calibration.o(i.MPU9150_Magnetometer_Calibration) refers to uart.o(i.UART_InChar) for UART_InChar
-    calibration.o(i.MPU9150_Magnetometer_Calibration) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    calibration.o(i.MPU9150_Magnetometer_Calibration) refers to uart.o(i.UART_OutFloat) for UART_OutFloat
-    calibration.o(i.MPU9150_TCBias_Measurement) refers to uart.o(i.UART_OutString) for UART_OutString
-    calibration.o(i.MPU9150_TCBias_Measurement) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    calibration.o(i.MPU9150_TCBias_Measurement) refers to uart.o(i.UART_OutFloat) for UART_OutFloat
-    calibration.o(i.MPU9150_TCBias_Measurement) refers to calibration.o(.data) for .data
-    calibration.o(i.MPU9150_accel_Calibration) refers to uart.o(i.UART_OutString) for UART_OutString
-    calibration.o(i.MPU9150_accel_Calibration) refers to uart.o(i.UART_InChar) for UART_InChar
-    calibration.o(i.MPU9150_accel_Calibration) refers to calibration.o(i.MPU9150_Compute_TCBias) for MPU9150_Compute_TCBias
-    calibration.o(i.MPU9150_accel_Calibration) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    calibration.o(i.MPU9150_accel_Calibration) refers to uart.o(i.UART_OutFloat) for UART_OutFloat
-    calibration.o(i.MPU9150_accel_Calibration) refers to calibration.o(.bss) for .bss
-    calibration.o(i.MPU9150_accel_Calibration) refers to calibration.o(.data) for .data
-    calibration.o(i.Mag_Transformation) refers to calibration.o(.constdata) for .constdata
-    calibration.o(i.Mag_Transformation) refers to calibration.o(.bss) for .bss
-    calibration.o(i.Mag_vector_length_stabilasation) refers to sqrtf.o(i.__hardfp_sqrtf) for __hardfp_sqrtf
-    calibration.o(i.Mag_vector_length_stabilasation) refers to calibration.o(.data) for .data
-    calibration.o(i.Mag_vector_length_stabilasation) refers to calibration.o(.bss) for .bss
-    calibration.o(i.computeMPU9150_RTData) refers to calibration.o(i.MPU9150_Compute_TCBias) for MPU9150_Compute_TCBias
-    calibration.o(i.computeMPU9150_RTData) refers to calibration.o(i.Mag_Transformation) for Mag_Transformation
-    calibration.o(i.computeMPU9150_RTData) refers to calibration.o(i.Mag_vector_length_stabilasation) for Mag_vector_length_stabilasation
-    calibration.o(i.computeMPU9150_RTData) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    calibration.o(i.computeMPU9150_RTData) refers to sqrtf.o(i.__hardfp_sqrtf) for __hardfp_sqrtf
-    calibration.o(i.computeMPU9150_RTData) refers to uart.o(i.UART_OutString) for UART_OutString
-    calibration.o(i.computeMPU9150_RTData) refers to uart.o(i.UART_OutFloat) for UART_OutFloat
-    calibration.o(i.computeMPU9150_RTData) refers to calibration.o(.data) for .data
-    calibration.o(i.computeMPU9150_RTData) refers to calibration.o(.bss) for .bss
-    calibration.o(i.computeMPU9150_RuntimeData) refers to calibration.o(i.MPU9150_Compute_TCBias) for MPU9150_Compute_TCBias
-    calibration.o(i.computeMPU9150_RuntimeData) refers to calibration.o(.data) for .data
-    calibration.o(i.computeMPU9150_RuntimeData) refers to calibration.o(.bss) for .bss
-    firstorderfilter.o(i.init_FirstOrderFilters) refers to firstorderfilter.o(.bss) for .bss
-    i2c.o(i.I2C1_Read_2Bytes) refers to timer0a.o(i.Delay_us) for Delay_us
-    i2c.o(i.I2C1_Write_2Bytes) refers to timer0a.o(i.Delay_us) for Delay_us
-    i2c.o(i.I2C3_Read_Byte) refers to timer0a.o(i.Delay_us) for Delay_us
-    i2c.o(i.I2C3_Read_Bytes) refers to timer0a.o(i.Delay_us) for Delay_us
-    i2c.o(i.I2C3_Write_Byte) refers to timer0a.o(i.Delay_us) for Delay_us
-    imu_quest.o(i.Euler_to_Quaternion) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
-    imu_quest.o(i.Euler_to_Quaternion) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
-    imu_quest.o(i.Euler_to_Quaternion) refers to imu_quest.o(i.invSqrt) for invSqrt
-    imu_quest.o(i.QUEST) refers to imu_quest.o(i.invSqrt) for invSqrt
-    imu_quest.o(i.QUEST) refers to atan2f.o(i.__hardfp_atan2f) for __hardfp_atan2f
-    imu_quest.o(i.QUEST) refers to asinf.o(i.__hardfp_asinf) for __hardfp_asinf
-    imu_quest.o(i.QUEST) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
-    imu_quest.o(i.QUEST) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
-    imu_quest.o(i.QUEST) refers to imu_quest.o(i.Euler_to_Quaternion) for Euler_to_Quaternion
-    imu_quest.o(i.QUEST) refers to imu_quest.o(i.Quaternion_To_Euler) for Quaternion_To_Euler
-    imu_quest.o(i.QUEST) refers to imu_quest.o(.data) for .data
-    imu_quest.o(i.QUEST) refers to imu_quest.o(.bss) for .bss
-    imu_quest.o(i.Quaternion_To_Euler) refers to asinf.o(i.__hardfp_asinf) for __hardfp_asinf
-    imu_quest.o(i.Quaternion_To_Euler) refers to atan2f.o(i.__hardfp_atan2f) for __hardfp_atan2f
-    mpu9150.o(i.AK8975A_init) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.AK8975A_init) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    mpu9150.o(i.AK8975A_init) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_calibrate) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.MPU9150_calibrate) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    mpu9150.o(i.MPU9150_calibrate) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_init) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.MPU9150_init) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    mpu9150.o(i.MPU9150_init) refers to mpu9150.o(i.readByte) for readByte
-    mpu9150.o(i.MPU9150_init) refers to mpu9150.o(.data) for .data
-    mpu9150.o(i.MPU9150_magDataReady) refers to mpu9150.o(i.readByte) for readByte
-    mpu9150.o(i.MPU9150_prepareMagData) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.MPU9150_readAccelData) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_readGyroData) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_readMagData) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_readTempData) refers to mpu9150.o(i.readBytes) for readBytes
-    mpu9150.o(i.MPU9150_reset) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.MPU9150_reset) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    mpu9150.o(i.MPU9150_selftest) refers to mpu9150.o(i.writeByte) for writeByte
-    mpu9150.o(i.MPU9150_selftest) refers to timer0a.o(i.Delay_ms) for Delay_ms
-    mpu9150.o(i.MPU9150_selftest) refers to mpu9150.o(i.readByte) for readByte
-    mpu9150.o(i.MPU9150_selftest) refers to powf.o(i.__hardfp_powf) for __hardfp_powf
-    mpu9150.o(i.MPU9150_setup) refers to mpu9150.o(i.getAres) for getAres
-    mpu9150.o(i.MPU9150_setup) refers to mpu9150.o(i.getGres) for getGres
-    mpu9150.o(i.MPU9150_setup) refers to mpu9150.o(.data) for .data
-    mpu9150.o(i.MPU9150_setup) refers to ram.o(.bss) for MPU9150_Bias
-    mpu9150.o(i.getAres) refers to mpu9150.o(.data) for .data
-    mpu9150.o(i.getGres) refers to mpu9150.o(.data) for .data
-    mpu9150.o(i.readByte) refers to i2c.o(i.I2C3_Read_Byte) for I2C3_Read_Byte
-    mpu9150.o(i.readBytes) refers to i2c.o(i.I2C3_Read_Bytes) for I2C3_Read_Bytes
-    mpu9150.o(i.writeByte) refers to i2c.o(i.I2C3_Write_Byte) for I2C3_Write_Byte
-    sensor_task.o(i.GPIOPortB_Handler) refers to queue.o(i.xQueueGiveFromISR) for xQueueGiveFromISR
-    sensor_task.o(i.GPIOPortB_Handler) refers to sensor_task.o(.data) for .data
-    sensor_task.o(i.GPIOPortB_Handler) refers to ram.o(.data) for RawDataMPU_Semaphore
-    timer0a.o(i.Delay_ms) refers to timer0a.o(i.Delay_us) for Delay_us
-    queue.o(i.pcQueueGetName) refers to queue.o(.bss) for .bss
-    queue.o(i.prvCopyDataFromQueue) refers to memcpya.o(.text) for __aeabi_memcpy
-    queue.o(i.prvCopyDataToQueue) refers to memcpya.o(.text) for __aeabi_memcpy
-    queue.o(i.prvCopyDataToQueue) refers to tasks.o(i.xTaskPriorityDisinherit) for xTaskPriorityDisinherit
-    queue.o(i.prvIsQueueEmpty) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.prvIsQueueEmpty) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.prvUnlockQueue) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.prvUnlockQueue) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.prvUnlockQueue) refers to tasks.o(i.vTaskMissedYield) for vTaskMissedYield
-    queue.o(i.prvUnlockQueue) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.uxQueueMessagesWaiting) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.uxQueueMessagesWaiting) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.uxQueueSpacesAvailable) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.uxQueueSpacesAvailable) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.vQueueAddToRegistry) refers to queue.o(.bss) for .bss
-    queue.o(i.vQueueDelete) refers to queue.o(i.vQueueUnregisterQueue) for vQueueUnregisterQueue
-    queue.o(i.vQueueDelete) refers to heap_2.o(i.vPortFree) for vPortFree
-    queue.o(i.vQueueUnregisterQueue) refers to queue.o(.bss) for .bss
-    queue.o(i.xQueueCreateMutex) refers to queue.o(i.xQueueGenericCreate) for xQueueGenericCreate
-    queue.o(i.xQueueCreateMutex) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
-    queue.o(i.xQueueGenericCreate) refers to heap_2.o(i.pvPortMalloc) for pvPortMalloc
-    queue.o(i.xQueueGenericCreate) refers to queue.o(i.xQueueGenericReset) for xQueueGenericReset
-    queue.o(i.xQueueGenericReceive) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.xQueueGenericReceive) refers to queue.o(i.prvCopyDataFromQueue) for prvCopyDataFromQueue
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueGenericReceive) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.pvTaskIncrementMutexHeldCount) for pvTaskIncrementMutexHeldCount
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.vTaskSetTimeOutState) for vTaskSetTimeOutState
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.xTaskCheckForTimeOut) for xTaskCheckForTimeOut
-    queue.o(i.xQueueGenericReceive) refers to queue.o(i.prvUnlockQueue) for prvUnlockQueue
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    queue.o(i.xQueueGenericReceive) refers to queue.o(i.prvIsQueueEmpty) for prvIsQueueEmpty
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.vTaskPriorityInherit) for vTaskPriorityInherit
-    queue.o(i.xQueueGenericReceive) refers to tasks.o(i.vTaskPlaceOnEventList) for vTaskPlaceOnEventList
-    queue.o(i.xQueueGenericReset) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.xQueueGenericReset) refers to list.o(i.vListInitialise) for vListInitialise
-    queue.o(i.xQueueGenericReset) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.xQueueGenericReset) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueGenericSend) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    queue.o(i.xQueueGenericSend) refers to queue.o(i.prvCopyDataToQueue) for prvCopyDataToQueue
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueGenericSend) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.vTaskSetTimeOutState) for vTaskSetTimeOutState
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.xTaskCheckForTimeOut) for xTaskCheckForTimeOut
-    queue.o(i.xQueueGenericSend) refers to queue.o(i.prvUnlockQueue) for prvUnlockQueue
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    queue.o(i.xQueueGenericSend) refers to tasks.o(i.vTaskPlaceOnEventList) for vTaskPlaceOnEventList
-    queue.o(i.xQueueGenericSendFromISR) refers to queue.o(i.prvCopyDataToQueue) for prvCopyDataToQueue
-    queue.o(i.xQueueGenericSendFromISR) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueGiveFromISR) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueGiveMutexRecursive) refers to tasks.o(i.xTaskGetCurrentTaskHandle) for xTaskGetCurrentTaskHandle
-    queue.o(i.xQueueGiveMutexRecursive) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
-    queue.o(i.xQueuePeekFromISR) refers to queue.o(i.prvCopyDataFromQueue) for prvCopyDataFromQueue
-    queue.o(i.xQueueReceiveFromISR) refers to queue.o(i.prvCopyDataFromQueue) for prvCopyDataFromQueue
-    queue.o(i.xQueueReceiveFromISR) refers to tasks.o(i.xTaskRemoveFromEventList) for xTaskRemoveFromEventList
-    queue.o(i.xQueueTakeMutexRecursive) refers to tasks.o(i.xTaskGetCurrentTaskHandle) for xTaskGetCurrentTaskHandle
-    queue.o(i.xQueueTakeMutexRecursive) refers to queue.o(i.xQueueGenericReceive) for xQueueGenericReceive
-    tasks.o(i.eTaskGetState) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.eTaskGetState) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.eTaskGetState) refers to tasks.o(.data) for .data
-    tasks.o(i.eTaskGetState) refers to tasks.o(.bss) for .bss
-    tasks.o(i.pcTaskGetName) refers to tasks.o(.data) for .data
-    tasks.o(i.prvAddCurrentTaskToDelayedList) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.prvAddCurrentTaskToDelayedList) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.prvAddCurrentTaskToDelayedList) refers to list.o(i.vListInsert) for vListInsert
-    tasks.o(i.prvAddCurrentTaskToDelayedList) refers to tasks.o(.data) for .data
-    tasks.o(i.prvAddCurrentTaskToDelayedList) refers to tasks.o(.bss) for .bss
-    tasks.o(i.prvAddNewTaskToReadyList) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.prvAddNewTaskToReadyList) refers to list.o(i.vListInitialise) for vListInitialise
-    tasks.o(i.prvAddNewTaskToReadyList) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.prvAddNewTaskToReadyList) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.prvAddNewTaskToReadyList) refers to tasks.o(.data) for .data
-    tasks.o(i.prvAddNewTaskToReadyList) refers to tasks.o(.bss) for .bss
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to tasks.o(i.prvDeleteTCB) for prvDeleteTCB
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to tasks.o(.bss) for .bss
-    tasks.o(i.prvCheckTasksWaitingTermination) refers to tasks.o(.data) for .data
-    tasks.o(i.prvDeleteTCB) refers to heap_2.o(i.vPortFree) for vPortFree
-    tasks.o(i.prvIdleTask) refers to tasks.o(i.prvCheckTasksWaitingTermination) for prvCheckTasksWaitingTermination
-    tasks.o(i.prvInitialiseNewTask) refers to memseta.o(.text) for __aeabi_memset
-    tasks.o(i.prvInitialiseNewTask) refers to list.o(i.vListInitialiseItem) for vListInitialiseItem
-    tasks.o(i.prvInitialiseNewTask) refers to port.o(i.pxPortInitialiseStack) for pxPortInitialiseStack
-    tasks.o(i.prvListTasksWithinSingleList) refers to tasks.o(i.vTaskGetInfo) for vTaskGetInfo
-    tasks.o(i.prvResetNextTaskUnblockTime) refers to tasks.o(.data) for .data
-    tasks.o(i.prvTaskIsTaskSuspended) refers to tasks.o(.bss) for .bss
-    tasks.o(i.pvTaskIncrementMutexHeldCount) refers to tasks.o(.data) for .data
-    tasks.o(i.ulTaskNotifyTake) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.ulTaskNotifyTake) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.ulTaskNotifyTake) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.ulTaskNotifyTake) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskGetNumberOfTasks) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskGetStackHighWaterMark) refers to tasks.o(i.prvTaskCheckFreeStackSpace) for prvTaskCheckFreeStackSpace
-    tasks.o(i.uxTaskGetStackHighWaterMark) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskGetSystemState) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    tasks.o(i.uxTaskGetSystemState) refers to tasks.o(i.prvListTasksWithinSingleList) for prvListTasksWithinSingleList
-    tasks.o(i.uxTaskGetSystemState) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    tasks.o(i.uxTaskGetSystemState) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskGetSystemState) refers to tasks.o(.bss) for .bss
-    tasks.o(i.uxTaskPriorityGet) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.uxTaskPriorityGet) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.uxTaskPriorityGet) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskPriorityGetFromISR) refers to tasks.o(.data) for .data
-    tasks.o(i.uxTaskResetEventItemValue) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskDelay) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    tasks.o(i.vTaskDelay) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.vTaskDelay) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    tasks.o(i.vTaskDelayUntil) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    tasks.o(i.vTaskDelayUntil) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.vTaskDelayUntil) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    tasks.o(i.vTaskDelayUntil) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskDelete) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.vTaskDelete) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskDelete) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskDelete) refers to tasks.o(i.prvDeleteTCB) for prvDeleteTCB
-    tasks.o(i.vTaskDelete) refers to tasks.o(i.prvResetNextTaskUnblockTime) for prvResetNextTaskUnblockTime
-    tasks.o(i.vTaskDelete) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.vTaskDelete) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskDelete) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskEndScheduler) refers to port.o(i.vPortEndScheduler) for vPortEndScheduler
-    tasks.o(i.vTaskEndScheduler) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskGetInfo) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    tasks.o(i.vTaskGetInfo) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    tasks.o(i.vTaskGetInfo) refers to tasks.o(i.eTaskGetState) for eTaskGetState
-    tasks.o(i.vTaskGetInfo) refers to tasks.o(i.prvTaskCheckFreeStackSpace) for prvTaskCheckFreeStackSpace
-    tasks.o(i.vTaskGetInfo) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskMissedYield) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskNotifyGiveFromISR) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskNotifyGiveFromISR) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskNotifyGiveFromISR) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskNotifyGiveFromISR) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskPlaceOnEventList) refers to list.o(i.vListInsert) for vListInsert
-    tasks.o(i.vTaskPlaceOnEventList) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.vTaskPlaceOnEventList) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskPlaceOnUnorderedEventList) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskPlaceOnUnorderedEventList) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.vTaskPlaceOnUnorderedEventList) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskPriorityInherit) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskPriorityInherit) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskPriorityInherit) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskPriorityInherit) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskPrioritySet) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.vTaskPrioritySet) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskPrioritySet) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskPrioritySet) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.vTaskPrioritySet) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskPrioritySet) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskResume) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.vTaskResume) refers to tasks.o(i.prvTaskIsTaskSuspended) for prvTaskIsTaskSuspended
-    tasks.o(i.vTaskResume) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskResume) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskResume) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.vTaskResume) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskResume) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskSetTimeOutState) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskStartScheduler) refers to tasks.o(i.xTaskCreate) for xTaskCreate
-    tasks.o(i.vTaskStartScheduler) refers to port.o(i.xPortStartScheduler) for xPortStartScheduler
-    tasks.o(i.vTaskStartScheduler) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskStartScheduler) refers to tasks.o(i.prvIdleTask) for prvIdleTask
-    tasks.o(i.vTaskSuspend) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.vTaskSuspend) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.vTaskSuspend) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.vTaskSuspend) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.vTaskSuspend) refers to tasks.o(i.prvResetNextTaskUnblockTime) for prvResetNextTaskUnblockTime
-    tasks.o(i.vTaskSuspend) refers to tasks.o(i.vTaskSwitchContext) for vTaskSwitchContext
-    tasks.o(i.vTaskSuspend) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskSuspend) refers to tasks.o(.bss) for .bss
-    tasks.o(i.vTaskSuspendAll) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskSwitchContext) refers to main.o(i.vApplicationStackOverflowHook) for vApplicationStackOverflowHook
-    tasks.o(i.vTaskSwitchContext) refers to tasks.o(.data) for .data
-    tasks.o(i.vTaskSwitchContext) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskCheckForTimeOut) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.xTaskCheckForTimeOut) refers to tasks.o(i.vTaskSetTimeOutState) for vTaskSetTimeOutState
-    tasks.o(i.xTaskCheckForTimeOut) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.xTaskCheckForTimeOut) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskCreate) refers to heap_2.o(i.pvPortMalloc) for pvPortMalloc
-    tasks.o(i.xTaskCreate) refers to tasks.o(i.prvInitialiseNewTask) for prvInitialiseNewTask
-    tasks.o(i.xTaskCreate) refers to tasks.o(i.prvAddNewTaskToReadyList) for prvAddNewTaskToReadyList
-    tasks.o(i.xTaskCreate) refers to heap_2.o(i.vPortFree) for vPortFree
-    tasks.o(i.xTaskGenericNotify) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.xTaskGenericNotify) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskGenericNotify) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskGenericNotify) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.xTaskGenericNotify) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskGenericNotify) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskGenericNotifyFromISR) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskGenericNotifyFromISR) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskGenericNotifyFromISR) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskGenericNotifyFromISR) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskGetCurrentTaskHandle) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskGetTickCount) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskGetTickCountFromISR) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskIncrementTick) refers to tasks.o(i.prvResetNextTaskUnblockTime) for prvResetNextTaskUnblockTime
-    tasks.o(i.xTaskIncrementTick) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskIncrementTick) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskIncrementTick) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskIncrementTick) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskNotifyStateClear) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.xTaskNotifyStateClear) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.xTaskNotifyStateClear) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskNotifyWait) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.xTaskNotifyWait) refers to tasks.o(i.prvAddCurrentTaskToDelayedList) for prvAddCurrentTaskToDelayedList
-    tasks.o(i.xTaskNotifyWait) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.xTaskNotifyWait) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskPriorityDisinherit) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskPriorityDisinherit) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskPriorityDisinherit) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskPriorityDisinherit) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskRemoveFromEventList) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskRemoveFromEventList) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskRemoveFromEventList) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskRemoveFromEventList) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskRemoveFromUnorderedEventList) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskRemoveFromUnorderedEventList) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskRemoveFromUnorderedEventList) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskRemoveFromUnorderedEventList) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskResumeAll) refers to port.o(i.vPortEnterCritical) for vPortEnterCritical
-    tasks.o(i.xTaskResumeAll) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskResumeAll) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskResumeAll) refers to tasks.o(i.prvResetNextTaskUnblockTime) for prvResetNextTaskUnblockTime
-    tasks.o(i.xTaskResumeAll) refers to tasks.o(i.xTaskIncrementTick) for xTaskIncrementTick
-    tasks.o(i.xTaskResumeAll) refers to port.o(i.vPortExitCritical) for vPortExitCritical
-    tasks.o(i.xTaskResumeAll) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskResumeAll) refers to tasks.o(.bss) for .bss
-    tasks.o(i.xTaskResumeFromISR) refers to tasks.o(i.prvTaskIsTaskSuspended) for prvTaskIsTaskSuspended
-    tasks.o(i.xTaskResumeFromISR) refers to list.o(i.uxListRemove) for uxListRemove
-    tasks.o(i.xTaskResumeFromISR) refers to list.o(i.vListInsertEnd) for vListInsertEnd
-    tasks.o(i.xTaskResumeFromISR) refers to tasks.o(.data) for .data
-    tasks.o(i.xTaskResumeFromISR) refers to tasks.o(.bss) for .bss
-    heap_2.o(i.pvPortMalloc) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    heap_2.o(i.pvPortMalloc) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    heap_2.o(i.pvPortMalloc) refers to heap_2.o(.data) for .data
-    heap_2.o(i.pvPortMalloc) refers to heap_2.o(.bss) for .bss
-    heap_2.o(i.vPortFree) refers to tasks.o(i.vTaskSuspendAll) for vTaskSuspendAll
-    heap_2.o(i.vPortFree) refers to tasks.o(i.xTaskResumeAll) for xTaskResumeAll
-    heap_2.o(i.vPortFree) refers to heap_2.o(.data) for .data
-    heap_2.o(i.xPortGetFreeHeapSize) refers to heap_2.o(.data) for .data
-    port.o(.emb_text) refers to tasks.o(i.vTaskSwitchContext) for vTaskSwitchContext
+    main.o(.text) refers to tasks.o(.text) for xTaskGetTickCount
+    main.o(.text) refers to queue.o(.text) for xQueueGenericReceive
+    main.o(.text) refers to firstorderfilter.o(.text) for firstOrderFilter
+    main.o(.text) refers to pll.o(.text) for PLL_Init
+    main.o(.text) refers to uart.o(.text) for UART_Init
+    main.o(.text) refers to timer0a.o(.text) for Timer0A_Delay_Init
+    main.o(.text) refers to i2c.o(.text) for I2C3_Init
+    main.o(.text) refers to gpio.o(.text) for MotionInt_Init
+    main.o(.text) refers to mpu9150.o(.text) for MPU9150_setup
+    main.o(.text) refers to led_task.o(.text) for LED_SwitchTaskInit
+    main.o(.text) refers to sensor_task.o(.text) for MPU9150TaskInit
+    main.o(.text) refers to main.o(.data) for .data
+    main.o(.text) refers to ram.o(.data) for System_Status
+    main.o(.text) refers to ram.o(.data) for GlobalVariable_Mutex
+    main.o(.text) refers to ram.o(.bss) for MPU9150_RawData
+    main.o(.text) refers to firstorderfilter.o(.bss) for firstOrderFilters
+    main.o(.text) refers to ram.o(.bss) for MPU9150_FilteredData
+    main.o(.text) refers to ram.o(.bss) for MPU9150_Bias
+    main.o(.text) refers to ram.o(.data) for g_pUARTSemaphore
+    main.o(.text) refers to ram.o(.data) for I2C3_Mutex
+    main.o(.text) refers to ram.o(.data) for RawDataMPU_Semaphore
+    main.o(.text) refers to ram.o(.data) for RGBLED_Queue
+    led_task.o(.text) refers to tasks.o(.text) for xTaskGetTickCount
+    led_task.o(.text) refers to queue.o(.text) for xQueueGenericReceive
+    led_task.o(.text) refers to gpio.o(.text) for Led_ON
+    led_task.o(.text) refers to ram.o(.data) for RGBLED_Queue
+    buttons.o(.text) refers to buttons.o(.data) for .data
+    rgb.o(.text) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
+    rgb.o(.text) refers to ffixul.o(.text) for __aeabi_f2ulz
+    rgb.o(.text) refers to rgb.o(.data) for .data
+    rgb.o(.text) refers to rgb.o(.bss) for .bss
+    calibration.o(.text) refers to sqrtf.o(i.__hardfp_sqrtf) for __hardfp_sqrtf
+    calibration.o(.text) refers to uart.o(.text) for UART_OutString
+    calibration.o(.text) refers to timer0a.o(.text) for Delay_ms
+    calibration.o(.text) refers to calibration.o(.constdata) for .constdata
+    calibration.o(.text) refers to calibration.o(.bss) for .bss
+    calibration.o(.text) refers to calibration.o(.data) for .data
+    firstorderfilter.o(.text) refers to firstorderfilter.o(.bss) for .bss
+    i2c.o(.text) refers to timer0a.o(.text) for Delay_us
+    imu_quest.o(.text) refers to asinf.o(i.__hardfp_asinf) for __hardfp_asinf
+    imu_quest.o(.text) refers to atan2f.o(i.__hardfp_atan2f) for __hardfp_atan2f
+    imu_quest.o(.text) refers to cosf.o(i.__hardfp_cosf) for __hardfp_cosf
+    imu_quest.o(.text) refers to sinf.o(i.__hardfp_sinf) for __hardfp_sinf
+    imu_quest.o(.text) refers to imu_quest.o(.data) for .data
+    imu_quest.o(.text) refers to imu_quest.o(.bss) for .bss
+    mpu9150.o(.text) refers to i2c.o(.text) for I2C3_Write_Byte
+    mpu9150.o(.text) refers to timer0a.o(.text) for Delay_ms
+    mpu9150.o(.text) refers to mpu9150.o(.data) for .data
+    mpu9150.o(.text) refers to ram.o(.bss) for MPU9150_Bias
+    mpu9150.o(.text) refers to powf.o(i.__hardfp_powf) for __hardfp_powf
+    sensor_task.o(.text) refers to queue.o(.text) for xQueueGenericReceive
+    sensor_task.o(.text) refers to mpu9150.o(.text) for MPU9150_readAccelData
+    sensor_task.o(.text) refers to memcpya.o(.text) for __aeabi_memcpy
+    sensor_task.o(.text) refers to tasks.o(.text) for vTaskSwitchContext
+    sensor_task.o(.text) refers to ram.o(.data) for RawDataMPU_Semaphore
+    sensor_task.o(.text) refers to ram.o(.data) for I2C3_Mutex
+    sensor_task.o(.text) refers to sensor_task.o(.data) for .data
+    sensor_task.o(.text) refers to ram.o(.data) for GlobalVariable_Mutex
+    sensor_task.o(.text) refers to ram.o(.bss) for MPU9150_RawData
+    queue.o(.text) refers to port.o(.text) for vPortEnterCritical
+    queue.o(.text) refers to list.o(.text) for vListInitialise
+    queue.o(.text) refers to tasks.o(.text) for xTaskRemoveFromEventList
+    queue.o(.text) refers to heap_2.o(.text) for pvPortMalloc
+    queue.o(.text) refers to memcpya.o(.text) for __aeabi_memcpy
+    queue.o(.text) refers to queue.o(.bss) for .bss
+    tasks.o(.text) refers to port.o(.text) for vPortEnterCritical
+    tasks.o(.text) refers to list.o(.text) for vListInitialise
+    tasks.o(.text) refers to heap_2.o(.text) for pvPortMalloc
+    tasks.o(.text) refers to tasks.o(.data) for .data
+    tasks.o(.text) refers to tasks.o(.bss) for .bss
+    tasks.o(.text) refers to main.o(.text) for vApplicationStackOverflowHook
+    tasks.o(.text) refers to memseta.o(.text) for __aeabi_memset
+    heap_2.o(.text) refers to tasks.o(.text) for vTaskSuspendAll
+    heap_2.o(.text) refers to heap_2.o(.data) for .data
+    heap_2.o(.text) refers to heap_2.o(.bss) for .bss
+    port.o(.emb_text) refers to tasks.o(.text) for vTaskSwitchContext
     port.o(.emb_text) refers to tasks.o(.data) for pxCurrentTCB
-    port.o(i.pxPortInitialiseStack) refers to port.o(i.prvTaskExitError) for prvTaskExitError
-    port.o(i.vPortEnterCritical) refers to port.o(.data) for .data
-    port.o(i.vPortExitCritical) refers to port.o(.data) for .data
-    port.o(i.xPortStartScheduler) refers to port.o(i.vPortSetupTimerInterrupt) for vPortSetupTimerInterrupt
-    port.o(i.xPortStartScheduler) refers to port.o(.emb_text) for __asm___6_port_c_39a90d8d__prvEnableVFP
-    port.o(i.xPortStartScheduler) refers to port.o(.data) for .data
-    port.o(i.xPortSysTickHandler) refers to tasks.o(i.xTaskIncrementTick) for xTaskIncrementTick
+    port.o(.text) refers to port.o(.emb_text) for __asm___6_port_c_39a90d8d__prvEnableVFP
+    port.o(.text) refers to tasks.o(.text) for xTaskIncrementTick
+    port.o(.text) refers to port.o(.data) for .data
     sysctl.o(i.SysCtlClockFreqSet) refers to sysctl.o(.constdata) for .constdata
     sysctl.o(i.SysCtlClockGet) refers to sysctl.o(.constdata) for .constdata
     sysctl.o(i.SysCtlClockSet) refers to sysctl.o(.emb_text) for SysCtlDelay
@@ -584,10 +238,822 @@ Section Cross References
     entry2.o(__vectab_stack_and_reset_area) refers to startup_rvmdk.o(STACK) for __initial_sp
     entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
     entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
-    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
-    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(.text) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(.text) for main
     errno.o(i.__aeabi_errno_addr) refers to errno.o(.data) for .data
     errno.o(i.__read_errno) refers to errno.o(.data) for .data
     errno.o(i.__set_errno) refers to errno.o(.data) for .data
     init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup_rvmdk.o(HEAP), (0 bytes).
+    Removing startup_rvmdk.o(.text), (28 bytes).
+    Removing buttons.o(.text), (176 bytes).
+    Removing buttons.o(.data), (3 bytes).
+    Removing rgb.o(.text), (796 bytes).
+    Removing rgb.o(.bss), (12 bytes).
+    Removing rgb.o(.data), (8 bytes).
+    Removing calibration.o(.text), (6168 bytes).
+    Removing calibration.o(.bss), (72 bytes).
+    Removing calibration.o(.constdata), (48 bytes).
+    Removing calibration.o(.data), (88 bytes).
+    Removing imu_quest.o(.text), (1308 bytes).
+    Removing imu_quest.o(.bss), (32 bytes).
+    Removing imu_quest.o(.data), (64 bytes).
+    Removing mpu9150.o(.data), (4 bytes).
+    Removing ram.o(.bss), (24 bytes).
+    Removing sysctl.o(.emb_text), (6 bytes).
+    Removing sysctl.o(i.SysCtlAltClkConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlClockFreqSet), (712 bytes).
+    Removing sysctl.o(i.SysCtlClockGet), (340 bytes).
+    Removing sysctl.o(i.SysCtlClockOutConfig), (20 bytes).
+    Removing sysctl.o(i.SysCtlClockSet), (288 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleep), (32 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockConfigSet), (112 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepClockSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlDeepSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlFlashSectorSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlFlashSizeGet), (56 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBDisable), (28 bytes).
+    Removing sysctl.o(i.SysCtlGPIOAHBEnable), (24 bytes).
+    Removing sysctl.o(i.SysCtlIntClear), (12 bytes).
+    Removing sysctl.o(i.SysCtlIntDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntRegister), (20 bytes).
+    Removing sysctl.o(i.SysCtlIntStatus), (16 bytes).
+    Removing sysctl.o(i.SysCtlIntUnregister), (18 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDODeepSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlLDOSleepSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlMOSCConfigSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlNMIClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlNMIStatus), (12 bytes).
+    Removing sysctl.o(i.SysCtlPIOSCCalibrate), (76 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockGet), (24 bytes).
+    Removing sysctl.o(i.SysCtlPWMClockSet), (20 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralClockGating), (68 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDeepSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOff), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPowerOn), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralPresent), (44 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralReady), (44 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralReset), (60 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepDisable), (40 bytes).
+    Removing sysctl.o(i.SysCtlPeripheralSleepEnable), (40 bytes).
+    Removing sysctl.o(i.SysCtlReset), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetBehaviorSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlResetCauseGet), (12 bytes).
+    Removing sysctl.o(i.SysCtlSRAMSizeGet), (16 bytes).
+    Removing sysctl.o(i.SysCtlSleep), (4 bytes).
+    Removing sysctl.o(i.SysCtlSleepPowerSet), (12 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLDisable), (16 bytes).
+    Removing sysctl.o(i.SysCtlUSBPLLEnable), (16 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventClear), (16 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventConfig), (12 bytes).
+    Removing sysctl.o(i.SysCtlVoltageEventStatus), (12 bytes).
+    Removing sysctl.o(.constdata), (452 bytes).
+    Removing cpu.o(.emb_text), (38 bytes).
+    Removing interrupt.o(i.IntDisable), (100 bytes).
+    Removing interrupt.o(i.IntEnable), (100 bytes).
+    Removing interrupt.o(i.IntIsEnabled), (96 bytes).
+    Removing interrupt.o(i.IntMasterDisable), (14 bytes).
+    Removing interrupt.o(i.IntMasterEnable), (14 bytes).
+    Removing interrupt.o(i.IntPendClear), (68 bytes).
+    Removing interrupt.o(i.IntPendSet), (84 bytes).
+    Removing interrupt.o(i.IntPriorityGet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingGet), (36 bytes).
+    Removing interrupt.o(i.IntPriorityGroupingSet), (28 bytes).
+    Removing interrupt.o(i.IntPriorityMaskGet), (4 bytes).
+    Removing interrupt.o(i.IntPriorityMaskSet), (4 bytes).
+    Removing interrupt.o(i.IntPrioritySet), (40 bytes).
+    Removing interrupt.o(i.IntRegister), (52 bytes).
+    Removing interrupt.o(i.IntTrigger), (12 bytes).
+    Removing interrupt.o(i.IntUnregister), (20 bytes).
+    Removing interrupt.o(i._IntDefaultHandler), (2 bytes).
+    Removing interrupt.o(.constdata), (268 bytes).
+    Removing interrupt.o(vtable), (620 bytes).
+    Removing ffixul.o(.text), (44 bytes).
+    Removing fpstat.o(.text), (4 bytes).
+
+94 unused section(s) (total 13683 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      644  startup_rvmdk.o(RESET)
+    ../clib/microlib/errno.c                 0x00000000   Number         0  errno.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixul.o ABSOLUTE
+    ../fplib/microlib/fpstat.c               0x00000000   Number         0  fpstat.o ABSOLUTE
+    ../mathlib/asinf.c                       0x00000000   Number         0  asinf.o ABSOLUTE
+    ../mathlib/asinf.c                       0x00000000   Number         0  asinf_x.o ABSOLUTE
+    ../mathlib/atan2f.c                      0x00000000   Number         0  atan2f_x.o ABSOLUTE
+    ../mathlib/atan2f.c                      0x00000000   Number         0  atan2f.o ABSOLUTE
+    ../mathlib/cosf.c                        0x00000000   Number         0  cosf_x.o ABSOLUTE
+    ../mathlib/cosf.c                        0x00000000   Number         0  cosf.o ABSOLUTE
+    ../mathlib/fpclassifyf.c                 0x00000000   Number         0  fpclassifyf.o ABSOLUTE
+    ../mathlib/funder.c                      0x00000000   Number         0  funder.o ABSOLUTE
+    ../mathlib/powf.c                        0x00000000   Number         0  powf.o ABSOLUTE
+    ../mathlib/powf.c                        0x00000000   Number         0  powf_x.o ABSOLUTE
+    ../mathlib/rredf.c                       0x00000000   Number         0  rredf.o ABSOLUTE
+    ../mathlib/sinf.c                        0x00000000   Number         0  sinf_x.o ABSOLUTE
+    ../mathlib/sinf.c                        0x00000000   Number         0  sinf.o ABSOLUTE
+    ../mathlib/sqrtf.c                       0x00000000   Number         0  sqrtf_x.o ABSOLUTE
+    ../mathlib/sqrtf.c                       0x00000000   Number         0  sqrtf.o ABSOLUTE
+    FreeRTOS\ARM_CM4F\port.c                 0x00000000   Number         0  port.o ABSOLUTE
+    FreeRTOS\MemMang\heap_2.c                0x00000000   Number         0  heap_2.o ABSOLUTE
+    FreeRTOS\\ARM_CM4F\\port.c               0x00000000   Number         0  port.o ABSOLUTE
+    FreeRTOS\list.c                          0x00000000   Number         0  list.o ABSOLUTE
+    FreeRTOS\queue.c                         0x00000000   Number         0  queue.o ABSOLUTE
+    FreeRTOS\tasks.c                         0x00000000   Number         0  tasks.o ABSOLUTE
+    Source\GPIO.c                            0x00000000   Number         0  gpio.o ABSOLUTE
+    Source\I2C.c                             0x00000000   Number         0  i2c.o ABSOLUTE
+    Source\IMU_QUEST.c                       0x00000000   Number         0  imu_quest.o ABSOLUTE
+    Source\MPU9150.c                         0x00000000   Number         0  mpu9150.o ABSOLUTE
+    Source\PLL.c                             0x00000000   Number         0  pll.o ABSOLUTE
+    Source\Sensor_Task.c                     0x00000000   Number         0  sensor_task.o ABSOLUTE
+    Source\Timer0A.c                         0x00000000   Number         0  timer0a.o ABSOLUTE
+    Source\UART.c                            0x00000000   Number         0  uart.o ABSOLUTE
+    Source\calibration.c                     0x00000000   Number         0  calibration.o ABSOLUTE
+    Source\drivers\buttons.c                 0x00000000   Number         0  buttons.o ABSOLUTE
+    Source\drivers\rgb.c                     0x00000000   Number         0  rgb.o ABSOLUTE
+    Source\firstOrderFilter.c                0x00000000   Number         0  firstorderfilter.o ABSOLUTE
+    Source\led_task.c                        0x00000000   Number         0  led_task.o ABSOLUTE
+    Source\main.c                            0x00000000   Number         0  main.o ABSOLUTE
+    Source\ram.c                             0x00000000   Number         0  ram.o ABSOLUTE
+    Startup\startup_rvmdk.S                  0x00000000   Number         0  startup_rvmdk.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    cpu.c                                    0x00000000   Number         0  cpu.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    interrupt.c                              0x00000000   Number         0  interrupt.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    sysctl.c                                 0x00000000   Number         0  sysctl.o ABSOLUTE
+    $v0                                      0x0000026c   Number         0  startup_rvmdk.o(RESET)
+    .ARM.Collect$$$$00000000                 0x00000284   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x00000284   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x00000288   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x0000028c   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x0000028c   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x0000028c   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000D                 0x00000294   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x00000294   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x00000294   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x00000294   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .emb_text                                0x00000298   Section      182  port.o(.emb_text)
+    $v0                                      0x00000298   Number         0  port.o(.emb_text)
+    .text                                    0x00000350   Section        0  main.o(.text)
+    Main_Task                                0x00000353   Thumb Code   414  main.o(.text)
+    .text                                    0x00000604   Section        0  pll.o(.text)
+    .text                                    0x000006bc   Section        0  gpio.o(.text)
+    .text                                    0x00000874   Section        0  uart.o(.text)
+    .text                                    0x00000b6c   Section        0  led_task.o(.text)
+    LEDTask                                  0x00000b6d   Thumb Code   160  led_task.o(.text)
+    SwitchTask                               0x00000c0d   Thumb Code    18  led_task.o(.text)
+    .text                                    0x00000c74   Section        0  firstorderfilter.o(.text)
+    .text                                    0x00000e40   Section        0  i2c.o(.text)
+    .text                                    0x000011fc   Section        0  mpu9150.o(.text)
+    .text                                    0x00001a6c   Section        0  sensor_task.o(.text)
+    MPU9150_Task                             0x00001a6d   Thumb Code   194  sensor_task.o(.text)
+    .text                                    0x00001ba4   Section        0  timer0a.o(.text)
+    .text                                    0x00001c44   Section        0  list.o(.text)
+    .text                                    0x00001ccc   Section        0  queue.o(.text)
+    prvUnlockQueue                           0x00001d7d   Thumb Code   106  queue.o(.text)
+    prvCopyDataToQueue                       0x00001de7   Thumb Code   106  queue.o(.text)
+    prvCopyDataFromQueue                     0x00001f99   Thumb Code    38  queue.o(.text)
+    prvIsQueueEmpty                          0x00002327   Thumb Code    26  queue.o(.text)
+    .text                                    0x00002344   Section        0  tasks.o(.text)
+    prvAddNewTaskToReadyList                 0x00002345   Thumb Code   192  tasks.o(.text)
+    prvAddCurrentTaskToDelayedList           0x00002633   Thumb Code   102  tasks.o(.text)
+    prvIdleTask                              0x00002a11   Thumb Code     6  tasks.o(.text)
+    prvListTasksWithinSingleList             0x00002aff   Thumb Code   114  tasks.o(.text)
+    prvInitialiseNewTask                     0x0000314f   Thumb Code   136  tasks.o(.text)
+    prvResetNextTaskUnblockTime              0x000031d7   Thumb Code    26  tasks.o(.text)
+    prvDeleteTCB                             0x000031f1   Thumb Code    20  tasks.o(.text)
+    prvTaskIsTaskSuspended                   0x00003205   Thumb Code    28  tasks.o(.text)
+    prvCheckTasksWaitingTermination          0x00003221   Thumb Code    76  tasks.o(.text)
+    prvTaskCheckFreeStackSpace               0x0000326d   Thumb Code    20  tasks.o(.text)
+    .text                                    0x0000328c   Section        0  heap_2.o(.text)
+    .text                                    0x00003380   Section        0  port.o(.text)
+    prvTaskExitError                         0x00003381   Thumb Code    16  port.o(.text)
+    .text                                    0x00003460   Section        0  memcpya.o(.text)
+    .text                                    0x00003484   Section        0  memseta.o(.text)
+    .text                                    0x000034a8   Section       36  init.o(.text)
+    .text                                    0x000034a8   Section        0  iusefp.o(.text)
+    i.__ARM_fpclassifyf                      0x000034cc   Section        0  fpclassifyf.o(i.__ARM_fpclassifyf)
+    i.__hardfp_powf                          0x000034f4   Section        0  powf.o(i.__hardfp_powf)
+    i.__mathlib_flt_divzero                  0x00003b00   Section        0  funder.o(i.__mathlib_flt_divzero)
+    i.__mathlib_flt_infnan2                  0x00003b14   Section        0  funder.o(i.__mathlib_flt_infnan2)
+    i.__mathlib_flt_invalid                  0x00003b1c   Section        0  funder.o(i.__mathlib_flt_invalid)
+    i.__mathlib_flt_overflow                 0x00003b2c   Section        0  funder.o(i.__mathlib_flt_overflow)
+    i.__mathlib_flt_underflow                0x00003b3c   Section        0  funder.o(i.__mathlib_flt_underflow)
+    i.__scatterload_copy                     0x00003b4c   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00003b5a   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00003b5c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.__set_errno                            0x00003b6c   Section        0  errno.o(i.__set_errno)
+    .constdata                               0x00003b78   Section      320  powf.o(.constdata)
+    table                                    0x00003b78   Data         128  powf.o(.constdata)
+    powersof2to1over16top                    0x00003bf8   Data          64  powf.o(.constdata)
+    powersof2to1over16bot                    0x00003c38   Data          64  powf.o(.constdata)
+    powersof2to1over16all                    0x00003c78   Data          64  powf.o(.constdata)
+    .data                                    0x20000000   Section        1  main.o(.data)
+    count                                    0x20000000   Data           1  main.o(.data)
+    .data                                    0x20000004   Section       20  mpu9150.o(.data)
+    .data                                    0x20000018   Section        4  ram.o(.data)
+    .data                                    0x2000001c   Section        4  ram.o(.data)
+    .data                                    0x20000020   Section        4  ram.o(.data)
+    .data                                    0x20000024   Section        4  ram.o(.data)
+    .data                                    0x20000028   Section        1  ram.o(.data)
+    .data                                    0x2000002c   Section        4  ram.o(.data)
+    .data                                    0x20000030   Section        8  sensor_task.o(.data)
+    count                                    0x20000030   Data           1  sensor_task.o(.data)
+    xHigherPriorityTaskWoken                 0x20000034   Data           4  sensor_task.o(.data)
+    .data                                    0x20000038   Section       60  tasks.o(.data)
+    uxDeletedTasksWaitingCleanUp             0x2000003c   Data           4  tasks.o(.data)
+    uxCurrentNumberOfTasks                   0x20000040   Data           4  tasks.o(.data)
+    xTickCount                               0x20000044   Data           4  tasks.o(.data)
+    uxTopReadyPriority                       0x20000048   Data           4  tasks.o(.data)
+    xSchedulerRunning                        0x2000004c   Data           4  tasks.o(.data)
+    uxPendedTicks                            0x20000050   Data           4  tasks.o(.data)
+    xYieldPending                            0x20000054   Data           4  tasks.o(.data)
+    xNumOfOverflows                          0x20000058   Data           4  tasks.o(.data)
+    uxTaskNumber                             0x2000005c   Data           4  tasks.o(.data)
+    xNextTaskUnblockTime                     0x20000060   Data           4  tasks.o(.data)
+    xIdleTaskHandle                          0x20000064   Data           4  tasks.o(.data)
+    uxSchedulerSuspended                     0x20000068   Data           4  tasks.o(.data)
+    pxDelayedTaskList                        0x2000006c   Data           4  tasks.o(.data)
+    pxOverflowDelayedTaskList                0x20000070   Data           4  tasks.o(.data)
+    .data                                    0x20000074   Section       24  heap_2.o(.data)
+    xFreeBytesRemaining                      0x20000074   Data           4  heap_2.o(.data)
+    xHeapHasBeenInitialised                  0x20000078   Data           4  heap_2.o(.data)
+    xStart                                   0x2000007c   Data           8  heap_2.o(.data)
+    xEnd                                     0x20000084   Data           8  heap_2.o(.data)
+    .data                                    0x2000008c   Section        4  port.o(.data)
+    uxCriticalNesting                        0x2000008c   Data           4  port.o(.data)
+    .data                                    0x20000090   Section        4  errno.o(.data)
+    _errno                                   0x20000090   Data           4  errno.o(.data)
+    .bss                                     0x20000094   Section      300  firstorderfilter.o(.bss)
+    .bss                                     0x200001c0   Section       52  ram.o(.bss)
+    .bss                                     0x200001f4   Section       22  ram.o(.bss)
+    .bss                                     0x2000020c   Section       40  ram.o(.bss)
+    .bss                                     0x20000234   Section       80  queue.o(.bss)
+    .bss                                     0x20000284   Section      420  tasks.o(.bss)
+    pxReadyTasksLists                        0x20000284   Data         320  tasks.o(.bss)
+    xDelayedTaskList1                        0x200003c4   Data          20  tasks.o(.bss)
+    xDelayedTaskList2                        0x200003d8   Data          20  tasks.o(.bss)
+    xPendingReadyList                        0x200003ec   Data          20  tasks.o(.bss)
+    xTasksWaitingTermination                 0x20000400   Data          20  tasks.o(.bss)
+    xSuspendedTaskList                       0x20000414   Data          20  tasks.o(.bss)
+    .bss                                     0x20000428   Section    30000  heap_2.o(.bss)
+    ucHeap                                   0x20000428   Data       30000  heap_2.o(.bss)
+    STACK                                    0x20007958   Section      512  startup_rvmdk.o(STACK)
+    StackMem                                 0x20007958   Data           0  startup_rvmdk.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$VFPi3$EXTD16$VFPS$VFMA$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OTIME$ROPI$IEEEX$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  startup_rvmdk.o(RESET)
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    Reset_Handler                            0x0000026d   Thumb Code     0  startup_rvmdk.o(RESET)
+    NMI_Handler                              0x00000271   Thumb Code     2  startup_rvmdk.o(RESET)
+    HardFault_Handler                        0x00000273   Thumb Code     2  startup_rvmdk.o(RESET)
+    MemManage_Handler                        0x00000275   Thumb Code     2  startup_rvmdk.o(RESET)
+    BusFault_Handler                         0x00000277   Thumb Code     2  startup_rvmdk.o(RESET)
+    UsageFault_Handler                       0x00000279   Thumb Code     2  startup_rvmdk.o(RESET)
+    DebugMon_Handler                         0x0000027d   Thumb Code     2  startup_rvmdk.o(RESET)
+    ADC0Seq0_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC0Seq1_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC0Seq2_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC0Seq3_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC1Seq0_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC1Seq1_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC1Seq2_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ADC1Seq3_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    CAN0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    CAN1_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    CAN2_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Comp0_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Comp1_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Comp2_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Ethernet_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    ExtBus_Handler                           0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    FPU_Handler                              0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Fan0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    FlashCtl_Handler                         0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortA_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortC_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortD_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortE_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortF_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortG_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortH_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortJ_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortK_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortL_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortM_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortN_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP1_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP2_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP3_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP4_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP5_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP6_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP7_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortP_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ1_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ2_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ3_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ4_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ5_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ6_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ7_Handler                       0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortQ_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortR_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    GPIOPortS_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Hibernate_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C1_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C2_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C3_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C4_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2C5_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    I2S0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    LPC0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PECI0_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM0Fault_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM0Generator0_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM0Generator1_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM0Generator2_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM0Generator3_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM1Fault_Handler                        0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM1Generator0_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM1Generator1_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM1Generator2_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    PWM1Generator3_Handler                   0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Quadrature0_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Quadrature1_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Quadrature2_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    SSI0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    SSI1_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    SSI2_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    SSI3_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    SysCtl_Handler                           0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer0A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer0B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer1A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer1B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer2A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer2B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer3A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer3B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer4A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer4B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer5A_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    Timer5B_Handler                          0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART0_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART1_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART2_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART3_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART4_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART5_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART6_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    UART7_Handler                            0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    USB0_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WDT_Handler                              0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer0A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer0B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer1A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer1B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer2A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer2B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer3A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer3B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer4A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer4B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer5A_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    WideTimer5B_Handler                      0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    uDMA_Error                               0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    uDMA_Handler                             0x00000283   Thumb Code     0  startup_rvmdk.o(RESET)
+    __main                                   0x00000285   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x00000285   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x00000289   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x0000028d   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x0000028d   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x0000028d   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x0000028d   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x00000295   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x00000295   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    vPortSVCHandler                          0x00000299   Thumb Code    28  port.o(.emb_text)
+    __asm___6_port_c_39a90d8d__prvStartFirstTask 0x000002b9   Thumb Code    28  port.o(.emb_text)
+    __asm___6_port_c_39a90d8d__prvEnableVFP  0x000002d9   Thumb Code    16  port.o(.emb_text)
+    xPortPendSVHandler                       0x000002ed   Thumb Code    88  port.o(.emb_text)
+    vPortGetIPSR                             0x00000349   Thumb Code     6  port.o(.emb_text)
+    vApplicationStackOverflowHook            0x00000351   Thumb Code     2  main.o(.text)
+    System_Init                              0x000004f1   Thumb Code    46  main.o(.text)
+    main                                     0x0000051f   Thumb Code   124  main.o(.text)
+    PLL_Init                                 0x00000605   Thumb Code    90  pll.o(.text)
+    PLL_Init_8MHz                            0x0000065f   Thumb Code    90  pll.o(.text)
+    PortF_Init                               0x000006bd   Thumb Code    70  gpio.o(.text)
+    MotionInt_Init                           0x00000703   Thumb Code   146  gpio.o(.text)
+    SW1_Pushed                               0x00000795   Thumb Code    18  gpio.o(.text)
+    SW1_Release                              0x000007a7   Thumb Code    18  gpio.o(.text)
+    PortF_Input                              0x000007b9   Thumb Code    12  gpio.o(.text)
+    PortF_Output                             0x000007c5   Thumb Code     8  gpio.o(.text)
+    Scan_switch                              0x000007cd   Thumb Code    42  gpio.o(.text)
+    Led_ON                                   0x000007f7   Thumb Code     8  gpio.o(.text)
+    Led_OFF                                  0x000007ff   Thumb Code    36  gpio.o(.text)
+    Led_Toggle                               0x00000823   Thumb Code    44  gpio.o(.text)
+    UART_Init                                0x00000875   Thumb Code   104  uart.o(.text)
+    UART_Init_9600bps                        0x000008dd   Thumb Code   104  uart.o(.text)
+    UART_InChar                              0x00000945   Thumb Code    14  uart.o(.text)
+    UART_OutChar                             0x00000953   Thumb Code    12  uart.o(.text)
+    UART_OutString                           0x0000095f   Thumb Code    20  uart.o(.text)
+    UART_InUDec                              0x00000973   Thumb Code    64  uart.o(.text)
+    UART_OutUDec                             0x000009b3   Thumb Code    36  uart.o(.text)
+    UART_Out_Dec                             0x000009d7   Thumb Code    22  uart.o(.text)
+    UART_OutFloat                            0x000009ed   Thumb Code    98  uart.o(.text)
+    UART_OutFloat2                           0x00000a4f   Thumb Code    86  uart.o(.text)
+    UART_InUHex                              0x00000aa5   Thumb Code    74  uart.o(.text)
+    UART_OutUHex                             0x00000aef   Thumb Code    42  uart.o(.text)
+    UART_InString                            0x00000b19   Thumb Code    54  uart.o(.text)
+    LED_SwitchTaskInit                       0x00000c1f   Thumb Code    56  led_task.o(.text)
+    init_FirstOrderFilters                   0x00000c75   Thumb Code   356  firstorderfilter.o(.text)
+    firstOrderFilter                         0x00000dd9   Thumb Code    46  firstorderfilter.o(.text)
+    I2C1_Init                                0x00000e41   Thumb Code   100  i2c.o(.text)
+    I2C1_Write_2Bytes                        0x00000ea5   Thumb Code   122  i2c.o(.text)
+    I2C1_Read_2Bytes                         0x00000f1f   Thumb Code   134  i2c.o(.text)
+    I2C3_Init                                0x00000fa5   Thumb Code    98  i2c.o(.text)
+    I2C3_Init_8MHz                           0x00001007   Thumb Code    98  i2c.o(.text)
+    I2C3_Write_Byte                          0x00001069   Thumb Code    86  i2c.o(.text)
+    I2C3_Read_Byte                           0x000010bf   Thumb Code   108  i2c.o(.text)
+    I2C3_Read_Bytes                          0x0000112b   Thumb Code   176  i2c.o(.text)
+    getGres                                  0x000011fd   Thumb Code    46  mpu9150.o(.text)
+    getAres                                  0x0000122b   Thumb Code    46  mpu9150.o(.text)
+    writeByte                                0x00001259   Thumb Code     4  mpu9150.o(.text)
+    readByte                                 0x0000125d   Thumb Code     4  mpu9150.o(.text)
+    readBytes                                0x00001261   Thumb Code     4  mpu9150.o(.text)
+    MPU9150_setup                            0x00001265   Thumb Code    98  mpu9150.o(.text)
+    MPU9150_reset                            0x000012c7   Thumb Code    22  mpu9150.o(.text)
+    MPU9150_init                             0x000012dd   Thumb Code   172  mpu9150.o(.text)
+    MPU9150_calibrate                        0x00001389   Thumb Code  1028  mpu9150.o(.text)
+    MPU9150_selftest                         0x0000178d   Thumb Code   404  mpu9150.o(.text)
+    MPU9150_readAccelData                    0x00001921   Thumb Code    42  mpu9150.o(.text)
+    MPU9150_readGyroData                     0x0000194b   Thumb Code    42  mpu9150.o(.text)
+    AK8975A_init                             0x00001975   Thumb Code   132  mpu9150.o(.text)
+    MPU9150_prepareMagData                   0x000019f9   Thumb Code     8  mpu9150.o(.text)
+    MPU9150_magDataReady                     0x00001a01   Thumb Code    18  mpu9150.o(.text)
+    MPU9150_readMagData                      0x00001a13   Thumb Code    36  mpu9150.o(.text)
+    MPU9150_readTempData                     0x00001a37   Thumb Code    24  mpu9150.o(.text)
+    GPIOPortB_Handler                        0x00001b2f   Thumb Code    50  sensor_task.o(.text)
+    MPU9150TaskInit                          0x00001b61   Thumb Code    30  sensor_task.o(.text)
+    Timer0A_Delay_Init                       0x00001ba5   Thumb Code    50  timer0a.o(.text)
+    Timer0A_Delay_Init_8MHz                  0x00001bd7   Thumb Code    54  timer0a.o(.text)
+    Delay_us                                 0x00001c0d   Thumb Code    18  timer0a.o(.text)
+    Delay_ms                                 0x00001c1f   Thumb Code    26  timer0a.o(.text)
+    vListInitialise                          0x00001c45   Thumb Code    22  list.o(.text)
+    vListInitialiseItem                      0x00001c5b   Thumb Code     6  list.o(.text)
+    vListInsertEnd                           0x00001c61   Thumb Code    24  list.o(.text)
+    vListInsert                              0x00001c79   Thumb Code    48  list.o(.text)
+    uxListRemove                             0x00001ca9   Thumb Code    36  list.o(.text)
+    xQueueGenericReset                       0x00001ccd   Thumb Code   112  queue.o(.text)
+    xQueueGenericCreate                      0x00001d3d   Thumb Code    64  queue.o(.text)
+    xQueueGenericSend                        0x00001e51   Thumb Code   250  queue.o(.text)
+    xQueueCreateMutex                        0x00001f4b   Thumb Code    36  queue.o(.text)
+    xQueueGiveMutexRecursive                 0x00001f6f   Thumb Code    42  queue.o(.text)
+    xQueueGenericReceive                     0x00001fbf   Thumb Code   282  queue.o(.text)
+    xQueueTakeMutexRecursive                 0x000020d9   Thumb Code    56  queue.o(.text)
+    xQueueGenericSendFromISR                 0x00002111   Thumb Code   100  queue.o(.text)
+    xQueueGiveFromISR                        0x00002175   Thumb Code    86  queue.o(.text)
+    xQueueReceiveFromISR                     0x000021cb   Thumb Code    98  queue.o(.text)
+    xQueuePeekFromISR                        0x0000222d   Thumb Code    44  queue.o(.text)
+    uxQueueMessagesWaiting                   0x00002259   Thumb Code    18  queue.o(.text)
+    uxQueueSpacesAvailable                   0x0000226b   Thumb Code    22  queue.o(.text)
+    uxQueueMessagesWaitingFromISR            0x00002281   Thumb Code     4  queue.o(.text)
+    vQueueUnregisterQueue                    0x00002285   Thumb Code    36  queue.o(.text)
+    vQueueDelete                             0x000022a9   Thumb Code    18  queue.o(.text)
+    uxQueueGetQueueNumber                    0x000022bb   Thumb Code     4  queue.o(.text)
+    vQueueSetQueueNumber                     0x000022bf   Thumb Code     4  queue.o(.text)
+    ucQueueGetQueueType                      0x000022c3   Thumb Code     6  queue.o(.text)
+    xQueueIsQueueEmptyFromISR                0x000022c9   Thumb Code    12  queue.o(.text)
+    xQueueIsQueueFullFromISR                 0x000022d5   Thumb Code    16  queue.o(.text)
+    vQueueAddToRegistry                      0x000022e5   Thumb Code    32  queue.o(.text)
+    pcQueueGetName                           0x00002305   Thumb Code    34  queue.o(.text)
+    xTaskCreate                              0x00002405   Thumb Code    86  tasks.o(.text)
+    vTaskDelete                              0x0000245b   Thumb Code   138  tasks.o(.text)
+    xTaskIncrementTick                       0x000024e5   Thumb Code   168  tasks.o(.text)
+    xTaskResumeAll                           0x0000258d   Thumb Code   166  tasks.o(.text)
+    vTaskSuspendAll                          0x00002699   Thumb Code    10  tasks.o(.text)
+    vTaskDelayUntil                          0x000026a3   Thumb Code    78  tasks.o(.text)
+    vTaskDelay                               0x000026f1   Thumb Code    44  tasks.o(.text)
+    eTaskGetState                            0x0000271d   Thumb Code    92  tasks.o(.text)
+    uxTaskPriorityGet                        0x00002779   Thumb Code    24  tasks.o(.text)
+    uxTaskPriorityGetFromISR                 0x00002791   Thumb Code    32  tasks.o(.text)
+    vTaskPrioritySet                         0x000027b1   Thumb Code   168  tasks.o(.text)
+    vTaskSwitchContext                       0x00002859   Thumb Code   104  tasks.o(.text)
+    vTaskSuspend                             0x000028c1   Thumb Code   136  tasks.o(.text)
+    vTaskResume                              0x00002949   Thumb Code    96  tasks.o(.text)
+    xTaskResumeFromISR                       0x000029a9   Thumb Code   104  tasks.o(.text)
+    vTaskStartScheduler                      0x00002a17   Thumb Code    66  tasks.o(.text)
+    vTaskEndScheduler                        0x00002a59   Thumb Code    24  tasks.o(.text)
+    xTaskGetTickCount                        0x00002a71   Thumb Code     6  tasks.o(.text)
+    xTaskGetTickCountFromISR                 0x00002a77   Thumb Code     6  tasks.o(.text)
+    uxTaskGetNumberOfTasks                   0x00002a7d   Thumb Code     6  tasks.o(.text)
+    pcTaskGetName                            0x00002a83   Thumb Code    10  tasks.o(.text)
+    vTaskGetInfo                             0x00002a8d   Thumb Code   114  tasks.o(.text)
+    uxTaskGetSystemState                     0x00002b71   Thumb Code   156  tasks.o(.text)
+    vTaskPlaceOnEventList                    0x00002c0d   Thumb Code    28  tasks.o(.text)
+    vTaskPlaceOnUnorderedEventList           0x00002c29   Thumb Code    36  tasks.o(.text)
+    xTaskRemoveFromEventList                 0x00002c4d   Thumb Code    88  tasks.o(.text)
+    xTaskRemoveFromUnorderedEventList        0x00002ca5   Thumb Code    72  tasks.o(.text)
+    vTaskSetTimeOutState                     0x00002ced   Thumb Code    12  tasks.o(.text)
+    xTaskCheckForTimeOut                     0x00002cf9   Thumb Code    66  tasks.o(.text)
+    vTaskMissedYield                         0x00002d3b   Thumb Code     8  tasks.o(.text)
+    uxTaskGetTaskNumber                      0x00002d43   Thumb Code     8  tasks.o(.text)
+    vTaskSetTaskNumber                       0x00002d4b   Thumb Code     8  tasks.o(.text)
+    uxTaskGetStackHighWaterMark              0x00002d53   Thumb Code    12  tasks.o(.text)
+    xTaskGetCurrentTaskHandle                0x00002d5f   Thumb Code     6  tasks.o(.text)
+    vTaskPriorityInherit                     0x00002d65   Thumb Code   124  tasks.o(.text)
+    xTaskPriorityDisinherit                  0x00002de1   Thumb Code   102  tasks.o(.text)
+    uxTaskResetEventItemValue                0x00002e47   Thumb Code    20  tasks.o(.text)
+    pvTaskIncrementMutexHeldCount            0x00002e5b   Thumb Code    18  tasks.o(.text)
+    ulTaskNotifyTake                         0x00002e6d   Thumb Code    96  tasks.o(.text)
+    xTaskNotifyWait                          0x00002ecd   Thumb Code   128  tasks.o(.text)
+    xTaskGenericNotify                       0x00002f4d   Thumb Code   168  tasks.o(.text)
+    xTaskGenericNotifyFromISR                0x00002ff5   Thumb Code   176  tasks.o(.text)
+    vTaskNotifyGiveFromISR                   0x000030a5   Thumb Code   126  tasks.o(.text)
+    xTaskNotifyStateClear                    0x00003123   Thumb Code    44  tasks.o(.text)
+    pvPortMalloc                             0x0000328d   Thumb Code   172  heap_2.o(.text)
+    vPortFree                                0x00003339   Thumb Code    56  heap_2.o(.text)
+    xPortGetFreeHeapSize                     0x00003371   Thumb Code     6  heap_2.o(.text)
+    vPortInitialiseBlocks                    0x00003377   Thumb Code     2  heap_2.o(.text)
+    pxPortInitialiseStack                    0x00003391   Thumb Code    40  port.o(.text)
+    vPortSetupTimerInterrupt                 0x000033b9   Thumb Code    16  port.o(.text)
+    xPortStartScheduler                      0x000033c9   Thumb Code    52  port.o(.text)
+    vPortEndScheduler                        0x000033fd   Thumb Code     2  port.o(.text)
+    vPortEnterCritical                       0x000033ff   Thumb Code    24  port.o(.text)
+    vPortExitCritical                        0x00003417   Thumb Code    16  port.o(.text)
+    xPortSysTickHandler                      0x00003427   Thumb Code    40  port.o(.text)
+    __aeabi_memcpy                           0x00003461   Thumb Code    36  memcpya.o(.text)
+    __aeabi_memcpy4                          0x00003461   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memcpy8                          0x00003461   Thumb Code     0  memcpya.o(.text)
+    __aeabi_memset                           0x00003485   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x00003485   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x00003485   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x00003493   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x00003493   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x00003493   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x00003497   Thumb Code    18  memseta.o(.text)
+    __I$use$fp                               0x000034a9   Thumb Code     0  iusefp.o(.text)
+    __scatterload                            0x000034a9   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x000034a9   Thumb Code     0  init.o(.text)
+    __ARM_fpclassifyf                        0x000034cd   Thumb Code    38  fpclassifyf.o(i.__ARM_fpclassifyf)
+    __hardfp_powf                            0x000034f5   Thumb Code  1518  powf.o(i.__hardfp_powf)
+    __mathlib_powf                           0x000034f5   Thumb Code     0  powf.o(i.__hardfp_powf)
+    __mathlib_flt_divzero                    0x00003b01   Thumb Code    14  funder.o(i.__mathlib_flt_divzero)
+    __mathlib_flt_infnan2                    0x00003b15   Thumb Code     6  funder.o(i.__mathlib_flt_infnan2)
+    __mathlib_flt_invalid                    0x00003b1d   Thumb Code    10  funder.o(i.__mathlib_flt_invalid)
+    __mathlib_flt_overflow                   0x00003b2d   Thumb Code    10  funder.o(i.__mathlib_flt_overflow)
+    __mathlib_flt_underflow                  0x00003b3d   Thumb Code    10  funder.o(i.__mathlib_flt_underflow)
+    __scatterload_copy                       0x00003b4d   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00003b5b   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00003b5d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    __set_errno                              0x00003b6d   Thumb Code     6  errno.o(i.__set_errno)
+    Region$$Table$$Base                      0x00003cb8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00003cd8   Number         0  anon$$obj.o(Region$$Table)
+    Ascale                                   0x20000004   Data           4  mpu9150.o(.data)
+    Gscale                                   0x20000008   Data           4  mpu9150.o(.data)
+    MagRate                                  0x2000000c   Data           4  mpu9150.o(.data)
+    aRes                                     0x20000010   Data           4  mpu9150.o(.data)
+    gRes                                     0x20000014   Data           4  mpu9150.o(.data)
+    g_pUARTSemaphore                         0x20000018   Data           4  ram.o(.data)
+    I2C3_Mutex                               0x2000001c   Data           4  ram.o(.data)
+    GlobalVariable_Mutex                     0x20000020   Data           4  ram.o(.data)
+    RawDataMPU_Semaphore                     0x20000024   Data           4  ram.o(.data)
+    System_Status                            0x20000028   Data           1  ram.o(.data)
+    RGBLED_Queue                             0x2000002c   Data           4  ram.o(.data)
+    pxCurrentTCB                             0x20000038   Data           4  tasks.o(.data)
+    firstOrderFilters                        0x20000094   Data         300  firstorderfilter.o(.bss)
+    MPU9150_Bias                             0x200001c0   Data          52  ram.o(.bss)
+    MPU9150_RawData                          0x200001f4   Data          22  ram.o(.bss)
+    MPU9150_FilteredData                     0x2000020c   Data          40  ram.o(.bss)
+    xQueueRegistry                           0x20000234   Data          80  queue.o(.bss)
+    __initial_sp                             0x20007b58   Data           0  startup_rvmdk.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x00000285
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003d6c, Max: 0x00040000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00003cd8, Max: 0x00040000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000284   Code   RO            3    RESET               startup_rvmdk.o
+    0x00000284   0x00000000   Code   RO         1075  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000284   0x00000004   Code   RO         1105    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000288   0x00000004   Code   RO         1108    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x0000028c   0x00000000   Code   RO         1110    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x0000028c   0x00000000   Code   RO         1112    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x0000028c   0x00000008   Code   RO         1113    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000294   0x00000000   Code   RO         1115    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000294   0x00000000   Code   RO         1117    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000294   0x00000004   Code   RO         1106    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000298   0x000000b6   Code   RO          481    .emb_text           port.o
+    0x0000034e   0x00000002   PAD
+    0x00000350   0x000002b4   Code   RO           12    .text               main.o
+    0x00000604   0x000000b8   Code   RO          120    .text               pll.o
+    0x000006bc   0x000001b8   Code   RO          132    .text               gpio.o
+    0x00000874   0x000002f8   Code   RO          145    .text               uart.o
+    0x00000b6c   0x00000108   Code   RO          158    .text               led_task.o
+    0x00000c74   0x000001cc   Code   RO          266    .text               firstorderfilter.o
+    0x00000e40   0x000003bc   Code   RO          284    .text               i2c.o
+    0x000011fc   0x00000870   Code   RO          315    .text               mpu9150.o
+    0x00001a6c   0x00000138   Code   RO          353    .text               sensor_task.o
+    0x00001ba4   0x000000a0   Code   RO          366    .text               timer0a.o
+    0x00001c44   0x00000088   Code   RO          379    .text               list.o
+    0x00001ccc   0x00000678   Code   RO          400    .text               queue.o
+    0x00002344   0x00000f48   Code   RO          431    .text               tasks.o
+    0x0000328c   0x000000f4   Code   RO          466    .text               heap_2.o
+    0x00003380   0x000000e0   Code   RO          482    .text               port.o
+    0x00003460   0x00000024   Code   RO         1078    .text               mc_w.l(memcpya.o)
+    0x00003484   0x00000024   Code   RO         1080    .text               mc_w.l(memseta.o)
+    0x000034a8   0x00000000   Code   RO         1128    .text               mc_w.l(iusefp.o)
+    0x000034a8   0x00000024   Code   RO         1131    .text               mc_w.l(init.o)
+    0x000034cc   0x00000026   Code   RO         1086    i.__ARM_fpclassifyf  m_wm.l(fpclassifyf.o)
+    0x000034f2   0x00000002   PAD
+    0x000034f4   0x0000060c   Code   RO         1037    i.__hardfp_powf     m_wm.l(powf.o)
+    0x00003b00   0x00000014   Code   RO         1088    i.__mathlib_flt_divzero  m_wm.l(funder.o)
+    0x00003b14   0x00000006   Code   RO         1090    i.__mathlib_flt_infnan2  m_wm.l(funder.o)
+    0x00003b1a   0x00000002   PAD
+    0x00003b1c   0x00000010   Code   RO         1091    i.__mathlib_flt_invalid  m_wm.l(funder.o)
+    0x00003b2c   0x00000010   Code   RO         1092    i.__mathlib_flt_overflow  m_wm.l(funder.o)
+    0x00003b3c   0x00000010   Code   RO         1094    i.__mathlib_flt_underflow  m_wm.l(funder.o)
+    0x00003b4c   0x0000000e   Code   RO         1135    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00003b5a   0x00000002   Code   RO         1136    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00003b5c   0x0000000e   Code   RO         1137    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00003b6a   0x00000002   PAD
+    0x00003b6c   0x0000000c   Code   RO         1123    i.__set_errno       mc_w.l(errno.o)
+    0x00003b78   0x00000140   Data   RO         1040    .constdata          m_wm.l(powf.o)
+    0x00003cb8   0x00000020   Data   RO         1133    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00007b58, Max: 0x00008000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000001   Data   RW           13    .data               main.o
+    0x20000001   0x00000003   PAD
+    0x20000004   0x00000014   Data   RW          316    .data               mpu9150.o
+    0x20000018   0x00000004   Data   RW          336    .data               ram.o
+    0x2000001c   0x00000004   Data   RW          337    .data               ram.o
+    0x20000020   0x00000004   Data   RW          338    .data               ram.o
+    0x20000024   0x00000004   Data   RW          339    .data               ram.o
+    0x20000028   0x00000001   Data   RW          340    .data               ram.o
+    0x20000029   0x00000003   PAD
+    0x2000002c   0x00000004   Data   RW          341    .data               ram.o
+    0x20000030   0x00000008   Data   RW          354    .data               sensor_task.o
+    0x20000038   0x0000003c   Data   RW          433    .data               tasks.o
+    0x20000074   0x00000018   Data   RW          468    .data               heap_2.o
+    0x2000008c   0x00000004   Data   RW          483    .data               port.o
+    0x20000090   0x00000004   Data   RW         1124    .data               mc_w.l(errno.o)
+    0x20000094   0x0000012c   Zero   RW          267    .bss                firstorderfilter.o
+    0x200001c0   0x00000034   Zero   RW          332    .bss                ram.o
+    0x200001f4   0x00000016   Zero   RW          333    .bss                ram.o
+    0x2000020a   0x00000002   PAD
+    0x2000020c   0x00000028   Zero   RW          334    .bss                ram.o
+    0x20000234   0x00000050   Zero   RW          401    .bss                queue.o
+    0x20000284   0x000001a4   Zero   RW          432    .bss                tasks.o
+    0x20000428   0x00007530   Zero   RW          467    .bss                heap_2.o
+    0x20007958   0x00000200   Zero   RW            1    STACK               startup_rvmdk.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       460         58          0          0        300       2682   firstorderfilter.o
+       440         38          0          0          0       2524   gpio.o
+       244          8          0         24      30000       2980   heap_2.o
+       956         34          0          0          0       2999   i2c.o
+       264         44          0          0          0        973   led_task.o
+       136          0          0          0          0       3182   list.o
+       692        106          0          1          0      22206   main.o
+      2160         86          0         20          0       5445   mpu9150.o
+       184          4          0          0          0        609   pll.o
+       406         34          0          4          0       7350   port.o
+      1656         10          0          0         80      19121   queue.o
+         0          0          0         21        114       2222   ram.o
+       312         38          0          8          0       1020   sensor_task.o
+       644        620          0          0        512        816   startup_rvmdk.o
+      3912         84          0         60        420      27745   tasks.o
+       160         12          0          0          0       1389   timer0a.o
+       760         30          0          0          0       3554   uart.o
+
+    ----------------------------------------------------------------------
+     13388       1206         32        144      31428     106817   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         2          0          0          6          2          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+        38          0          0          0          0        116   fpclassifyf.o
+        74         24          0          0          0        580   funder.o
+      1548        110        320          0          0        268   powf.o
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        12          6          0          4          0         68   errno.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+         0          0          0          0          0          0   iusefp.o
+        36          0          0          0          0         68   memcpya.o
+        36          0          0          0          0        108   memseta.o
+
+    ----------------------------------------------------------------------
+      1836        156        320          4          0       1276   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+      1660        134        320          0          0        964   m_wm.l
+       170         22          0          4          0        312   mc_w.l
+
+    ----------------------------------------------------------------------
+      1836        156        320          4          0       1276   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+     15224       1362        352        148      31428     104445   Grand Totals
+     15224       1362        352        148      31428     104445   ELF Image Totals
+     15224       1362        352        148          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                15576 (  15.21kB)
+    Total RW  Size (RW Data + ZI Data)             31576 (  30.84kB)
+    Total ROM Size (Code + RO Data + RW Data)      15724 (  15.36kB)
+
+==============================================================================
 

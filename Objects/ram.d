@@ -28,5 +28,4 @@
 .\objects\ram.o: .\Source\include\calibration.h
 .\objects\ram.o: .\Source\include\firstOrderFilter.h
 .\objects\ram.o: .\Source\include\led_task.h
-.\objects\ram.o: .\Source\include\switch_task.h
 .\objects\ram.o: .\Source\include\Sensor_Task.h

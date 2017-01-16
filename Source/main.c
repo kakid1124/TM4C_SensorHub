@@ -73,16 +73,9 @@ int main()
     RGBLED_Queue = xQueueCreate(LED_QUEUE_SIZE, LED_ITEM_SIZE);
 
 	
-    //
-    // Create the switch task.
-    //
-    if(SwitchTaskInit() != 0)
-    {
-
-        while(1)
-        {
-        }
-    }
+	
+	xTaskCreate(Main_Task, (const portCHAR *)"Main_Task", MAINTASKSTACKSIZE, NULL,
+                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
 
 	
 	// Create the LED task & Switch task.

@@ -23,6 +23,9 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
+#ifndef __UARTDRIVER_H_
+#define __UARTDRIVER_H_
+
 #include <stdint.h>
 
 #ifdef __cplusplus
@@ -123,3 +126,6 @@ void UART_InString(char *bufPt, unsigned short max);
 #ifdef __cplusplus
 }
 #endif
+
+#endif
+

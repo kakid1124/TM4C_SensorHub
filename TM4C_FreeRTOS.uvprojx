@@ -350,7 +350,7 @@
             <Optim>3</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
-            <OneElfS>1</OneElfS>
+            <OneElfS>0</OneElfS>
             <Strict>0</Strict>
             <EnumInt>0</EnumInt>
             <PlainCh>0</PlainCh>
@@ -359,7 +359,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
+            <uC99>0</uC99>
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
@@ -442,11 +442,6 @@
               <FileName>led_task.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\led_task.c</FilePath>
-            </File>
-            <File>
-              <FileName>switch_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\switch_task.c</FilePath>
             </File>
             <File>
               <FileName>buttons.c</FileName>

@@ -3,6 +3,22 @@
 #include "Timer0A.h"
 #include "UART.h"
 
+//calibration_matrix[3][3] is the transformation matrix
+	const float calibration_matrix[3][3] = 
+  {
+    {16.704f, 0.691f, 0.105f},
+    {-0.587f, 16.206f, 0.315f},
+    {-0.202f, -0.846f, 8.714f}  
+  };
+//bias[3] is the bias
+  const float bias[3] = 
+  {
+    47.637f,
+    -42.322f,
+    -58.512f
+  }; 
+	
+	
 bool MPU9150_calibrating;
 float accelSum[3] = {0.0,0.0,0.0};
 float gyroSum[3] = {0.0,0.0,0.0};

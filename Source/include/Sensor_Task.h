@@ -1,6 +1,8 @@
 #ifndef __SENSOR_TASK_H__
 #define __SENSOR_TASK_H__
 
+#include <stdint.h>
+
 //*****************************************************************************
 //
 // Prototypes for the Sensor task.

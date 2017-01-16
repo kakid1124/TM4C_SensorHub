@@ -92,6 +92,8 @@ uint32_t I2C1_Write_2Bytes(uint8_t device_address, uint8_t device_register, uint
 }
 
 uint16_t I2C1_Read_2Bytes(uint8_t device_address, uint8_t device_register){
+	uint16_t receive = 0;
+	
 	// Set Register Pointer
 	while(I2C1_MCS_R&I2C_MCS_BUSY){};				// wait for I2C ready
   I2C1_MSA_R = (device_address<<1)&0xFE;	// MSA[7:1] is slave address
@@ -119,8 +121,6 @@ uint16_t I2C1_Read_2Bytes(uint8_t device_address, uint8_t device_register){
   }
 	
 	// Read data
-	uint16_t receive = 0;
-
   while(I2C1_MCS_R&I2C_MCS_BUSY){};					// wait for I2C ready
 		
   I2C1_MSA_R = (device_address<<1)&0xFE;    // MSA[7:1] is slave address
@@ -273,6 +273,8 @@ uint8_t I2C3_Read_Byte(uint8_t device_address, uint8_t device_register){
 }
 
 void I2C3_Read_Bytes(uint8_t device_address, uint8_t device_register, uint8_t length, uint8_t * destination){
+	uint8_t received_data[14], i;
+	
 	// Set Register Address
 	while(I2C3_MCS_R&I2C_MCS_BUSY){};				// wait for I2C ready
   I2C3_MSA_R = (device_address<<1)&0xFE;	// MSA[7:1] is slave address
@@ -300,8 +302,6 @@ void I2C3_Read_Bytes(uint8_t device_address, uint8_t device_register, uint8_t le
   }
 	
 	// Read data
-	uint8_t received_data[14], i;
-	
   while(I2C3_MCS_R&I2C_MCS_BUSY){};					// wait for I2C ready
 		
   I2C3_MSA_R = (device_address<<1)&0xFE;    // MSA[7:1] is slave address

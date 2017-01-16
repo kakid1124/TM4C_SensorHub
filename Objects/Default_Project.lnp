@@ -5,7 +5,6 @@
 ".\objects\gpio.o"
 ".\objects\uart.o"
 ".\objects\led_task.o"
-".\objects\switch_task.o"
 ".\objects\buttons.o"
 ".\objects\rgb.o"
 ".\objects\calibration.o"

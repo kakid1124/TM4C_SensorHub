@@ -1,9 +1,10 @@
+#ifndef __CALIBRATION_H__
+#define __CALIBRATION_H__
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <math.h>
 
-#ifndef __CALIBRATION_H__
-#define __CALIBRATION_H__
 
 extern bool MPU9150_calibrating;
 extern float accelSum[3];
@@ -33,20 +34,7 @@ extern float gyro_TCBias_Slope[3], gyro_TCBias_Intercept[3];
 //    45.062f
 //  }; 	
 
-//calibration_matrix[3][3] is the transformation matrix
-	const float calibration_matrix[3][3] = 
-  {
-    {16.704f, 0.691f, 0.105f},
-    {-0.587f, 16.206f, 0.315f},
-    {-0.202f, -0.846f, 8.714f}  
-  };
-//bias[3] is the bias
-  const float bias[3] = 
-  {
-    47.637f,
-    -42.322f,
-    -58.512f
-  }; 
+
 
 	
 #ifdef __cplusplus

@@ -1,3 +1,6 @@
+#ifndef FIRSTORDERFILTER_H_
+#define FIRSTORDERFILTER_H_
+
 #include <stdint.h>
 
 #define Number_Of_FirstOrderFilter	15
@@ -28,4 +31,6 @@ typedef struct firstOrderFilterData {
 extern firstOrderFilterData_t firstOrderFilters[Number_Of_FirstOrderFilter];
 void init_FirstOrderFilters(void);
 float firstOrderFilter(float input, struct firstOrderFilterData *parameters);
+
+#endif
 

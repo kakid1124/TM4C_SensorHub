@@ -1,6 +1,7 @@
 #ifndef __LED_TASK_H__
 #define __LED_TASK_H__
 
+#include <stdint.h>
 //*****************************************************************************
 //
 // Prototypes for the LED task.

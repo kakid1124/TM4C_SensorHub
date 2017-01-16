@@ -26,7 +26,6 @@
 #include "queue.h"
 #include "semphr.h"
 #include "led_task.h"
-#include "switch_task.h"
 #include "Sensor_Task.h"
 
 

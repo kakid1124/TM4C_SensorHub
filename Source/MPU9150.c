@@ -104,6 +104,8 @@ void MPU9150_reset(void) {	// reset device
 }
 
 void MPU9150_init(void){	// Initialize MPU9150 device, wake up device
+	uint8_t c;
+	
 	writeByte(MPU9150_ADDRESS, PWR_MGMT_1, 0x00); // Clear sleep mode bit (6), enable all sensors 
 	Delay_ms(100); // Delay 100 ms for PLL to get established on x-axis gyro; should check for PLL ready interrupt
 	
@@ -123,7 +125,7 @@ void MPU9150_init(void){	// Initialize MPU9150 device, wake up device
 	
  // Set gyroscope full scale range
  // Range selects FS_SEL and AFS_SEL are 0 - 3, so 2-bit values are left-shifted into positions 4:3
-	uint8_t c =  readByte(MPU9150_ADDRESS, GYRO_CONFIG);
+	c =  readByte(MPU9150_ADDRESS, GYRO_CONFIG);
 	writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c & ~0xE0); // Clear self-test bits [7:5] 
 	writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c & ~0x18); // Clear AFS bits [4:3]
 	writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c | Gscale << 3); // Set full scale range for the gyro
@@ -148,6 +150,13 @@ void MPU9150_init(void){	// Initialize MPU9150 device, wake up device
 // Function which accumulates gyro and accelerometer data after device initialization. It calculates the average
 // of the at-rest readings and then loads the resulting offsets into accelerometer and gyro bias registers.
 void MPU9150_calibrate(float * dest1, float * dest2){
+  uint16_t  gyrosensitivity  = 131;   // = 131 LSB/degrees/sec
+  uint16_t  accelsensitivity = 16384;  // = 16384 LSB/g
+  uint32_t mask = 1; // Define mask for temperature compensation bit 0 of lower byte of accelerometer bias registers
+  uint8_t mask_bit[3] = {0, 0, 0}; // Define array to hold mask bit for each accelerometer bias axis
+  int32_t accel_bias_reg[3] = {0, 0, 0}; // A place to hold the factory accelerometer trim biases
+
+	
   uint8_t data[12]; // data array to hold accelerometer and gyro x, y, z, data
   uint16_t ii, packet_count, fifo_count;
   int32_t gyro_bias[3] = {0, 0, 0}, accel_bias[3] = {0, 0, 0};
@@ -177,8 +186,6 @@ void MPU9150_calibrate(float * dest1, float * dest2){
   writeByte(MPU9150_ADDRESS, GYRO_CONFIG, 0x00);  // Set gyro full-scale to 250 degrees per second, maximum sensitivity
   writeByte(MPU9150_ADDRESS, ACCEL_CONFIG, 0x00); // Set accelerometer full-scale to 2 g, maximum sensitivity
 
-  uint16_t  gyrosensitivity  = 131;   // = 131 LSB/degrees/sec
-  uint16_t  accelsensitivity = 16384;  // = 16384 LSB/g
 
 // Configure FIFO to capture accelerometer and gyro data for bias calculation
   writeByte(MPU9150_ADDRESS, USER_CTRL, 0x40);   // Enable FIFO  
@@ -245,7 +252,6 @@ void MPU9150_calibrate(float * dest1, float * dest2){
 // compensation calculations. Accelerometer bias registers expect bias input as 2048 LSB per g, so that
 // the accelerometer biases calculated above must be divided by 8.
 
-  int32_t accel_bias_reg[3] = {0, 0, 0}; // A place to hold the factory accelerometer trim biases
   readBytes(MPU9150_ADDRESS, XA_OFFSET_H, 2, &data[0]); // Read factory accelerometer trim values
   accel_bias_reg[0] = (int16_t) ((int16_t)data[0] << 8) | data[1];
   readBytes(MPU9150_ADDRESS, YA_OFFSET_H, 2, &data[0]);
@@ -253,8 +259,6 @@ void MPU9150_calibrate(float * dest1, float * dest2){
   readBytes(MPU9150_ADDRESS, ZA_OFFSET_H, 2, &data[0]);
   accel_bias_reg[2] = (int16_t) ((int16_t)data[0] << 8) | data[1];
   
-  uint32_t mask = 1; // Define mask for temperature compensation bit 0 of lower byte of accelerometer bias registers
-  uint8_t mask_bit[3] = {0, 0, 0}; // Define array to hold mask bit for each accelerometer bias axis
 
   for(ii = 0; ii < 3; ii++) {
     if(accel_bias_reg[ii] & mask) mask_bit[ii] = 0x01; // If temperature compensation bit is set, record that fact in mask_bit
@@ -295,7 +299,7 @@ void MPU9150_calibrate(float * dest1, float * dest2){
 void MPU9150_selftest(float * destination) // Should return percent deviation from factory trim values, +/- 14 or less deviation is a pass
 {
    uint8_t rawData[4] = {0, 0, 0, 0};
-   uint8_t selfTest[6];
+   uint8_t i, selfTest[6];
    float factoryTrim[6];
    
    // Configure the accelerometer for self-test
@@ -334,7 +338,6 @@ void MPU9150_selftest(float * destination) // Should return percent deviation fr
 
  // Report results as a ratio of (STR - FT)/FT; the change from Factory Trim of the Self-Test Response
  // To get to percent, must multiply by 100 and subtract result from 100
-	int i;
    for (i = 0; i < 6; i++) {
      destination[i] = 100.0f + 100.0f*(selfTest[i] - factoryTrim[i])/factoryTrim[i]; // Report percent differences
    }

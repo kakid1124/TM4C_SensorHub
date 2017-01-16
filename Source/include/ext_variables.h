@@ -19,7 +19,8 @@ enum System_Status {Initialization,
 					
 					
 // Stack size in words
-#define MPU9150TASKSTACKSIZE	128
+#define MAINTASKSTACKSIZE       128
+#define MPU9150TASKSTACKSIZE		128
 #define LEDTASKSTACKSIZE        128
 #define SWITCHTASKSTACKSIZE     128
 
@@ -29,7 +30,8 @@ enum System_Status {Initialization,
 
 
 // The priorities of the various tasks.
-#define PRIORITY_MPU9150_TASK	1
+#define PRIORITY_MAIN_TASK			1
+#define PRIORITY_MPU9150_TASK		1
 #define PRIORITY_SWITCH_TASK    2
 #define PRIORITY_LED_TASK       1
 

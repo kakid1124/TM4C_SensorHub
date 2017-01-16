@@ -21,6 +21,9 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
+#ifndef __PLL_H_
+#define __PLL_H_
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -168,3 +171,6 @@ SYSDIV2  Divisor  Clock (MHz)
 #ifdef __cplusplus
 }
 #endif
+
+#endif
+

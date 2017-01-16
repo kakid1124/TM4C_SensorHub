@@ -1,11 +1,4 @@
-#include <stdbool.h>
-#include <stdint.h>
-#include "UART.h"
-#include "led_task.h"
-#include "FreeRTOS.h"
-#include "task.h"
-#include "queue.h"
-#include "semphr.h"
+#include "include.h"
 
 
 #define SwitchDelay_ms	25
@@ -89,10 +82,10 @@ static void LEDTask(void *pvParameters)
 static void SwitchTask(void *pvParameters)
 {
     portTickType ui16LastTime;
-    uint8_t ui8CurButtonState, ui8PrevButtonState;
-    uint8_t ui8Message;
+//    uint8_t ui8CurButtonState, ui8PrevButtonState;
+//    uint8_t ui8Message;
 
-    ui8CurButtonState = ui8PrevButtonState = 0;
+//    ui8CurButtonState = ui8PrevButtonState = 0;
 
     // Get the current tick count.
     ui16LastTime = xTaskGetTickCount();
