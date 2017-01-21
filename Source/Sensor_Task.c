@@ -92,7 +92,85 @@ void GPIOPortB_Handler(void){
 //*****************************************************************************
 uint32_t MPU9150TaskInit(void)
 {
-	
+	//**** MPU9150 (I2C3): PD0 --> SCL, PD1 --> SDA, PB2 --> INT ****//					
+	I2C3_Init();
+	MotionInt_Init();
+	MPU9150_setup();
+
+/*	
+	// Read the WHO_AM_I register, this is a good test of communication
+	uint8_t whoami = MPU9150.readByte(MPU9150_ADDRESS, WHO_AM_I_MPU9150);
+	if((Battery_Ready)&&(whoami == 0x68)){
+		MPU9150.selftest(MPU9150.SelfTest);
+		
+		UART_OutString((char *)"accel x-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[0]);
+		UART_OutString((char *)"% of factory value\n");
+		UART_OutString((char *)"accel y-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[1]);
+		UART_OutString((char *)"% of factory value\n");
+		UART_OutString((char *)"accel z-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[2]);
+		UART_OutString((char *)"% of factory value\n");
+		
+		UART_OutString((char *)"gyro x-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[3]);
+		UART_OutString((char *)"% of factory value\n");
+		UART_OutString((char *)"gyro y-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[4]);
+		UART_OutString((char *)"% of factory value\n");
+		UART_OutString((char *)"gyro z-axis self test: ");
+		UART_OutFloat(MPU9150.SelfTest[5]);
+		UART_OutString((char *)"% of factory value\n");
+		
+		Delay_ms(100);
+		
+		// Reset registers to default in preparation for device calibration
+		// Calibrate gyro and accelerometers, load biases in bias registers 
+		MPU9150.resetMPU9150();
+    MPU9150.calibrate(MPU9150.gyroBias, MPU9150.accelBias); 
+		
+		UART_OutString((char *)"x gyro bias = ");
+		UART_OutFloat(MPU9150.gyroBias[0]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"y gyro bias = ");
+		UART_OutFloat(MPU9150.gyroBias[1]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"z gyro bias = ");
+		UART_OutFloat(MPU9150.gyroBias[2]);
+		UART_OutString((char *)"\n\r");
+		
+		UART_OutString((char *)"x accel bias = ");
+		UART_OutFloat(MPU9150.accelBias[0]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"y accel bias = ");
+		UART_OutFloat(MPU9150.accelBias[1]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"z accel bias = ");
+		UART_OutFloat(MPU9150.accelBias[2]);
+		UART_OutString((char *)"\n\r");
+		
+		Delay_ms(100);
+		
+		// MPU9150 initialize
+		// Calibrate Magnetometer
+		MPU9150.init(); 
+		MPU9150.initAK8975A(MPU9150.magCalibration);
+		
+		UART_OutString((char *)"x magneto calibration = ");
+		UART_OutFloat(MPU9150.magCalibration[0]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"y magneto calibration = ");
+		UART_OutFloat(MPU9150.magCalibration[1]);
+		UART_OutString((char *)"\n\r");
+		UART_OutString((char *)"z magneto calibration = ");
+		UART_OutFloat(MPU9150.magCalibration[2]);
+		UART_OutString((char *)"\n\r");
+		
+		// MPU9150 is ready
+		UART_OutString((char *)"MPU9150 is ready for active data mode...\n\r");
+		MPU9150_Ready = true;	
+	*/
 	
     // Create the MPU9150 task.
     if(xTaskCreate(MPU9150_Task, (const portCHAR *)"MPU9150", MPU9150TASKSTACKSIZE, NULL,

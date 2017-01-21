@@ -87,5 +87,6 @@ extern xSemaphoreHandle RawDataMPU_Semaphore;
 
 // Queues
 extern xQueueHandle RGBLED_Queue; // The queue that holds messages sent to the LED task.
+extern xQueueHandle SwitchesState_Queue;
 
 #endif

@@ -21,7 +21,14 @@ void EndCritical(long sr);    // restore I bit to previous value
 void WaitForInterrupt(void);  // low power mode
 
 void System_Init(void);
-static void Main_Task(void *pvParameters);
+
+static void ManualFlight_Task(void *pvParameters);
+static void AutoFlight_Task(void *pvParameters);
+static void System_Task(void *pvParameters);
+static void Communication_Task(void *pvParameters);
+static void ReceiveCommand_Task(void *pvParameters);
+
+void Eulers_Estimate(void);
 	
 #ifdef __cplusplus
 }
@@ -74,8 +81,8 @@ int main()
 
 	
 	
-	xTaskCreate(Main_Task, (const portCHAR *)"Main_Task", MAINTASKSTACKSIZE, NULL,
-                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
+//	xTaskCreate(ManualFlight_Task, (const portCHAR *)"Manual_Task", MAINTASKSTACKSIZE, NULL,
+//                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
 
 	
 	// Create the LED task & Switch task.
@@ -85,22 +92,17 @@ int main()
     }
 
 	// Create the MPU9150 task.
-    if(MPU9150TaskInit() == pdFAIL)
-    {
-        while(1){}
-    }
+//    if(MPU9150TaskInit() == pdFAIL)
+//    {
+//        while(1){}
+//    }
 	
     // Start the scheduler.  This should not return.
     vTaskStartScheduler();
 
-    //
     // In case the scheduler returns for some reason, print an error and loop
     // forever.
-    //
-		
-		while(1)
-		{
-		}
+		while(1){}
 }
 
 
@@ -126,97 +128,19 @@ void System_Init(void)
 	ROM_FPULazyStackingEnable();
 	
 	
-	//**** MPU9150 (I2C3): PD0 --> SCL, PD1 --> SDA, PB2 --> INT ****//					
-	I2C3_Init();
-	MotionInt_Init();
-	MPU9150_setup();
 
-/*	
-	// Read the WHO_AM_I register, this is a good test of communication
-	uint8_t whoami = MPU9150.readByte(MPU9150_ADDRESS, WHO_AM_I_MPU9150);
-	if((Battery_Ready)&&(whoami == 0x68)){
-		MPU9150.selftest(MPU9150.SelfTest);
-		
-		UART_OutString((char *)"accel x-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[0]);
-		UART_OutString((char *)"% of factory value\n");
-		UART_OutString((char *)"accel y-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[1]);
-		UART_OutString((char *)"% of factory value\n");
-		UART_OutString((char *)"accel z-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[2]);
-		UART_OutString((char *)"% of factory value\n");
-		
-		UART_OutString((char *)"gyro x-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[3]);
-		UART_OutString((char *)"% of factory value\n");
-		UART_OutString((char *)"gyro y-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[4]);
-		UART_OutString((char *)"% of factory value\n");
-		UART_OutString((char *)"gyro z-axis self test: ");
-		UART_OutFloat(MPU9150.SelfTest[5]);
-		UART_OutString((char *)"% of factory value\n");
-		
-		Delay_ms(100);
-		
-		// Reset registers to default in preparation for device calibration
-		// Calibrate gyro and accelerometers, load biases in bias registers 
-		MPU9150.resetMPU9150();
-    MPU9150.calibrate(MPU9150.gyroBias, MPU9150.accelBias); 
-		
-		UART_OutString((char *)"x gyro bias = ");
-		UART_OutFloat(MPU9150.gyroBias[0]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"y gyro bias = ");
-		UART_OutFloat(MPU9150.gyroBias[1]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"z gyro bias = ");
-		UART_OutFloat(MPU9150.gyroBias[2]);
-		UART_OutString((char *)"\n\r");
-		
-		UART_OutString((char *)"x accel bias = ");
-		UART_OutFloat(MPU9150.accelBias[0]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"y accel bias = ");
-		UART_OutFloat(MPU9150.accelBias[1]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"z accel bias = ");
-		UART_OutFloat(MPU9150.accelBias[2]);
-		UART_OutString((char *)"\n\r");
-		
-		Delay_ms(100);
-		
-		// MPU9150 initialize
-		// Calibrate Magnetometer
-		MPU9150.init(); 
-		MPU9150.initAK8975A(MPU9150.magCalibration);
-		
-		UART_OutString((char *)"x magneto calibration = ");
-		UART_OutFloat(MPU9150.magCalibration[0]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"y magneto calibration = ");
-		UART_OutFloat(MPU9150.magCalibration[1]);
-		UART_OutString((char *)"\n\r");
-		UART_OutString((char *)"z magneto calibration = ");
-		UART_OutFloat(MPU9150.magCalibration[2]);
-		UART_OutString((char *)"\n\r");
-		
-		// MPU9150 is ready
-		UART_OutString((char *)"MPU9150 is ready for active data mode...\n\r");
-		MPU9150_Ready = true;	
-	*/
 }
 
 //*****************************************************************************
 //
-//	MAIN Task
-//	
+//	ManualFlight Task
+//	Receive comand manual from Joystick
 //
 //*****************************************************************************
-static void Main_Task(void *pvParameters)
+static void ManualFlight_Task(void *pvParameters)
 {
 	portTickType ui16LastTime;
-	static uint8_t count;
+	
 	
 	while(1)
 	{
@@ -225,47 +149,159 @@ static void Main_Task(void *pvParameters)
 		{
 			case System_Ready:	
 				// Get the current tick count.
-				count = 0;
 				ui16LastTime = xTaskGetTickCount();				
 				while(1)
 				{
-					count = (count+1)%40;
+					if(System_Status != System_Ready) break;
 					
-					// First Order Filter
-					xSemaphoreTake(GlobalVariable_Mutex, portMAX_DELAY);
-					if(MPU9150_RawData.MPU_DataReady)
-					{
-						MPU9150_RawData.MPU_DataReady = Old_Data;
-						
-						// Accelerometer x/y/z adc values
-						MPU9150_FilteredData.Accel[0] = firstOrderFilter((float)MPU9150_RawData.accelCount[0], &firstOrderFilters[Accel_X]);
-						MPU9150_FilteredData.Accel[1] = firstOrderFilter((float)MPU9150_RawData.accelCount[1], &firstOrderFilters[Accel_Y]);
-						MPU9150_FilteredData.Accel[2] = firstOrderFilter((float)MPU9150_RawData.accelCount[2], &firstOrderFilters[Accel_Z]);
+					Eulers_Estimate();
+
 					
-						// Gyroscope x/y/z adc values
-						MPU9150_FilteredData.Gyro[0] = firstOrderFilter((float)MPU9150_RawData.gyroCount[0], &firstOrderFilters[Gyro_X]);
-						MPU9150_FilteredData.Gyro[1] = firstOrderFilter((float)MPU9150_RawData.gyroCount[1], &firstOrderFilters[Gyro_Y]);
-						MPU9150_FilteredData.Gyro[2] = firstOrderFilter((float)MPU9150_RawData.gyroCount[2], &firstOrderFilters[Gyro_Z]);
+					
+					
 						
-						// Temperature adc values, Calculate Temperature in degrees Centigrade
-						MPU9150_FilteredData.temperature = ((float) MPU9150_RawData.tempCount) / 340.0f + 36.53f;
+					// Frequency: 400Hz --> T=2.5ms
+					vTaskDelayUntil(&ui16LastTime, (2.5f) / portTICK_RATE_MS);
+				}
+			break;
+			
+			case Calib_Mode:
+				// Get the current tick count.
+				ui16LastTime = xTaskGetTickCount();				
+				while(1)
+				{
+					if(System_Status != Calib_Mode) break;
+					
+					Eulers_Estimate();
+
+					
+					
+					
 						
-						if(MPU9150_RawData.Mag_DataReady)
-						{
-							MPU9150_RawData.Mag_DataReady = Old_Data;
+					// Frequency: 400Hz --> T=2.5ms
+					vTaskDelayUntil(&ui16LastTime, (2.5f) / portTICK_RATE_MS);
+				}
+			break;
+			
+			case Initialization:
+			
+			break;
+			
+			case Hardware_Error:
+			
+			break;
+		}
+		
+	}
+}
+
+
+//*****************************************************************************
+//
+//	System Learning and Auto-Flight Task
+//	
+//
+//*****************************************************************************
+static void AutoFlight_Task(void *pvParameters)
+{
+	
+}
+
+
+//*****************************************************************************
+//
+//	System Task: chan doan loi he thong, thay doi System_Status
+//		Tiep nhan command
+//		xuat led
+//
+//*****************************************************************************
+static void System_Task(void *pvParameters)
+{
+	
+}
+
+//*****************************************************************************
+//
+//	Communication Task
+//	Xuat ra man hinh (output qua UART) tu du lieu toan cuc
+//	Truyen thong qua nRF24L01
+//
+//*****************************************************************************
+
+static void Communication_Task(void *pvParameters)
+{
+	
+}
+
+//*****************************************************************************
+//
+//	ReceiveCommand Task
+//	Receive command from UART or nRF24L01
+//	
+//*****************************************************************************
+
+static void ReceiveCommand_Task(void *pvParameters)
+{
+	
+}
+
+void Eulers_Estimate(void)
+{
+	static uint8_t count = 0, newData;
+	
+	count = (count+1)%40;
+	newData = 0;
+	
+	// First Order Filter
+	xSemaphoreTake(GlobalVariable_Mutex, portMAX_DELAY);
+	if(MPU9150_RawData.MPU_DataReady)
+	{
+		MPU9150_RawData.MPU_DataReady = Old_Data;
+						
+		// Accelerometer x/y/z adc values
+		MPU9150_FilteredData.Accel[0] = firstOrderFilter((float)MPU9150_RawData.accelCount[0], &firstOrderFilters[Accel_X]);
+		MPU9150_FilteredData.Accel[1] = firstOrderFilter((float)MPU9150_RawData.accelCount[1], &firstOrderFilters[Accel_Y]);
+		MPU9150_FilteredData.Accel[2] = firstOrderFilter((float)MPU9150_RawData.accelCount[2], &firstOrderFilters[Accel_Z]);
+					
+		// Gyroscope x/y/z adc values
+		MPU9150_FilteredData.Gyro[0] = firstOrderFilter((float)MPU9150_RawData.gyroCount[0], &firstOrderFilters[Gyro_X]);
+		MPU9150_FilteredData.Gyro[1] = firstOrderFilter((float)MPU9150_RawData.gyroCount[1], &firstOrderFilters[Gyro_Y]);
+		MPU9150_FilteredData.Gyro[2] = firstOrderFilter((float)MPU9150_RawData.gyroCount[2], &firstOrderFilters[Gyro_Z]);
+						
+		// Temperature adc values, Calculate Temperature in degrees Centigrade
+		MPU9150_FilteredData.temperature = ((float) MPU9150_RawData.tempCount) / 340.0f + 36.53f;
+			
+		if(MPU9150_RawData.Mag_DataReady)
+		{
+			MPU9150_RawData.Mag_DataReady = Old_Data;
 							
-							// Magnetometer x/y/z adc values
-							// doi truc: X'=Y; Y'=X; Z'=-Z
-							MPU9150_FilteredData.Magneto[0] = firstOrderFilter((float)MPU9150_RawData.magCount[1] * MPU9150_Bias.magCalib[1], &firstOrderFilters[Magneto_X]);
-							MPU9150_FilteredData.Magneto[1] = firstOrderFilter((float)MPU9150_RawData.magCount[0] * MPU9150_Bias.magCalib[0], &firstOrderFilters[Magneto_Y]);
-							MPU9150_FilteredData.Magneto[2] = firstOrderFilter((float)MPU9150_RawData.magCount[2] *(-1.0f)*MPU9150_Bias.magCalib[2], &firstOrderFilters[Magneto_Z]);
-						}
-					}
-					xSemaphoreGive(GlobalVariable_Mutex);
+			// Magnetometer x/y/z adc values
+			// doi truc: X'=Y; Y'=X; Z'=-Z
+			MPU9150_FilteredData.Magneto[0] = firstOrderFilter((float)MPU9150_RawData.magCount[1] * MPU9150_Bias.magCalib[1], &firstOrderFilters[Magneto_X]);
+			MPU9150_FilteredData.Magneto[1] = firstOrderFilter((float)MPU9150_RawData.magCount[0] * MPU9150_Bias.magCalib[0], &firstOrderFilters[Magneto_Y]);
+			MPU9150_FilteredData.Magneto[2] = firstOrderFilter((float)MPU9150_RawData.magCount[2] *(-1.0f)*MPU9150_Bias.magCalib[2], &firstOrderFilters[Magneto_Z]);
+		}
+		
+		newData = 1;
+	}
+	xSemaphoreGive(GlobalVariable_Mutex);
 					
-					// Uoc Luong Goc Quay
-					
-					/*
+	// Estimation of Eulers
+	if(newData)
+	{
+		// Magnetometer
+		if(count == 39)
+		{
+			/* Mag_Transformation((float*)MagData_Data);
+			Mag_vector_length_stabilasation();
+			pMag[0] = Mag_calibrated[0]*MPU9150.mRes;	// [milliGauss]
+			pMag[1] = Mag_calibrated[1]*MPU9150.mRes;
+			pMag[2] = Mag_calibrated[2]*MPU9150.mRes;
+			*/
+		}
+		
+		// IMU QUEST:
+		/*
 					current_Time = WTIMER0_TAR_R;
 					delta_Time = (previous_Time - current_Time)&0xFFFFFFFF;
 					delta_T = delta_Time * 0.000001f;										// [micro second]*10^(-6) --> [second]
@@ -281,41 +317,8 @@ static void Main_Task(void *pvParameters)
 					pGyro[2] = (Gyro_Data[2] - gyro_RTBias[2] - gyro_TCBias[2]) * MPU9150.gRes * D2R; // [rad/s]
 			
 					QUEST((float*)pAccel, (float*)pGyro, (float*)pMag, (float*)pEulers, (float*)pQuaternion, &delta_T);
-					*/
-					
-					// Magnetometer
-					if(count == 39)
-					{
-						/* Mag_Transformation((float*)MagData_Data);
-						Mag_vector_length_stabilasation();
-						pMag[0] = Mag_calibrated[0]*MPU9150.mRes;	// [milliGauss]
-						pMag[1] = Mag_calibrated[1]*MPU9150.mRes;
-						pMag[2] = Mag_calibrated[2]*MPU9150.mRes;
-					*/
-					}
-					
-					if(System_Status != System_Ready) break;
-						
-					// Frequency: 400Hz --> T=2.5ms
-					vTaskDelayUntil(&ui16LastTime, (2.5f) / portTICK_RATE_MS);
-				}
-			break;
-			
-			case Calib_Mode:
-			
-			break;
-			
-			case Initialization:
-			
-			break;
-			
-			case Hardware_Error:
-			
-			break;
-		}
-		
+		*/
 	}
 }
-
 
 

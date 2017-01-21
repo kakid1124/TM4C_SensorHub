@@ -27,3 +27,4 @@ xSemaphoreHandle RawDataMPU_Semaphore = NULL;
 
 // Queues
 xQueueHandle RGBLED_Queue; // The queue that holds messages sent to the LED task.
+xQueueHandle SwitchesState_Queue;

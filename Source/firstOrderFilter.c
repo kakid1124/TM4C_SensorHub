@@ -126,7 +126,8 @@ void init_FirstOrderFilters(void){
 	firstOrderFilters[AccelZ_HP].pre_Output = 0.0f;
 }
 
-float firstOrderFilter(float input, struct firstOrderFilterData *parameters){
+float firstOrderFilter(float input, struct firstOrderFilterData *parameters)
+{
 	float output;
 	
 	output = parameters->gx1 * input +
