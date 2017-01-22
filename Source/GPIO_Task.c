@@ -1,23 +1,15 @@
 #include "include.h"
 
 
-#define SwitchDelay_ms	5
-#define ReleaseTime_ms	100
-#define PressTime_ms	10
+#define SwitchDelay_ms		5
+#define ReleaseTime_ms		100
+#define PressTime_ms			10
 #define HoldPressTime_ms	3000
 
 #define ON	0		// muc logic LOW (tuong ung voi 0V dien ap)
 #define OFF	1		// muc logic HIGH (+3.3V)
 
-enum Switch_States {BothSW_OFF = 0,
-					LeftSW_ON,
-					LeftSW_ON3s,
-					LeftSW_OFF,
-					RightSW_ON,
-					RightSW_ON3s,
-					RightSW_OFF,
-					BothSW_ON,
-					BothSW_ON3s	};
+
 
 //*****************************************************************************
 //
@@ -33,7 +25,7 @@ static void LEDTask(void *pvParameters)
 	// Default
 	Led_Message.LED_Code = GREEN;
 	T_ON = 100;
-	T_OFF = 100;
+	T_OFF = 400;
 	
     // Get the current tick count.
     ui32WakeTime = xTaskGetTickCount();
@@ -98,12 +90,7 @@ static void LEDTask(void *pvParameters)
 static void SwitchTask(void *pvParameters)
 {
     portTickType ui16LastTime;
-//    uint8_t ui8CurButtonState, ui8PrevButtonState;
-//    uint8_t ui8Message;
-
-//    ui8CurButtonState = ui8PrevButtonState = 0;
-
-	uint8_t Keys_Changed;
+	uint8_t LeftSW_Changed, RightSW_Changed;
 	uint8_t Keys_State = BothSW_OFF, Raw_State;
 	uint8_t Debounced_LeftSW_Press = OFF;
 	uint8_t Debounced_RightSW_Press = OFF;
@@ -116,8 +103,9 @@ static void SwitchTask(void *pvParameters)
     // Loop forever.
     while(1)
     {
-		Keys_Changed = 0;
-		
+		LeftSW_Changed = 0;
+		RightSW_Changed = 0;
+			
 	// Poll the debounced state of the buttons.
 	// Left Switch
 		if((GPIO_PORTF_DATA_R & SW1) == ON)
@@ -143,10 +131,10 @@ static void SwitchTask(void *pvParameters)
 			{
 			// Timer expired - accept the change.
 				Debounced_LeftSW_Press = Raw_State;
-				Keys_Changed = 1;
+				LeftSW_Changed = 1;
 				
 			// And reset the timer.
-				HoldTime1 = HoldPressTime_ms/SwitchDelay_ms;
+				HoldTime1 = HoldTime2 = HoldPressTime_ms/SwitchDelay_ms;
 				
 				if(Debounced_LeftSW_Press == ON)
 					StableTime1 = ReleaseTime_ms/SwitchDelay_ms;
@@ -179,10 +167,10 @@ static void SwitchTask(void *pvParameters)
 			{
 			// Timer expired - accept the change.
 				Debounced_RightSW_Press = Raw_State;
-				Keys_Changed = 1;
+				RightSW_Changed = 1;
 				
 			// And reset the timer.
-				HoldTime2 = HoldPressTime_ms/SwitchDelay_ms;
+				HoldTime1 = HoldTime2 = HoldPressTime_ms/SwitchDelay_ms;
 				
 				if(Debounced_RightSW_Press == ON)
 					StableTime2 = ReleaseTime_ms/SwitchDelay_ms;
@@ -192,26 +180,32 @@ static void SwitchTask(void *pvParameters)
 		}
 		
 
-		if((Keys_Changed) || (HoldTime1 == 0) || (HoldTime2 == 0))
+		if((LeftSW_Changed) || (RightSW_Changed) || (HoldTime1 == 0) || (HoldTime2 == 0))
 		{
-			if((Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
+			if((HoldTime1 == 0)&&(HoldTime2 == 0)&&(Keys_State == BothSW_ON3s))
+			{}
+			else if((HoldTime1 == 0)&&(Keys_State == LeftSW_ON3s))
+			{}
+			else if((HoldTime2 == 0)&&(Keys_State == RightSW_ON3s))
+			{}
+			else
+			{
+				if((LeftSW_Changed)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
 				Keys_State = LeftSW_ON;
-			if(Debounced_LeftSW_Press == OFF)
+			else if((LeftSW_Changed)&&(Debounced_LeftSW_Press == OFF))
 				Keys_State = LeftSW_OFF;
-			
-			if((Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
+			else if((RightSW_Changed)&&(Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
 				Keys_State = RightSW_ON;
-			if(Debounced_RightSW_Press == OFF)
+			else if((RightSW_Changed)&&(Debounced_RightSW_Press == OFF))
 				Keys_State = RightSW_OFF;
-			
-			if((Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == ON))
-				Keys_State = BothSW_ON;
-			
-			if((HoldTime1 == 0)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
+			else if((HoldTime1 == 0)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
 				Keys_State = LeftSW_ON3s;
-			if((HoldTime2 == 0)&&(Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
+			else if((HoldTime2 == 0)&&(Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
 				Keys_State = RightSW_ON3s;
-			
+			else if((HoldTime1 == 0)&&(HoldTime2 == 0)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == ON))
+				Keys_State = BothSW_ON3s;
+			else if(((LeftSW_Changed)||(RightSW_Changed))&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == ON))
+				Keys_State = BothSW_ON;
 			
 			
 			// Pass the value of the button pressed to Queue.
@@ -219,57 +213,15 @@ static void SwitchTask(void *pvParameters)
             {
                 // Error. The queue should never be full. If so print the
                 // error message on UART and wait for ever.
-                UART_OutString("\nQueue full. This should never happen.\n");
+                //UART_OutString("\nQueue full. This should never happen.\n");
                 while(1){}
             }
+			}
+			
+			
+			
 		}
 
-/*
-        
-        ui8CurButtonState = ButtonsPoll(0, 0);
-
-        // Check if previous debounced state is equal to the current state.
-        if(ui8CurButtonState != ui8PrevButtonState)
-        {
-            ui8PrevButtonState = ui8CurButtonState;
-
-            // Check to make sure the change in state is due to button press
-            // and not due to button release.
-            if((ui8CurButtonState & ALL_BUTTONS) != 0)
-            {
-                if((ui8CurButtonState & ALL_BUTTONS) == LEFT_BUTTON)
-                {
-                    ui8Message = LEFT_BUTTON;
-
-                    // Guard UART from concurrent access.
-                    xSemaphoreTake(g_pUARTSemaphore, portMAX_DELAY);
-                    UART_OutString("Left Button is pressed.\n");
-                    xSemaphoreGive(g_pUARTSemaphore);
-                }
-                else if((ui8CurButtonState & ALL_BUTTONS) == RIGHT_BUTTON)
-                {
-                    ui8Message = RIGHT_BUTTON;
-
-                    // Guard UART from concurrent access.
-                    xSemaphoreTake(g_pUARTSemaphore, portMAX_DELAY);
-                    UART_OutString("Right Button is pressed.\n");
-                    xSemaphoreGive(g_pUARTSemaphore);
-                }
-
-                // Pass the value of the button pressed to LEDTask.
-                if(xQueueSend(g_pLEDQueue, &ui8Message, portMAX_DELAY) !=
-                   pdPASS)
-                {
-                    // Error. The queue should never be full. If so print the
-                    // error message on UART and wait for ever.
-                    UART_OutString("\nQueue full. This should never happen.\n");
-                    while(1)
-                    {
-                    }
-                }
-            }
-        }
-*/
         // Wait for the required amount of time to check back.
         vTaskDelayUntil(&ui16LastTime, SwitchDelay_ms / portTICK_RATE_MS);
     }

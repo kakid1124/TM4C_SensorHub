@@ -27,5 +27,5 @@
 .\objects\main.o: .\Source\include\IMU_QUEST.h
 .\objects\main.o: .\Source\include\calibration.h
 .\objects\main.o: .\Source\include\firstOrderFilter.h
-.\objects\main.o: .\Source\include\led_task.h
+.\objects\main.o: .\Source\include\gpio_task.h
 .\objects\main.o: .\Source\include\Sensor_Task.h

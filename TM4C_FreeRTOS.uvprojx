@@ -439,11 +439,6 @@
               <FilePath>.\Source\UART.c</FilePath>
             </File>
             <File>
-              <FileName>led_task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\led_task.c</FilePath>
-            </File>
-            <File>
               <FileName>buttons.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\drivers\buttons.c</FilePath>
@@ -492,6 +487,11 @@
               <FileName>Timer0A.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\Timer0A.c</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\GPIO_Task.c</FilePath>
             </File>
           </Files>
         </Group>

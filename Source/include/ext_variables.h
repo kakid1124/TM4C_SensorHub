@@ -28,11 +28,13 @@ enum System_Status {Initialization,
 #define LED_ITEM_SIZE           sizeof(LED_Data_t)
 #define LED_QUEUE_SIZE          3
 
+#define SW_ITEM_SIZE           sizeof(uint8_t)
+#define SW_QUEUE_SIZE          5
 
 // The priorities of the various tasks.
 #define PRIORITY_MAIN_TASK			1
 #define PRIORITY_MPU9150_TASK		1
-#define PRIORITY_SWITCH_TASK    2
+#define PRIORITY_SWITCH_TASK    1
 #define PRIORITY_LED_TASK       1
 
 // SensorHub:
@@ -71,6 +73,15 @@ typedef struct {
 } LED_Data_t;
 
 
+enum Switch_States {BothSW_OFF = 0,
+					LeftSW_ON,
+					LeftSW_ON3s,
+					LeftSW_OFF,
+					RightSW_ON,
+					RightSW_ON3s,
+					RightSW_OFF,
+					BothSW_ON,
+					BothSW_ON3s	};
 
 // Extern Variables:
 extern uint8_t System_Status;

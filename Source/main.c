@@ -78,13 +78,16 @@ int main()
 
 	// Create a queue for sending messages to the LED task.
     RGBLED_Queue = xQueueCreate(LED_QUEUE_SIZE, LED_ITEM_SIZE);
-
+		SwitchesState_Queue = xQueueCreate(SW_QUEUE_SIZE, SW_ITEM_SIZE);
 	
 	
 //	xTaskCreate(ManualFlight_Task, (const portCHAR *)"Manual_Task", MAINTASKSTACKSIZE, NULL,
 //                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
 
-	
+	xTaskCreate(System_Task, (const portCHAR *)"System_Task", MAINTASKSTACKSIZE, NULL,
+                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
+
+
 	// Create the LED task & Switch task.
     if(LED_SwitchTaskInit() == pdFAIL)
     {
@@ -217,7 +220,17 @@ static void AutoFlight_Task(void *pvParameters)
 //*****************************************************************************
 static void System_Task(void *pvParameters)
 {
+	uint8_t SW_State;
 	
+	while(1)
+	{
+		// Read the message from SWITCH queue.
+		if(xQueueReceive(SwitchesState_Queue, &SW_State, portMAX_DELAY) == pdPASS)
+		{
+			UART_OutString("\nSwitchState: ");
+			UART_OutUDec(SW_State);
+		}
+	}
 }
 
 //*****************************************************************************
