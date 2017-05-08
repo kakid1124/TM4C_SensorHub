@@ -1,8 +1,8 @@
 .\objects\mpu9150.o: Source\MPU9150.c
 .\objects\mpu9150.o: .\Source\include\include.h
-.\objects\mpu9150.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\mpu9150.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\mpu9150.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\mpu9150.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\mpu9150.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\mpu9150.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\mpu9150.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/rom.h
 .\objects\mpu9150.o: .\Source\include\tm4c123gh6pm.h
 .\objects\mpu9150.o: .\Source\include\PLL.h
@@ -12,7 +12,7 @@
 .\objects\mpu9150.o: .\Source\include\Timer0A.h
 .\objects\mpu9150.o: .\Source\include\ext_variables.h
 .\objects\mpu9150.o: .\FreeRTOS\include\FreeRTOS.h
-.\objects\mpu9150.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\mpu9150.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\mpu9150.o: .\Source\include\FreeRTOSConfig.h
 .\objects\mpu9150.o: .\FreeRTOS\include\projdefs.h
 .\objects\mpu9150.o: .\FreeRTOS\include\portable.h
@@ -27,5 +27,5 @@
 .\objects\mpu9150.o: .\Source\include\IMU_QUEST.h
 .\objects\mpu9150.o: .\Source\include\calibration.h
 .\objects\mpu9150.o: .\Source\include\firstOrderFilter.h
-.\objects\mpu9150.o: .\Source\include\gpio_task.h
+.\objects\mpu9150.o: .\Source\include\GPS.h
 .\objects\mpu9150.o: .\Source\include\Sensor_Task.h

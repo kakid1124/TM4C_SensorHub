@@ -144,12 +144,8 @@
 #endif
 
 
-void MPU9150_setup(void);
+uint16_t MPU9150_setup(void);
 void MPU9150_reset(void);
-void MPU9150_init(void);
-void AK8975A_init(float * destination);
-void MPU9150_calibrate(float * dest1, float * dest2);
-void MPU9150_selftest(float * destination);
 
 void MPU9150_readAccelData(int16_t * destination);
 void MPU9150_readGyroData(int16_t * destination);

@@ -3,68 +3,60 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: µVision V5.13.0.0
-Copyright (C) 2014 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: Da Khoa Nguyen Huynh, HCMUT, LIC=MPPAR-KB7A9-BEQHH-W2LSE-MI3FU-7054W
+IDE-Version: É Vision V5.23.0.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Khoa Nguyen Huynh, HCMUT, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Standard  Version: 5.13.0.0
-Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.05 update 1 (build 106)
-Assembler:       Armasm.exe V5.05 update 1 (build 106)
-Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
-Library Manager: ArmAr.exe V5.05 update 1 (build 106)
-Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
-CPU DLL:         SARMCM3.DLL V5.13.0.0
-Dialog DLL:      DCM.DLL V1.13.1.0
+Toolchain:       MDK-Lite  Version: 5.23
+Toolchain Path:  D:\Programs\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.23
+Dialog DLL:      DCM.DLL V1.15.0.0
 Target DLL:      lmidk-agdi.dll V???
-Dialog DLL:      TCM.DLL V1.14.4.0
+Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-F:\Microcontroller_Projects\TM4C_SensorHub\TM4C_FreeRTOS.uvprojx
-Project File Date:  01/21/2017
+D:\NguyenHuynhDaKhoa\3_Coding Study\0_GitHub\TM4C_SensorHub+FreeRTOS\TM4C_SensorHub\TM4C_FreeRTOS.uvprojx
+Project File Date:  05/06/2017
 
 <h2>Output:</h2>
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'D:\Programs\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Default_Project'
 assembling startup_rvmdk.S...
-compiling main.c...
-Source\main.c(143): warning:  #177-D: function "ManualFlight_Task" was declared but never referenced
-  static void ManualFlight_Task(void *pvParameters)
-Source\main.c(208): warning:  #177-D: function "AutoFlight_Task" was declared but never referenced
-  static void AutoFlight_Task(void *pvParameters)
-Source\main.c(244): warning:  #177-D: function "Communication_Task" was declared but never referenced
-  static void Communication_Task(void *pvParameters)
-Source\main.c(256): warning:  #177-D: function "ReceiveCommand_Task" was declared but never referenced
-  static void ReceiveCommand_Task(void *pvParameters)
-Source\main.c: 4 warnings, 0 errors
-compiling PLL.c...
 compiling GPIO.c...
-compiling UART.c...
+compiling PLL.c...
 compiling buttons.c...
+compiling main.c...
 compiling rgb.c...
-compiling calibration.c...
 compiling firstOrderFilter.c...
-compiling I2C.c...
+compiling UART.c...
+compiling calibration.c...
 compiling IMU_QUEST.c...
+compiling I2C.c...
 compiling MPU9150.c...
 compiling ram.c...
 compiling Sensor_Task.c...
-compiling Timer0A.c...
-compiling GPIO_Task.c...
 compiling list.c...
+compiling Timer0A.c...
 compiling queue.c...
 compiling tasks.c...
-compiling heap_2.c...
 compiling port.c...
+compiling heap_2.c...
 linking...
-Program Size: Code=15572 RO-data=352 RW-data=148 ZI-data=31428  
-".\Objects\Default_Project.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=26400 RO-data=432 RW-data=308 ZI-data=31540  
+".\Objects\Default_Project.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
-  F:\Microcontroller_Projects\TM4C_SensorHub\RTE
-  D:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4C123
+  .\RTE\_Default_Project
+  D:\Programs\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
 
 <h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

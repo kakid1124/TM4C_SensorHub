@@ -11,7 +11,7 @@
 #define	Magneto_X		4
 #define Magneto_Y		5
 #define Magneto_Z		6
-#define SRF05_Sensor 7
+#define SRF05_Sensor	7
 #define Accel_X			8
 #define Accel_Y			9
 #define Accel_Z			10

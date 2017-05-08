@@ -1083,12 +1083,13 @@ ARM Macro Assembler    Page 17
   673 0000001C         ;*******************************************************
                        ***********************
   674 0000001C                 END
-Command Line: --debug --xref --cpu=Cortex-M4.fp --apcs=interwork --depend=.\obj
-ects\startup_rvmdk.d -o.\objects\startup_rvmdk.o -IF:\Microcontroller_Projects\
-TM4C_SensorHub\RTE -ID:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.0.0\Device\Include\TM4
-C123 -ID:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA 1" --predefine
-="__UVISION_VERSION SETA 513" --predefine="TM4C123GH6PM SETA 1" --list=.\listin
-gs\startup_rvmdk.lst Startup\startup_rvmdk.S
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\startup_rvmdk.d -o.\objects\startup_rvmdk.o -I.\RTE\_
+Default_Project -ID:\Programs\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Inclu
+de\TM4C123 -ID:\Programs\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" 
+--predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 523" --pred
+efine="TM4C123GH6PM SETA 1" --list=.\listings\startup_rvmdk.lst Startup\startup
+_rvmdk.S
 
 
 
@@ -2514,4 +2515,4 @@ Symbol: __main
       At line 277 in file Startup\startup_rvmdk.S
 Comment: __main used once
 1 symbol
-477 symbols in table
+478 symbols in table

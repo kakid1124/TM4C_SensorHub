@@ -20,40 +20,23 @@ long StartCritical (void);    // previous I bit, disable interrupts
 void EndCritical(long sr);    // restore I bit to previous value
 void WaitForInterrupt(void);  // low power mode
 
-void System_Init(void);
-
-static void ManualFlight_Task(void *pvParameters);
-static void AutoFlight_Task(void *pvParameters);
-static void System_Task(void *pvParameters);
-static void Communication_Task(void *pvParameters);
-static void ReceiveCommand_Task(void *pvParameters);
-
-void Eulers_Estimate(void);
+static void SystemExecution_Task(void *pvParameters);
+static void MonitorAndCommunication_Task(void *pvParameters);
+static void ProcessReceivedCommands_Task(void *pvParameters);
 	
 #ifdef __cplusplus
 }
 #endif
 
 
-
-
-
 //*****************************************************************************
-//
 // This hook is called by FreeRTOS when an stack overflow error is detected.
-//
-//*****************************************************************************
-void
-vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
+void vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
 {
-    //
     // This function can not return, so loop forever.  Interrupts are disabled
     // on entry to this function, so no processor interrupts will interrupt
     // this loop.
-    //
-    while(1)
-    {
-    }
+    while(1){}
 }
 
 
@@ -65,150 +48,59 @@ vApplicationStackOverflowHook(xTaskHandle *pxTask, char *pcTaskName)
 
 int main()
 {
-	System_Init();
+	#ifdef System_Clock_40MHz
+		PLL_Init();			// System Clock: 40MHz
+		UART_Init();		// UART: 115200 bps
+		Timer0A_Delay_Init();
+	#elif System_Clock_8MHz
+		PLL_Init_8MHz(); 	// System Clock: 8MHz
+		UART_Init_9600bps();// UART: 9600 bps
+		Timer0A_Delay_Init_8MHz();
+	#endif	
+
+//	EnableInterrupts();
+	ROM_FPUEnable();
+	ROM_FPULazyStackingEnable();
+
 	
-	UART_OutString("\n\nWelcome to the FreeRTOS Demo...\n");
 	
     // Create mutex and semaphore
-    g_pUARTSemaphore = xSemaphoreCreateMutex();
-	I2C3_Mutex = xSemaphoreCreateMutex();
 	GlobalVariable_Mutex = xSemaphoreCreateMutex();
-	
-	vSemaphoreCreateBinary(RawDataMPU_Semaphore);
 
 	// Create a queue for sending messages to the LED task.
     RGBLED_Queue = xQueueCreate(LED_QUEUE_SIZE, LED_ITEM_SIZE);
-		SwitchesState_Queue = xQueueCreate(SW_QUEUE_SIZE, SW_ITEM_SIZE);
+	SwitchesState_Queue = xQueueCreate(SW_QUEUE_SIZE, SW_ITEM_SIZE);
+
 	
+	// Create the System Execution Task
+	xTaskCreate(SystemExecution_Task, (const portCHAR *)"SystemExecution_Task", SystemExecution_STACKSIZE, NULL,
+                   tskIDLE_PRIORITY + PRIORITY_SystemExecution_TASK, NULL);
+
+    // Create the Monitor And Communication task.
+    xTaskCreate(MonitorAndCommunication_Task, (const portCHAR *)"MonitorAndCommunication_Task",
+                   MonitorAndCommunicationTask_STACKSIZE, NULL, tskIDLE_PRIORITY +
+                   PRIORITY_MonitorAndCommunication_TASK, NULL);
 	
-//	xTaskCreate(ManualFlight_Task, (const portCHAR *)"Manual_Task", MAINTASKSTACKSIZE, NULL,
-//                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
+	// Create the Process Received Commands task.
+    xTaskCreate(ProcessReceivedCommands_Task, (const portCHAR *)"ProcessReceivedCommands_Task",
+                   ProcessReceivedCommandsTask_STACKSIZE, NULL, tskIDLE_PRIORITY +
+                   PRIORITY_ProcessReceivedCommands_TASK, NULL);
 
-	xTaskCreate(System_Task, (const portCHAR *)"System_Task", MAINTASKSTACKSIZE, NULL,
-                   tskIDLE_PRIORITY + PRIORITY_MAIN_TASK, NULL);
-
-
-	// Create the LED task & Switch task.
-    if(LED_SwitchTaskInit() == pdFAIL)
+	// Create the MPU9150 task.
+    if(MPU9150TaskInit() == pdFAIL)
     {
         while(1){}
     }
-
-	// Create the MPU9150 task.
-//    if(MPU9150TaskInit() == pdFAIL)
-//    {
-//        while(1){}
-//    }
 	
     // Start the scheduler.  This should not return.
     vTaskStartScheduler();
 
     // In case the scheduler returns for some reason, print an error and loop
     // forever.
-		while(1){}
+	while(1){}
 }
 
 
-//*************************************************//
-//**** Systems_Init ****//
-//
-//*************************************************//
-void System_Init(void)
-{
-#ifdef System_Clock_40MHz
-	PLL_Init();			// System Clock: 40MHz
-	UART_Init();		// UART: 115200 bps
-	Timer0A_Delay_Init();
-#elif System_Clock_8MHz
-	PLL_Init_8MHz(); 	// System Clock: 8MHz
-	UART_Init_9600bps();// UART: 9600 bps
-	Timer0A_Delay_Init_8MHz();
-#endif	
-
-//	EnableInterrupts();
-	
-	ROM_FPUEnable();
-	ROM_FPULazyStackingEnable();
-	
-	
-
-}
-
-//*****************************************************************************
-//
-//	ManualFlight Task
-//	Receive comand manual from Joystick
-//
-//*****************************************************************************
-static void ManualFlight_Task(void *pvParameters)
-{
-	portTickType ui16LastTime;
-	
-	
-	while(1)
-	{
-		
-		switch(System_Status)
-		{
-			case System_Ready:	
-				// Get the current tick count.
-				ui16LastTime = xTaskGetTickCount();				
-				while(1)
-				{
-					if(System_Status != System_Ready) break;
-					
-					Eulers_Estimate();
-
-					
-					
-					
-						
-					// Frequency: 400Hz --> T=2.5ms
-					vTaskDelayUntil(&ui16LastTime, (2.5f) / portTICK_RATE_MS);
-				}
-			break;
-			
-			case Calib_Mode:
-				// Get the current tick count.
-				ui16LastTime = xTaskGetTickCount();				
-				while(1)
-				{
-					if(System_Status != Calib_Mode) break;
-					
-					Eulers_Estimate();
-
-					
-					
-					
-						
-					// Frequency: 400Hz --> T=2.5ms
-					vTaskDelayUntil(&ui16LastTime, (2.5f) / portTICK_RATE_MS);
-				}
-			break;
-			
-			case Initialization:
-			
-			break;
-			
-			case Hardware_Error:
-			
-			break;
-		}
-		
-	}
-}
-
-
-//*****************************************************************************
-//
-//	System Learning and Auto-Flight Task
-//	
-//
-//*****************************************************************************
-static void AutoFlight_Task(void *pvParameters)
-{
-	
-}
 
 
 //*****************************************************************************
@@ -218,7 +110,7 @@ static void AutoFlight_Task(void *pvParameters)
 //		xuat led
 //
 //*****************************************************************************
-static void System_Task(void *pvParameters)
+static void SystemExecution_Task(void *pvParameters)
 {
 	uint8_t SW_State;
 	
@@ -227,110 +119,317 @@ static void System_Task(void *pvParameters)
 		// Read the message from SWITCH queue.
 		if(xQueueReceive(SwitchesState_Queue, &SW_State, portMAX_DELAY) == pdPASS)
 		{
-			UART_OutString("\nSwitchState: ");
-			UART_OutUDec(SW_State);
+			//UART_OutString("\nSwitchState: ");
+			//UART_OutUDec(SW_State);
+			switch (SW_State){
+				case LeftSW_ON:
+					System_Status = Calib_Mode;
+				break;
+				
+				case RightSW_ON:
+					System_Status = System_Ready;
+				break;
+			}
+			
 		}
 	}
 }
 
 //*****************************************************************************
 //
-//	Communication Task
-//	Xuat ra man hinh (output qua UART) tu du lieu toan cuc
-//	Truyen thong qua nRF24L01
+//		Monitor and Communication Task (Giam Sat va Truyen Thong)
+//	1. Receive commands and global data to display
+//		(send to UART, nRF or Wifi): 5~50Hz
+//	2. Battery monitor
+//	3. Thu thap du lieu tu glabal data va giam sat he thong
+//		--> thay doi System_Status
+//	4. LED Toggle
 //
 //*****************************************************************************
+#define FreqMonitor_Hz		100
+#define MonitorDelay_ms		(1000/FreqMonitor_Hz)
+#define FreqDisplay_Hz		5
+#define FrameDisplay		(FreqMonitor_Hz/FreqDisplay_Hz)
+#define FreqMaxLED			100
+#define DoPhanGiaiLED_ms	(1000/FreqMaxLED)
 
-static void Communication_Task(void *pvParameters)
+static void MonitorAndCommunication_Task(void *pvParameters)
 {
+    portTickType ui32WakeTime;
+	static uint8_t tick_count = 0;
 	
+	// For LED Toggle
+	LED_Data_t Led_Message;
+	int32_t T, T_ON, t, t_on;
+	// Default when power on
+	Led_Message.LED_Code = GREEN;
+	T_ON = t_on = 10;
+	T = t = 40;
+	
+    // Get the current tick count.
+    ui32WakeTime = xTaskGetTickCount();
+
+    // Loop forever.
+    while(1)
+    {
+		tick_count = (tick_count + 1) % FreqMonitor_Hz;
+		
+		// 1. Display datas: 5Hz
+		if(tick_count % FrameDisplay == 1)	// tick_count = 1..21..41..61..81
+		{
+			
+			
+		}
+		
+		// 2. Batter Monitor: 1Hz
+		if(tick_count == 99)
+		{
+			
+		}
+		
+		// 3. Giam sat he thong: 100Hz
+		{
+			
+			
+		}
+		
+		// 4. LEDs Display:
+		{
+			// Read the next message, if available on queue.
+			// => (LED_Code, T_ON, T_OFF)
+			if(xQueueReceive(RGBLED_Queue, &Led_Message, 0) == pdPASS)
+			{	
+				if(Led_Message.freq <= 0.0f)
+				{
+					T = T_ON = 1;
+				}
+				else
+				{
+					T = (int32_t)(1000.0f / Led_Message.freq) / DoPhanGiaiLED_ms;	//[10ms]
+					if(T <= 1)
+					{
+						T = T_ON = 1;
+					}
+					else
+					{
+						T_ON = (T * Led_Message.duty / 100);
+						if((Led_Message.duty > 0)&&(T_ON == 0))
+							T_ON = 1;		//[10ms]
+					}
+				}
+				
+				t = T;
+				t_on = T_ON;
+			}
+		
+			switch (Led_Message.LED_Code)
+			{
+				case RED:
+				case BLUE:
+				case GREEN:
+				case YELLOW:
+				case SKYBLUE:
+				case PINK:
+				case WHITE:
+					if((T_ON > 0)&&(t_on > 0))
+					{
+						// Turn on the LED.
+						Led_ON(Led_Message.LED_Code);
+						t--; t_on--;
+					}
+					else if((t > 0)&&(t_on == 0))
+					{
+						// turn off all LED
+						Led_OFF(ALL);
+						t--;
+						
+						if((t == 0)&&(T_ON > 0))
+						{	// reset
+							t = T;
+							t_on = T_ON;
+						}
+					}
+					else if((T <= 0)||(T_ON <= 0))
+					{
+						// turn off all LED
+						Led_OFF(ALL);
+					}
+				break;
+				default: // turn off all LED
+					Led_OFF(ALL);
+				break;
+			}
+		}
+	
+		// Wait for the required amount of time to check back.
+		vTaskDelayUntil(&ui32WakeTime, MonitorDelay_ms / portTICK_RATE_MS);
+    }
 }
 
 //*****************************************************************************
 //
-//	ReceiveCommand Task
-//	Receive command from UART or nRF24L01
+//		Process Received Commands Task
+//	1. Read state from 2 switches on board (200Hz) => SwitchesState_Queue
+//	2. Process command from Receiver (50Hz)
+//	3. Receive and process command from UART or SPI (nRF24L01, Wifi,...)
 //	
 //*****************************************************************************
+#define SwitchDelay_ms		5
+#define Freq_ScanSwitches	(1000/SwitchDelay_ms)
+#define ReleaseTime_ms		100
+#define PressTime_ms		10
+#define HoldPressTime_ms	3000
 
-static void ReceiveCommand_Task(void *pvParameters)
-{
-	
-}
+#define ON	0		// muc logic LOW (tuong ung voi 0V dien ap)
+#define OFF	1		// muc logic HIGH (+3.3V)
 
-void Eulers_Estimate(void)
+static void ProcessReceivedCommands_Task(void *pvParameters)
 {
-	static uint8_t count = 0, newData;
+	portTickType ui16LastTime;
+	static uint8_t tick_count = 0;
 	
-	count = (count+1)%40;
-	newData = 0;
+	// Switches
+	uint8_t LeftSW_Changed, RightSW_Changed;
+	uint8_t Keys_State = BothSW_OFF, Raw_State;
+	uint8_t Debounced_LeftSW_Press = OFF;
+	uint8_t Debounced_RightSW_Press = OFF;
+	uint8_t StableTime1, StableTime2;
+	int16_t HoldTime1 = 1000, HoldTime2 = 1000;
 	
-	// First Order Filter
-	xSemaphoreTake(GlobalVariable_Mutex, portMAX_DELAY);
-	if(MPU9150_RawData.MPU_DataReady)
+	// Get the current tick count.
+    ui16LastTime = xTaskGetTickCount();
+	while(1)
 	{
-		MPU9150_RawData.MPU_DataReady = Old_Data;
-						
-		// Accelerometer x/y/z adc values
-		MPU9150_FilteredData.Accel[0] = firstOrderFilter((float)MPU9150_RawData.accelCount[0], &firstOrderFilters[Accel_X]);
-		MPU9150_FilteredData.Accel[1] = firstOrderFilter((float)MPU9150_RawData.accelCount[1], &firstOrderFilters[Accel_Y]);
-		MPU9150_FilteredData.Accel[2] = firstOrderFilter((float)MPU9150_RawData.accelCount[2], &firstOrderFilters[Accel_Z]);
-					
-		// Gyroscope x/y/z adc values
-		MPU9150_FilteredData.Gyro[0] = firstOrderFilter((float)MPU9150_RawData.gyroCount[0], &firstOrderFilters[Gyro_X]);
-		MPU9150_FilteredData.Gyro[1] = firstOrderFilter((float)MPU9150_RawData.gyroCount[1], &firstOrderFilters[Gyro_Y]);
-		MPU9150_FilteredData.Gyro[2] = firstOrderFilter((float)MPU9150_RawData.gyroCount[2], &firstOrderFilters[Gyro_Z]);
-						
-		// Temperature adc values, Calculate Temperature in degrees Centigrade
-		MPU9150_FilteredData.temperature = ((float) MPU9150_RawData.tempCount) / 340.0f + 36.53f;
+		tick_count = (tick_count + 1) % Freq_ScanSwitches; // tick_count = 0..199
+		
+		// Poll 2 Switches: 200Hz
+		{	LeftSW_Changed = 0;
+			RightSW_Changed = 0;
 			
-		if(MPU9150_RawData.Mag_DataReady)
-		{
-			MPU9150_RawData.Mag_DataReady = Old_Data;
-							
-			// Magnetometer x/y/z adc values
-			// doi truc: X'=Y; Y'=X; Z'=-Z
-			MPU9150_FilteredData.Magneto[0] = firstOrderFilter((float)MPU9150_RawData.magCount[1] * MPU9150_Bias.magCalib[1], &firstOrderFilters[Magneto_X]);
-			MPU9150_FilteredData.Magneto[1] = firstOrderFilter((float)MPU9150_RawData.magCount[0] * MPU9150_Bias.magCalib[0], &firstOrderFilters[Magneto_Y]);
-			MPU9150_FilteredData.Magneto[2] = firstOrderFilter((float)MPU9150_RawData.magCount[2] *(-1.0f)*MPU9150_Bias.magCalib[2], &firstOrderFilters[Magneto_Z]);
+			// Poll the debounced state of the buttons.
+			// Left Switch
+			if((GPIO_PORTF_DATA_R & SW1) == ON)
+				Raw_State = ON;
+			else
+				Raw_State = OFF;
+		
+			if(Raw_State == Debounced_LeftSW_Press)
+			{
+				// Set the timer which allows a change from current state.
+				if(Debounced_LeftSW_Press == ON)
+				{
+					HoldTime1 = (--HoldTime1 > 0) ? HoldTime1 : 0;
+					StableTime1 = ReleaseTime_ms/SwitchDelay_ms;
+				}
+				else
+					StableTime1 = PressTime_ms/SwitchDelay_ms;
+			}
+			else{
+				// Key has changed - wait for new state to become stable.
+				if(--StableTime1 == 0)
+				{
+					// Timer expired - accept the change.
+					Debounced_LeftSW_Press = Raw_State;
+					LeftSW_Changed = 1;
+				
+					// And reset the timer.
+					HoldTime1 = HoldTime2 = HoldPressTime_ms/SwitchDelay_ms;
+				
+					if(Debounced_LeftSW_Press == ON)
+						StableTime1 = ReleaseTime_ms/SwitchDelay_ms;
+					else
+						StableTime1 = PressTime_ms/SwitchDelay_ms;
+				}
+			}
+	
+			// Right Switch
+			if((GPIO_PORTF_DATA_R & SW2) == ON)
+				Raw_State = ON;
+			else
+				Raw_State = OFF;
+		
+			if(Raw_State == Debounced_RightSW_Press)
+			{
+				// Set the timer which allows a change from current state.
+				if(Debounced_RightSW_Press == ON)
+				{
+					HoldTime2 = (--HoldTime2 > 0) ? HoldTime2 : 0;
+					StableTime2 = ReleaseTime_ms/SwitchDelay_ms;
+				}
+				else
+					StableTime2 = PressTime_ms/SwitchDelay_ms;
+			}
+			else
+			{
+				// Key has changed - wait for new state to become stable.
+				if(--StableTime2 == 0)
+				{
+					// Timer expired - accept the change.
+					Debounced_RightSW_Press = Raw_State;
+					RightSW_Changed = 1;
+				
+					// And reset the timer.
+					HoldTime1 = HoldTime2 = HoldPressTime_ms/SwitchDelay_ms;
+				
+					if(Debounced_RightSW_Press == ON)
+						StableTime2 = ReleaseTime_ms/SwitchDelay_ms;
+					else
+						StableTime2 = PressTime_ms/SwitchDelay_ms;
+				}
+			}
+		
+			// Deceide the buttons' state changed
+			if((LeftSW_Changed) || (RightSW_Changed) || (HoldTime1 == 0) || (HoldTime2 == 0))
+			{
+				if((HoldTime1 == 0)&&(HoldTime2 == 0)&&(Keys_State == BothSW_ON3s))
+				{}
+				else if((HoldTime1 == 0)&&(Keys_State == LeftSW_ON3s))
+				{}
+				else if((HoldTime2 == 0)&&(Keys_State == RightSW_ON3s))
+				{}
+				else
+				{
+					if((LeftSW_Changed)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
+						Keys_State = LeftSW_ON;
+					else if((LeftSW_Changed)&&(Debounced_LeftSW_Press == OFF))
+						Keys_State = LeftSW_OFF;
+					else if((RightSW_Changed)&&(Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
+						Keys_State = RightSW_ON;
+					else if((RightSW_Changed)&&(Debounced_RightSW_Press == OFF))
+						Keys_State = RightSW_OFF;
+					else if((HoldTime1 == 0)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == OFF))
+						Keys_State = LeftSW_ON3s;
+					else if((HoldTime2 == 0)&&(Debounced_LeftSW_Press == OFF)&&(Debounced_RightSW_Press == ON))
+						Keys_State = RightSW_ON3s;
+					else if((HoldTime1 == 0)&&(HoldTime2 == 0)&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == ON))
+						Keys_State = BothSW_ON3s;
+					else if(((LeftSW_Changed)||(RightSW_Changed))&&(Debounced_LeftSW_Press == ON)&&(Debounced_RightSW_Press == ON))
+						Keys_State = BothSW_ON;
+			
+			
+					// Pass the value of the button pressed to Queue.
+					if(xQueueSend(SwitchesState_Queue, &Keys_State, portMAX_DELAY) != pdPASS)
+					{
+					// Error. The queue should never be full. If so print the
+					// error message on UART and wait for ever.
+					//UART_OutString("\nQueue full. This should never happen.\n");
+						while(1){}
+					}
+				}
+			}
 		}
 		
-		newData = 1;
-	}
-	xSemaphoreGive(GlobalVariable_Mutex);
-					
-	// Estimation of Eulers
-	if(newData)
-	{
-		// Magnetometer
-		if(count == 39)
-		{
-			/* Mag_Transformation((float*)MagData_Data);
-			Mag_vector_length_stabilasation();
-			pMag[0] = Mag_calibrated[0]*MPU9150.mRes;	// [milliGauss]
-			pMag[1] = Mag_calibrated[1]*MPU9150.mRes;
-			pMag[2] = Mag_calibrated[2]*MPU9150.mRes;
-			*/
+		// Received from Receiver: 50Hz
+		if(tick_count%4 == 0){
+			
+			
 		}
 		
-		// IMU QUEST:
-		/*
-					current_Time = WTIMER0_TAR_R;
-					delta_Time = (previous_Time - current_Time)&0xFFFFFFFF;
-					delta_T = delta_Time * 0.000001f;										// [micro second]*10^(-6) --> [second]
-					previous_Time = current_Time;	
-			
-					MPU9150_Compute_TCBias(&MPU9150.temperature);
-					pAccel[0] = (Accel_Data[0] - accel_BiasMPU[0] - accel_TCBias[0]) * accel_ScaleFactorMPU[0];  // [m/s^2]
-					pAccel[1] = (Accel_Data[1] - accel_BiasMPU[1] - accel_TCBias[1]) * accel_ScaleFactorMPU[1];
-					pAccel[2] = (Accel_Data[2] - accel_BiasMPU[2] - accel_TCBias[2]) * accel_ScaleFactorMPU[2];
-			
-					pGyro[0] = (Gyro_Data[0] - gyro_RTBias[0] - gyro_TCBias[0]) * MPU9150.gRes * D2R; // [rad/s]
-					pGyro[1] = (Gyro_Data[1] - gyro_RTBias[1] - gyro_TCBias[1]) * MPU9150.gRes * D2R; // [rad/s]
-					pGyro[2] = (Gyro_Data[2] - gyro_RTBias[2] - gyro_TCBias[2]) * MPU9150.gRes * D2R; // [rad/s]
-			
-					QUEST((float*)pAccel, (float*)pGyro, (float*)pMag, (float*)pEulers, (float*)pQuaternion, &delta_T);
-		*/
+		// Received from UART:
+		
+		
+		// Wait for the required amount of time to check back.
+        vTaskDelayUntil(&ui16LastTime, SwitchDelay_ms / portTICK_RATE_MS);
 	}
 }
 

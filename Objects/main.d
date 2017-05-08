@@ -1,8 +1,8 @@
 .\objects\main.o: Source\main.c
 .\objects\main.o: .\Source\include\include.h
-.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/rom.h
 .\objects\main.o: .\Source\include\tm4c123gh6pm.h
 .\objects\main.o: .\Source\include\PLL.h
@@ -12,7 +12,7 @@
 .\objects\main.o: .\Source\include\Timer0A.h
 .\objects\main.o: .\Source\include\ext_variables.h
 .\objects\main.o: .\FreeRTOS\include\FreeRTOS.h
-.\objects\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\main.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\main.o: .\Source\include\FreeRTOSConfig.h
 .\objects\main.o: .\FreeRTOS\include\projdefs.h
 .\objects\main.o: .\FreeRTOS\include\portable.h
@@ -27,5 +27,5 @@
 .\objects\main.o: .\Source\include\IMU_QUEST.h
 .\objects\main.o: .\Source\include\calibration.h
 .\objects\main.o: .\Source\include\firstOrderFilter.h
-.\objects\main.o: .\Source\include\gpio_task.h
+.\objects\main.o: .\Source\include\GPS.h
 .\objects\main.o: .\Source\include\Sensor_Task.h

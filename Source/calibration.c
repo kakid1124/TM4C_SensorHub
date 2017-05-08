@@ -50,33 +50,36 @@ float gyro_TCBias_Intercept[3]  = {49.749f, 0.390f, 84.081f};
 void Mag_Transformation(float * uncalibrated_values){
 	int8_t i,j;
 	float result[3] = {0, 0, 0};
-//calculation
-  for (i=0; i<3; ++i)
+	
+	//calculation
+	for (i=0; i<3; ++i)
 		uncalibrated_values[i] = uncalibrated_values[i] - bias[i];
   
-  for (i=0; i<3; ++i)
-    for (j=0; j<3; ++j)
-      result[i] += calibration_matrix[i][j] * uncalibrated_values[j];
+	for (i=0; i<3; ++i)
+		for (j=0; j<3; ++j)
+		result[i] += calibration_matrix[i][j] * uncalibrated_values[j];
 	
-  for (i=0; i<3; ++i) 
+	for (i=0; i<3; ++i) 
 		Mag_calibrated[i] = result[i];	
 }
 
 //vector_length_stabilasation() - is the function of the magnetometer vector length stabilasation (stabilisation of the sphere radius)
 void Mag_vector_length_stabilasation(void){
-  //calculate the normal vector length
-  if (Mag_scaler_flag == false)
-  {
-    //getHeading();
-    Mag_normal_vector_length = sqrtf(Mag_calibrated[0]*Mag_calibrated[0] + Mag_calibrated[1]*Mag_calibrated[1] + Mag_calibrated[2]*Mag_calibrated[2]);
-    Mag_scaler_flag = true;
-  } 
-  //calculate the current scaler
-  Mag_scaler = Mag_normal_vector_length/sqrtf(Mag_calibrated[0]*Mag_calibrated[0] + Mag_calibrated[1]*Mag_calibrated[1] + Mag_calibrated[2]*Mag_calibrated[2]);
-  //apply the current scaler to the calibrated coordinates (global array calibrated_values)
-  Mag_calibrated[0] = Mag_calibrated[0]*Mag_scaler;
-  Mag_calibrated[1] = Mag_calibrated[1]*Mag_scaler;
-  Mag_calibrated[2] = Mag_calibrated[2]*Mag_scaler;
+	//calculate the normal vector length
+	if (Mag_scaler_flag == false)
+	{
+		//getHeading();
+		Mag_normal_vector_length = sqrtf(Mag_calibrated[0]*Mag_calibrated[0] + Mag_calibrated[1]*Mag_calibrated[1] + Mag_calibrated[2]*Mag_calibrated[2]);
+		Mag_scaler_flag = true;
+	}
+	
+	//calculate the current scaler
+	Mag_scaler = Mag_normal_vector_length/sqrtf(Mag_calibrated[0]*Mag_calibrated[0] + Mag_calibrated[1]*Mag_calibrated[1] + Mag_calibrated[2]*Mag_calibrated[2]);
+	
+	//apply the current scaler to the calibrated coordinates (global array calibrated_values)
+	Mag_calibrated[0] = Mag_calibrated[0]*Mag_scaler;
+	Mag_calibrated[1] = Mag_calibrated[1]*Mag_scaler;
+	Mag_calibrated[2] = Mag_calibrated[2]*Mag_scaler;
 }
 
 void MPU9150_TCBias_Measurement(float * accel_raw, float * gyro_raw, int16_t * temp_raw){

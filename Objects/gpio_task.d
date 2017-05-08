@@ -1,8 +1,8 @@
 .\objects\gpio_task.o: Source\GPIO_Task.c
 .\objects\gpio_task.o: .\Source\include\include.h
-.\objects\gpio_task.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\gpio_task.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
-.\objects\gpio_task.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\gpio_task.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gpio_task.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\gpio_task.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\gpio_task.o: D:\TI\TivaWare_C_Series-2.1.2.111\driverlib/rom.h
 .\objects\gpio_task.o: .\Source\include\tm4c123gh6pm.h
 .\objects\gpio_task.o: .\Source\include\PLL.h
@@ -12,7 +12,7 @@
 .\objects\gpio_task.o: .\Source\include\Timer0A.h
 .\objects\gpio_task.o: .\Source\include\ext_variables.h
 .\objects\gpio_task.o: .\FreeRTOS\include\FreeRTOS.h
-.\objects\gpio_task.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\objects\gpio_task.o: D:\Programs\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
 .\objects\gpio_task.o: .\Source\include\FreeRTOSConfig.h
 .\objects\gpio_task.o: .\FreeRTOS\include\projdefs.h
 .\objects\gpio_task.o: .\FreeRTOS\include\portable.h
@@ -27,5 +27,6 @@
 .\objects\gpio_task.o: .\Source\include\IMU_QUEST.h
 .\objects\gpio_task.o: .\Source\include\calibration.h
 .\objects\gpio_task.o: .\Source\include\firstOrderFilter.h
+.\objects\gpio_task.o: .\Source\include\GPS.h
 .\objects\gpio_task.o: .\Source\include\gpio_task.h
 .\objects\gpio_task.o: .\Source\include\Sensor_Task.h

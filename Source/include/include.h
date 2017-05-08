@@ -19,13 +19,14 @@
 #include "IMU_QUEST.h"
 #include "calibration.h"
 #include "firstOrderFilter.h"
+#include "GPS.h"
 
 
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
-#include "gpio_task.h"
+
 #include "Sensor_Task.h"
 
 

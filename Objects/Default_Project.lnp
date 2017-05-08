@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 ".\objects\startup_rvmdk.o"
 ".\objects\main.o"
 ".\objects\pll.o"
@@ -14,7 +14,6 @@
 ".\objects\ram.o"
 ".\objects\sensor_task.o"
 ".\objects\timer0a.o"
-".\objects\gpio_task.o"
 "D:\TI\TivaWare_C_Series-2.1.2.111\driverlib\rvmdk\driverlib.lib"
 ".\objects\list.o"
 ".\objects\queue.o"
