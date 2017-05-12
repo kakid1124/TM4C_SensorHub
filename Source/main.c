@@ -62,7 +62,7 @@ int main()
 	ROM_FPUEnable();
 	ROM_FPULazyStackingEnable();
 
-	
+	System_Status = Init;
 	
     // Create mutex and semaphore
 	GlobalVariable_Mutex = xSemaphoreCreateMutex();
@@ -73,8 +73,8 @@ int main()
 
 	
 	// Create the System Execution Task
-	xTaskCreate(SystemExecution_Task, (const portCHAR *)"SystemExecution_Task", SystemExecution_STACKSIZE, NULL,
-                   tskIDLE_PRIORITY + PRIORITY_SystemExecution_TASK, NULL);
+//	xTaskCreate(SystemExecution_Task, (const portCHAR *)"SystemExecution_Task", SystemExecution_STACKSIZE, NULL,
+//                   tskIDLE_PRIORITY + PRIORITY_SystemExecution_TASK, NULL);
 
     // Create the Monitor And Communication task.
     xTaskCreate(MonitorAndCommunication_Task, (const portCHAR *)"MonitorAndCommunication_Task",
@@ -92,6 +92,8 @@ int main()
         while(1){}
     }
 	
+	System_Status = System_Ready;
+	
     // Start the scheduler.  This should not return.
     vTaskStartScheduler();
 
@@ -105,33 +107,26 @@ int main()
 
 //*****************************************************************************
 //
-//	System Task: chan doan loi he thong, thay doi System_Status
-//		Tiep nhan command
-//		xuat led
+//	System Execution Task: 
+//		
+//		
 //
 //*****************************************************************************
 static void SystemExecution_Task(void *pvParameters)
 {
-	uint8_t SW_State;
+	
 	
 	while(1)
 	{
-		// Read the message from SWITCH queue.
-		if(xQueueReceive(SwitchesState_Queue, &SW_State, portMAX_DELAY) == pdPASS)
-		{
-			//UART_OutString("\nSwitchState: ");
-			//UART_OutUDec(SW_State);
-			switch (SW_State){
-				case LeftSW_ON:
-					System_Status = Calib_Mode;
-				break;
+		switch(System_Ready){
+			case ArmedFlight_Mode:
 				
-				case RightSW_ON:
-					System_Status = System_Ready;
+			
 				break;
-			}
 			
 		}
+		
+		WaitForInterrupt();
 	}
 }
 
@@ -158,13 +153,16 @@ static void MonitorAndCommunication_Task(void *pvParameters)
     portTickType ui32WakeTime;
 	static uint8_t tick_count = 0;
 	
-	// For LED Toggle
-	LED_Data_t Led_Message;
+	enum Display_Data {None = 0, UART_Monitor, nRF_Device};
+	
+	uint8_t SW_State, DisplayToWhat = 0;
+	LED_Data_t Led_Message = {GREEN, 50, 1}, Led_Message_Received;
 	int32_t T, T_ON, t, t_on;
+	
+	Sensor_t Sensors;
+	
 	// Default when power on
-	Led_Message.LED_Code = GREEN;
-	T_ON = t_on = 10;
-	T = t = 40;
+	xQueueSend(RGBLED_Queue, &Led_Message, portMAX_DELAY);
 	
     // Get the current tick count.
     ui32WakeTime = xTaskGetTickCount();
@@ -177,8 +175,22 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 		// 1. Display datas: 5Hz
 		if(tick_count % FrameDisplay == 1)	// tick_count = 1..21..41..61..81
 		{
-			
-			
+			switch (DisplayToWhat){
+				case UART_Monitor:
+				
+					UART_OutString((char *)"Eulers: ");
+					UART_OutFloat(Sensors.MPU9150.Euler[0]*R2D);
+					UART_OutString((char *)"  ");
+					UART_OutFloat(Sensors.MPU9150.Euler[1]*R2D);
+					UART_OutString((char *)"  ");
+					UART_OutFloat(Sensors.MPU9150.Euler[2]*R2D);
+					UART_OutString((char *)"\n\r");
+					
+					break;
+				case nRF_Device:
+				
+					break;
+			}
 		}
 		
 		// 2. Batter Monitor: 1Hz
@@ -189,7 +201,60 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 		
 		// 3. Giam sat he thong: 100Hz
 		{
+			// Read the message from SWITCH queue.
+			if(xQueueReceive(SwitchesState_Queue, &SW_State, 0) == pdPASS)
+			{
+				switch (SW_State){
+					case LeftSW_ON:
+						
+						break;
+					case LeftSW_ON3s:
+						if((System_Status == System_Ready)&&(DisplayToWhat == None))
+						{
+							DisplayToWhat = UART_Monitor;
+							
+							Led_Message.LED_Code = BLUE;
+							Led_Message.duty = 50;
+							Led_Message.freq = 5;
+							xQueueSend(RGBLED_Queue, &Led_Message, portMAX_DELAY);
+						}
+						break;
+					case LeftSW_OFF:
+					
+						break;
+					case RightSW_ON:
+						
+						break;
+					case RightSW_ON3s:
+						if(DisplayToWhat == UART_Monitor)
+						{
+							DisplayToWhat = None;
+							
+							Led_Message.LED_Code = RED;
+							Led_Message.duty = 50;
+							Led_Message.freq = 0;
+							xQueueSend(RGBLED_Queue, &Led_Message, portMAX_DELAY);
+						}
+						break;
+					case RightSW_OFF:
+					
+						break;
+					case BothSW_ON:
+					
+						break;
+					case BothSW_ON3s:
+					
+						break;
+				}
+				
+				
+				
+			}
 			
+			// Get new data from global variables
+			xSemaphoreTake(GlobalVariable_Mutex, portMAX_DELAY);
+			Sensors.MPU9150 = MPU9150_FilteredData;
+			xSemaphoreGive(GlobalVariable_Mutex);
 			
 		}
 		
@@ -197,23 +262,23 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 		{
 			// Read the next message, if available on queue.
 			// => (LED_Code, T_ON, T_OFF)
-			if(xQueueReceive(RGBLED_Queue, &Led_Message, 0) == pdPASS)
+			if(xQueueReceive(RGBLED_Queue, &Led_Message_Received, 0) == pdPASS)
 			{	
-				if(Led_Message.freq <= 0.0f)
+				if(Led_Message_Received.freq <= 0.0f)
 				{
 					T = T_ON = 1;
 				}
 				else
 				{
-					T = (int32_t)(1000.0f / Led_Message.freq) / DoPhanGiaiLED_ms;	//[10ms]
+					T = (int32_t)(1000.0f / Led_Message_Received.freq) / DoPhanGiaiLED_ms;	//[10ms]
 					if(T <= 1)
 					{
 						T = T_ON = 1;
 					}
 					else
 					{
-						T_ON = (T * Led_Message.duty / 100);
-						if((Led_Message.duty > 0)&&(T_ON == 0))
+						T_ON = (T * Led_Message_Received.duty / 100);
+						if((Led_Message_Received.duty > 0)&&(T_ON == 0))
 							T_ON = 1;		//[10ms]
 					}
 				}
@@ -222,7 +287,7 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 				t_on = T_ON;
 			}
 		
-			switch (Led_Message.LED_Code)
+			switch (Led_Message_Received.LED_Code)
 			{
 				case RED:
 				case BLUE:
@@ -231,10 +296,15 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 				case SKYBLUE:
 				case PINK:
 				case WHITE:
-					if((T_ON > 0)&&(t_on > 0))
+					if((T <= 0)||(T_ON <= 0))
+					{
+						// turn off all LED
+						Led_OFF(ALL);
+					}
+					else if((T_ON > 0)&&(t_on > 0))
 					{
 						// Turn on the LED.
-						Led_ON(Led_Message.LED_Code);
+						Led_ON(Led_Message_Received.LED_Code);
 						t--; t_on--;
 					}
 					else if((t > 0)&&(t_on == 0))
@@ -248,11 +318,6 @@ static void MonitorAndCommunication_Task(void *pvParameters)
 							t = T;
 							t_on = T_ON;
 						}
-					}
-					else if((T <= 0)||(T_ON <= 0))
-					{
-						// turn off all LED
-						Led_OFF(ALL);
 					}
 				break;
 				default: // turn off all LED

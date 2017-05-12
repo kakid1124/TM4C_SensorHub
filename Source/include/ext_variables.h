@@ -8,13 +8,13 @@
 #include "semphr.h"
 
 // System:
-enum System_Status {Initialization,
-					Calib_Mode,
-					System_Ready,
-					ManualFlight_Mode,
-					AutoFlight_Mode,
-					Hardware_Error
-					};
+enum System_Status { Init = 0,
+					 System_Ready,
+					 Hardware_Error,
+					 Sensor_Calibration,
+					 ArmedFlight_Mode,
+					 Flight_Error,
+					 Reset };
 
 					
 					
@@ -73,6 +73,12 @@ typedef struct {
 	float Euler[3];		// (Roll, Pitch, Yaw) [rad]
 	float Quaternion[4];
 } MPU9150_FilteredData_t;
+
+
+typedef struct {
+	MPU9150_FilteredData_t	MPU9150;
+	
+} Sensor_t;
 
 // LED Toggle
 typedef struct {

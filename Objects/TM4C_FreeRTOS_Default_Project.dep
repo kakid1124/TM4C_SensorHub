@@ -1,6 +1,6 @@
 Dependencies for Project 'TM4C_FreeRTOS', Target 'Default_Project': (DO NOT MODIFY !)
 F (.\Startup\startup_rvmdk.S)(0x587450E7)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Default_Project-ID:\Programs\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-ID:\Programs\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 523" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
-F (.\Source\main.c)(0x591034B6)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I D:\TI\TivaWare_C_Series-2.1.2.111 -I .\Source\include -I .\FreeRTOS\include -I .\FreeRTOS\ARM_CM4F-I.\RTE\_Default_Project-ID:\Programs\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-ID:\Programs\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\Source\main.c)(0x59156A63)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork -I D:\TI\TivaWare_C_Series-2.1.2.111 -I .\Source\include -I .\FreeRTOS\include -I .\FreeRTOS\ARM_CM4F-I.\RTE\_Default_Project-ID:\Programs\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-ID:\Programs\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_BLIZZARD_RB1 -DSystem_Clock_40MHz-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (.\Source\include\include.h)(0x590D4896)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F614C8)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x57F614C8)
@@ -12,7 +12,7 @@ I (.\Source\include\UART.h)(0x587D8B2F)
 I (.\Source\include\GPIO.h)(0x5879DDE9)
 I (.\Source\include\I2C.h)(0x587D8B2E)
 I (.\Source\include\Timer0A.h)(0x587450E7)
-I (.\Source\include\ext_variables.h)(0x590FF17E)
+I (.\Source\include\ext_variables.h)(0x59156316)
 I (.\FreeRTOS\include\FreeRTOS.h)(0x587450E7)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F614C8)
 I (.\Source\include\FreeRTOSConfig.h)(0x5875A12B)
@@ -103,7 +103,7 @@ I (.\Source\include\UART.h)(0x587D8B2F)
 I (.\Source\include\GPIO.h)(0x5879DDE9)
 I (.\Source\include\I2C.h)(0x587D8B2E)
 I (.\Source\include\Timer0A.h)(0x587450E7)
-I (.\Source\include\ext_variables.h)(0x590FF17E)
+I (.\Source\include\ext_variables.h)(0x59156316)
 I (.\FreeRTOS\include\FreeRTOS.h)(0x587450E7)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F614C8)
 I (.\Source\include\FreeRTOSConfig.h)(0x5875A12B)
@@ -134,7 +134,7 @@ I (.\Source\include\UART.h)(0x587D8B2F)
 I (.\Source\include\GPIO.h)(0x5879DDE9)
 I (.\Source\include\I2C.h)(0x587D8B2E)
 I (.\Source\include\Timer0A.h)(0x587450E7)
-I (.\Source\include\ext_variables.h)(0x590FF17E)
+I (.\Source\include\ext_variables.h)(0x59156316)
 I (.\FreeRTOS\include\FreeRTOS.h)(0x587450E7)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F614C8)
 I (.\Source\include\FreeRTOSConfig.h)(0x5875A12B)
@@ -165,7 +165,7 @@ I (.\Source\include\UART.h)(0x587D8B2F)
 I (.\Source\include\GPIO.h)(0x5879DDE9)
 I (.\Source\include\I2C.h)(0x587D8B2E)
 I (.\Source\include\Timer0A.h)(0x587450E7)
-I (.\Source\include\ext_variables.h)(0x590FF17E)
+I (.\Source\include\ext_variables.h)(0x59156316)
 I (.\FreeRTOS\include\FreeRTOS.h)(0x587450E7)
 I (D:\Programs\Keil_v5\ARM\ARMCC\include\stddef.h)(0x57F614C8)
 I (.\Source\include\FreeRTOSConfig.h)(0x5875A12B)
